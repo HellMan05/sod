@@ -12,6 +12,6 @@
   - type: VisionCorrection
   - type: Tag
     tags:
-    - HudMedical 
+    - HudMedical
   - type: SolutionScanner
 
