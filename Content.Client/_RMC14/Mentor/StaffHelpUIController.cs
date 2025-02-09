@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Diagnostics.CodeAnalysis;
 using Content.Client.Administration.Systems;
 using Content.Client.Stylesheets;
@@ -18,6 +18,8 @@ using Robust.Shared.Input.Binding;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using Content.Shared.Players;
+using Content.Client.Mind;
 
 namespace Content.Client._RMC14.Mentor;
 
@@ -29,6 +31,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [UISystemDependency] private readonly AudioSystem? _audio = default!;
+    [UISystemDependency] private readonly MindSystem? _mind = default!;
 
     private readonly Dictionary<NetUserId, List<MentorMessage>> _messages = new();
 
@@ -239,6 +242,10 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         var playerName = player.ToString();
         if (_player.SessionsDict.TryGetValue(player, out var session))
             playerName = session.Name;
+
+        var charName = _mind?.GetCharacterName(player);
+        if (charName is not null)
+            playerName += $" ({charName})";
 
         var playerButton = new Button
         {

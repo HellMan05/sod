@@ -26,7 +26,7 @@
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True"
                       SizeFlagsStretchRatio="3">
             <OutputPanel Name="Messages" Access="Public"
-                         VerticalExpand="True" />
+                         VerticalExpand="True" Margin="6 6 6 6"/>
             <LineEdit Name="Chat" Access="Public" HorizontalExpand="True" Editable="False" />
         </BoxContainer>
     </BoxContainer>
