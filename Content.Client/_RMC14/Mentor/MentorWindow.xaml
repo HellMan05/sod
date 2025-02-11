@@ -13,6 +13,10 @@
                              HorizontalExpand="True" VerticalExpand="True">
                     <BoxContainer Orientation="Vertical" HorizontalExpand="True"
                                   VerticalExpand="True">
+                                    <LineEdit Name="FilterLineEdit"
+                                              Access="Public"
+                                              HorizontalExpand="True"
+                                              PlaceHolder="{Loc player-list-filter}"/>
                         <ScrollContainer VerticalExpand="True" HorizontalExpand="True"
                                          HScrollEnabled="False">
                             <BoxContainer Name="Players" Access="Public" Orientation="Vertical"

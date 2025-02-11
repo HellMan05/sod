@@ -170,6 +170,30 @@ public sealed partial class MentorManager : IPostInjectInit
         SendMentorStatus(session);
     }
 
+    private void OnRequestNames(MentorRequestNamesMsg msg)
+    {
+        if (!_player.TryGetSessionById(msg.MsgChannel.UserId, out var session) ||
+            !_mentors.TryGetValue(session.UserId, out var mentor) ||
+            !mentor)
+            return;
+        if (_minds is null)
+            return;
+
+        Dictionary<NetUserId, string> names = new();
+        foreach (var player in _player.SessionsDict.Keys)
+        {
+            var name = _minds?.GetCharacterName(player);
+            if (name is null)
+                continue;
+            names[player] = name;
+        }
+        var mesg = new MentorGotNamesMsg()
+        {
+            Names = names,
+        };
+        _net.ServerSendMessage(mesg, session.Channel);
+    }
+
     private void OnReMentor(ReMentorMsg message)
     {
         if (!_player.TryGetSessionById(message.MsgChannel.UserId, out var session) ||
@@ -516,6 +540,8 @@ public sealed partial class MentorManager : IPostInjectInit
         _net.RegisterNetMessage<MentorMessagesReceivedMsg>();
         _net.RegisterNetMessage<DeMentorMsg>(OnDeMentor);
         _net.RegisterNetMessage<ReMentorMsg>(OnReMentor);
+        _net.RegisterNetMessage<MentorRequestNamesMsg>(OnRequestNames);
+        _net.RegisterNetMessage<MentorGotNamesMsg>();
         _userDb.AddOnLoadPlayer(LoadData);
         _userDb.AddOnFinishLoad(FinishLoad);
         _userDb.AddOnPlayerDisconnect(ClientDisconnected);

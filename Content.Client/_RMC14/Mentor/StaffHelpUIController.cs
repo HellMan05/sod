@@ -31,8 +31,9 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [UISystemDependency] private readonly AudioSystem? _audio = default!;
-    [UISystemDependency] private readonly MindSystem? _mind = default!;
 
+    public Dictionary<Button, NetUserId> PlayersButtons = new();
+    public Dictionary<NetUserId, string> PlayersNames = new();
     private readonly Dictionary<NetUserId, List<MentorMessage>> _messages = new();
 
     private bool _isMentor;
@@ -51,7 +52,15 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         _net.RegisterNetMessage<MentorHelpMsg>();
         _net.RegisterNetMessage<DeMentorMsg>();
         _net.RegisterNetMessage<ReMentorMsg>();
+        _net.RegisterNetMessage<MentorRequestNamesMsg>();
+        _net.RegisterNetMessage<MentorGotNamesMsg>(OnGotNames);
         _config.OnValueChanged(RMCCVars.RMCMentorHelpSound, v => _mHelpSound = v, true);
+    }
+
+    private void OnGotNames(MentorGotNamesMsg msg)
+    {
+        PlayersNames = msg.Names;
+        UpdateFilters();
     }
 
     private void OnMentorStatus(MentorStatusMsg msg)
@@ -60,9 +69,14 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         _canReMentor = msg.CanReMentor;
 
         if (_isMentor)
+        {
             _mentorHelpWindow?.Close();
+            _net.ClientSendMessage(new MentorRequestNamesMsg());
+        }
         else
+        {
             _mentorWindow?.Close();
+        }
     }
 
     private void OnMentorHelpReceived(MentorMessagesReceivedMsg msg)
@@ -163,6 +177,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
             _unread = false;
             if (_isMentor)
             {
+                _net.ClientSendMessage(new MentorRequestNamesMsg());
                 if (OpenWindow(ref _mentorWindow, CreateMentorWindow, () => _mentorWindow = null))
                 {
                     var loginedUsers = _player.SessionsDict.Keys;
@@ -171,6 +186,8 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
                     {
                         MentorAddPlayerButton(destination);
                     }
+
+                    UpdateFilters();
 
                     _mentorWindow.OpenCentered();
                 }
@@ -185,6 +202,24 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
 
             _staffHelpWindow.Close();
         };
+    }
+
+    private void UpdateFilters()
+    {
+        if (_mentorWindow is null)
+            return;
+        foreach (var child in _mentorWindow.Players.Children)
+        {
+            if (child is Button button)
+            {
+                if (button.Text?.IndexOf(_mentorWindow.FilterLineEdit.Text, 0, StringComparison.OrdinalIgnoreCase) == -1)
+                    button.Visible = false;
+                else
+                    button.Visible = true;
+                if (PlayersButtons.TryGetValue(button, out var player))
+                    button.Text = PlayerButtonText(player);
+            }
+        }
     }
 
     private MentorHelpWindow CreateMentorHelpWindow()
@@ -217,6 +252,8 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     private MentorWindow CreateMentorWindow()
     {
         var window = new MentorWindow();
+        window.FilterLineEdit.OnTextEntered += _ => UpdateFilters();
+        window.FilterLineEdit.OnTextChanged += _ => UpdateFilters();
         window.DeMentorButton.OnPressed += _ => _net.ClientSendMessage(new DeMentorMsg());
         window.Chat.OnTextEntered += args =>
         {
@@ -226,6 +263,18 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         };
 
         return window;
+    }
+
+    public string PlayerButtonText(NetUserId player)
+    {
+        var playerName = player.ToString();
+        if (_player.SessionsDict.TryGetValue(player, out var session))
+            playerName = session.Name;
+
+        if (PlayersNames.TryGetValue(player, out var charName))
+            playerName += $" ({charName})";
+
+        return playerName;
     }
 
     private void MentorAddPlayerButton(NetUserId player)
@@ -239,13 +288,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
             return;
         }
 
-        var playerName = player.ToString();
-        if (_player.SessionsDict.TryGetValue(player, out var session))
-            playerName = session.Name;
-
-        var charName = _mind?.GetCharacterName(player);
-        if (charName is not null)
-            playerName += $" ({charName})";
+        var playerName = PlayerButtonText(player);
 
         var playerButton = new Button
         {
@@ -271,6 +314,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         };
 
         _mentorWindow.Players.AddChild(playerButton);
+        PlayersButtons[playerButton] = player;
         playerButton.SetPositionFirst();
         _mentorWindow.PlayerDict[player] = playerButton;
     }
