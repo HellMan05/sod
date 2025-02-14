@@ -697,6 +697,20 @@
     sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
     state: heStraight
 
+- type: construction
+  id: HeatExchangerBend
+  name: radiator bend
+  description: Transfers heat between the pipe and its surroundings.
+  graph: GasBinary
+  startNode: start
+  targetNode: bendradiator
+  category: construction-category-utilities
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
+    state: heBend
+
 # ATMOS TRINARY
 - type: construction
   id: GasFilter
@@ -771,7 +785,7 @@
 - type: construction
   id: PressureControlledValve
   name: пневматический клапан # Adventure
-  description: Клапан, регулируемый давлением. # Adventure
+  description: Клапан, регулируемый давлением. Открывается если давление на выходе ниже чем давление на боковой трубе на 101.325 кПа. # Adventure
   graph: GasTrinary
   startNode: start
   targetNode: pneumaticvalve

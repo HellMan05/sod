@@ -1,3 +1,4 @@
+using Content.Shared._Adventure.Sponsors; // Adventure sponsors
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Managers;
@@ -39,6 +40,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
+    [Dependency] private readonly ISponsorsManager _sponsors = default!;
 
     public override void Initialize()
     {
@@ -49,8 +51,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundEnd);
         SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
-        SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdd);
-        SubscribeLocalEvent<RoleRemovedEvent>(OnRoleRemove);
+        SubscribeLocalEvent<RoleAddedEvent>(OnRoleEvent);
+        SubscribeLocalEvent<RoleRemovedEvent>(OnRoleEvent);
         SubscribeLocalEvent<AFKEvent>(OnAFK);
         SubscribeLocalEvent<UnAFKEvent>(OnUnAFK);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
@@ -121,13 +123,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         return GetTimedRoles(contentData.Mind.Value);
     }
 
-    private void OnRoleRemove(RoleRemovedEvent ev)
-    {
-        if (_minds.TryGetSession(ev.Mind, out var session))
-            _tracking.QueueRefreshTrackers(session);
-    }
-
-    private void OnRoleAdd(RoleAddedEvent ev)
+    private void OnRoleEvent(RoleEvent ev)
     {
         if (_minds.TryGetSession(ev.Mind, out var session))
             _tracking.QueueRefreshTrackers(session);
@@ -201,13 +197,17 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             !_cfg.GetCVar(CCVars.GameRoleTimers))
             return true;
 
+        var sponsor = _sponsors.GetSponsor(player.UserId);
+        if (sponsor != null && sponsor.Level >= job.SponsorOpenMinLevel)
+            return true;
+
         if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
         {
             Log.Error($"Unable to check playtimes {Environment.StackTrace}");
             playTimes = new Dictionary<string, TimeSpan>();
         }
 
-        return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
+        return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter, player); // Adventure
     }
 
     public HashSet<ProtoId<JobPrototype>> GetDisallowedJobs(ICommonSession player)
@@ -224,7 +224,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
         foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
         {
-            if (JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter))
+            if (JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter, player)) // Adventure
                 roles.Add(job.ID);
         }
 
@@ -247,7 +247,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         for (var i = 0; i < jobs.Count; i++)
         {
             if (_prototypes.TryIndex(jobs[i], out var job)
-                && JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(userId).SelectedCharacter))
+                && JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(userId).SelectedCharacter, player)) // Adventure
             {
                 continue;
             }

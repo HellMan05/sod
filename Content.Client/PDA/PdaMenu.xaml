@@ -21,7 +21,6 @@
         <pda:PdaNavigationButton Name="EjectPenButton" Access="Public" SetWidth="32"/>
         <pda:PdaNavigationButton Name="EjectIdButton" Access="Public" SetWidth="32"/>
         <pda:PdaNavigationButton Name="EjectPaiButton" Access="Public" SetWidth="32"/>
-        <pda:PdaNavigationButton Name="EjectPaperButton" Access="Public" SetWidth="32"/> <!-- Adventure Event PDA paper -->
     </BoxContainer>
     <BoxContainer Name="ViewContainer" HorizontalExpand="True" VerticalExpand="True" Access="Public">
         <BoxContainer Orientation="Vertical"
@@ -43,6 +42,9 @@
             </ContainerButton>
             <ContainerButton Name="StationTimeButton">
                 <RichTextLabel Name="StationTimeLabel" Access="Public"/>
+            </ContainerButton>
+            <ContainerButton Name="ShuttleTimeButton">
+            <RichTextLabel Name="ShuttleTimeLabel" Access="Public" />
             </ContainerButton>
             <ContainerButton Name="StationAlertLevelInstructionsButton">
                 <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>

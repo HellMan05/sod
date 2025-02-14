@@ -1,3 +1,4 @@
+using Content.Server.Access.Systems;
 using Content.Server.AlertLevel;
 using Content.Server.CartridgeLoader;
 using Content.Server.Chat.Managers;
@@ -5,6 +6,8 @@ using Content.Server.DeviceNetwork.Components;
 using Content.Server.Instruments;
 using Content.Server.Light.EntitySystems;
 using Content.Server.PDA.Ringer;
+using Content.Server.RoundEnd;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
 using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
@@ -13,15 +16,18 @@ using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Chat;
 using Content.Shared.Light;
+using Content.Shared.CCVar;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.PDA;
 using Content.Shared.Store.Components;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using Robust.Shared.Timing;
 
 namespace Content.Server.PDA
 {
@@ -36,6 +42,10 @@ namespace Content.Server.PDA
         [Dependency] private readonly UserInterfaceSystem _ui = default!;
         [Dependency] private readonly UnpoweredFlashlightSystem _unpoweredFlashlight = default!;
         [Dependency] private readonly ContainerSystem _containerSystem = default!;
+        [Dependency] private readonly IdCardSystem _idCard = default!;
+        [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
+        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttleSystem = default!;
 
         public override void Initialize()
         {
@@ -55,19 +65,25 @@ namespace Content.Server.PDA
             SubscribeLocalEvent<PdaComponent, CartridgeLoaderNotificationSentEvent>(OnNotification);
 
             SubscribeLocalEvent<StationRenamedEvent>(OnStationRenamed);
-            SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed);
+            SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed, after: new[] { typeof(IdCardSystem) });
             SubscribeLocalEvent<AlertLevelChangedEvent>(OnAlertLevelChanged);
         }
 
         private void OnEntityRenamed(ref EntityRenamedEvent ev)
         {
-            var query = EntityQueryEnumerator<PdaComponent>();
+            if (HasComp<IdCardComponent>(ev.Uid))
+                return;
 
-            while (query.MoveNext(out var uid, out var comp))
+            if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
             {
-                if (comp.PdaOwner == ev.Uid)
+                var query = EntityQueryEnumerator<PdaComponent>();
+
+                while (query.MoveNext(out var uid, out var comp))
                 {
-                    SetOwner(uid, comp, ev.Uid, ev.NewName);
+                    if (comp.ContainedId == idCard)
+                    {
+                        SetOwner(uid, comp, ev.Uid, ev.NewName);
+                    }
                 }
             }
         }
@@ -86,12 +102,15 @@ namespace Content.Server.PDA
         protected override void OnItemInserted(EntityUid uid, PdaComponent pda, EntInsertedIntoContainerMessage args)
         {
             base.OnItemInserted(uid, pda, args);
+            var id = CompOrNull<IdCardComponent>(pda.ContainedId);
+            if (id != null)
+                pda.OwnerName = id.FullName;
             UpdatePdaUi(uid, pda);
         }
 
         protected override void OnItemRemoved(EntityUid uid, PdaComponent pda, EntRemovedFromContainerMessage args)
         {
-            if (args.Container.ID != pda.IdSlot.ID && args.Container.ID != pda.PenSlot.ID && args.Container.ID != pda.PaiSlot.ID && args.Container.ID != pda.PaperSlot?.ID) // Adventure Event PDA paper
+            if (args.Container.ID != pda.IdSlot.ID && args.Container.ID != pda.PenSlot.ID && args.Container.ID != pda.PaiSlot.ID)
                 return;
 
             // TODO: This is super cursed just use compstates please.
@@ -180,6 +199,19 @@ namespace Content.Server.PDA
             if (!TryComp(uid, out CartridgeLoaderComponent? loader))
                 return;
 
+            int mins = _roundEndSystem._autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
+                : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
+            var shuttle_call = _roundEndSystem.AutoCallStartTime + TimeSpan.FromMinutes(mins);
+
+            var shuttle_arrival = _roundEndSystem.ExpectedCountdownEnd;
+
+            TimeSpan? shuttle_launch = null;
+            if (_emergencyShuttleSystem.DockTime != null)
+            {
+                var dock_time = _cfg.GetCVar(CCVars.EmergencyShuttleDockTime);
+                shuttle_launch = _emergencyShuttleSystem.DockTime + TimeSpan.FromSeconds(dock_time);
+            }
+
             var programs = _cartridgeLoader.GetAvailablePrograms(uid, loader);
             var id = CompOrNull<IdCardComponent>(pda.ContainedId);
             var state = new PdaUpdateState(
@@ -188,14 +220,16 @@ namespace Content.Server.PDA
                 pda.FlashlightOn,
                 pda.PenSlot.HasItem,
                 pda.PaiSlot.HasItem,
-                pda.PaperSlot.HasItem, // Adventure Event PDA paper
                 new PdaIdInfoText
                 {
                     ActualOwnerName = pda.OwnerName,
                     IdOwner = id?.FullName,
                     JobTitle = id?.LocalizedJobTitle,
                     StationAlertLevel = pda.StationAlertLevel,
-                    StationAlertColor = pda.StationAlertColor
+                    StationAlertColor = pda.StationAlertColor,
+                    ShuttleCallTime = shuttle_call,
+                    EvacShuttleArrivalTime = shuttle_arrival,
+                    EvacShuttleLaunchTime = shuttle_launch
                 },
                 pda.StationName,
                 showUplink,

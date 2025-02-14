@@ -37,6 +37,8 @@
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
+    - id: DerelictCyborgSpawn
+    - id: HoboSpawn # Adventure
 
 - type: entity
   id: BaseStationEvent
@@ -192,7 +194,7 @@
   - type: StationEvent
     weight: 6
     duration: null
-    earliestStart: 30
+    earliestStart: 60 # Adventure
     reoccurrenceDelay: 20
     minimumPlayers: 30
   - type: SpaceSpawnRule
@@ -461,8 +463,8 @@
   id: LoneOpsSpawn
   components:
   - type: StationEvent
-    earliestStart: 35
-    weight: 5.5
+    earliestStart: 60 # Adventure
+    weight: 3.5 # Adventure
     minimumPlayers: 20
     duration: 1
   - type: RuleGrids
@@ -576,3 +578,24 @@
     - Service
     blacklist:
     - External # don't space everything
+
+- type: entity
+  parent: BaseGameRule
+  id: DerelictCyborgSpawn
+  components:
+  - type: StationEvent
+    weight: 5
+    earliestStart: 15
+    reoccurrenceDelay: 20
+    minimumPlayers: 4
+    duration: null
+  - type: SpaceSpawnRule
+    spawnDistance: 0
+  - type: AntagSpawner
+    prototype: PlayerBorgDerelict
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SpawnPointGhostDerelictCyborg
+      min: 1
+      max: 1
+      pickPlayer: false

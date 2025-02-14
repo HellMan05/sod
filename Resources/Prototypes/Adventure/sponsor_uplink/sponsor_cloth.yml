@@ -98,26 +98,13 @@
     color: "#04d9ff"
     radius: 1.1
 
-- type: entity
-  parent: BasePlushie
-  id: PlushieRaidGo
-  name: Плюшевый Этан Райт
-  description: Потратил все деньги центкома на акулок и пиццу... мда
-  components:
-  - type: Sprite
-    sprite: Adventure/sponsor_uplink/10.rsi
-    layers:
-      - state: icon
-  - type: Item
-  - type: EmitSoundOnUse
-    sound:
-      path: /Audio/_c4llv07e/rawr.ogg
 
 - type: entity
   parent: BasePlushie
   id: Plushieromakatz
-  name: Плюшевый Роман Кац
+  name: Плюшевый Химик
   description: Не давайте этому плюшевому засранцу калий и воду!!!
+  suffix: AdvPlushie
   components:
   - type: Sprite
     sprite: Adventure/sponsor_uplink/11.rsi
@@ -126,13 +113,14 @@
   - type: Item
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/_c4llv07e/rawr.ogg
+      path: /Audio/Animals/cat_meow.ogg
 
 - type: entity
   parent: BasePlushie
   id: PlushieMravka
-  name: Плюшевая Дилярам
+  name: Плюшевая ГП
   description: Мяу!
+  suffix: AdvPlushie
   components:
   - type: Sprite
     sprite: Adventure/sponsor_uplink/12.rsi
@@ -141,12 +129,13 @@
   - type: Item
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/_c4llv07e/rawr.ogg
+      path: /Audio/Animals/cat_meow.ogg
 
 - type: entity
   parent: BasePlushie
   id: PlushieElan
-  name: Плюшевый Элан
+  name: Плюшевый ОЦК
+  suffix: AdvPlushie
   description: Не самый умный ОЦК....
   components:
   - type: Sprite
@@ -156,13 +145,13 @@
   - type: Item
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/_c4llv07e/rawr.ogg
+      path: /Audio/Animals/cat_meow.ogg
 
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNecksouleater
   name: плащ поглотителя души
-  description: Для тех, кто не определился.
+  description: Таинственный артефакт, окутанный мраком и древними легендами. Его тёмная материя словно поглощает свет, создавая вокруг себя атмосферу неведомого ужаса.
   suffix: Sponsor
   components:
   - type: Sprite
@@ -223,7 +212,7 @@
   parent: ClothingNeckBase
   id: ClothingNeckCloakSyndiTrasenv1
   name: плащ синдитрейзен
-  description: Подарок Куинку от .... агента?
+  description: Выглядит странно.
   suffix: Sponsor
   components:
   - type: Sprite
@@ -280,7 +269,7 @@
   parent: ClothingNeckBase
   id: ClothingNeckCloakCCSOF
   name: плащ Главнокомандующего флотом
-  description: Тёмный плащ с украшениями и символом Nanotrasen, который носит Главком флота СпецОпераций.
+  description: Поддельный тёмный плащ главнокомандующего флота СпецОпераций с украшениями и символом Nanotrasen.
   components:
   - type: Sprite
     sprite: Adventure/sponsor_uplink/16.rsi

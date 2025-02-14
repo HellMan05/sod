@@ -13,6 +13,11 @@ namespace Content.Shared.Roles
     [Prototype("job")]
     public sealed partial class JobPrototype : IPrototype
     {
+        // Adventure sponsors begin
+        [DataField]
+        public int SponsorOpenMinLevel { get; set; } = 3;
+        // Adventure sponsors end
+
         [ViewVariables]
         [IdDataField]
         public string ID { get; private set; } = default!;
@@ -84,6 +89,9 @@ namespace Content.Shared.Roles
         [DataField("canBeAntag")]
         public bool CanBeAntag { get; private set; } = true;
 
+        [DataField("radioBold")]
+        public bool RadioIsBold { get; } = false;
+
         /// <summary>
         ///     The "weight" or importance of this job. If this number is large, the job system will assign this job
         ///     before assigning other jobs.
@@ -118,6 +126,13 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField("jobEntity", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
         public string? JobEntity = null;
+
+        /// <summary>
+        /// Entity to use as a preview in the lobby/character editor.
+        /// Same restrictions as <see cref="JobEntity"/> apply.
+        /// </summary>
+        [DataField]
+        public EntProtoId? JobPreviewEntity = null;
 
         [DataField]
         public ProtoId<JobIconPrototype> Icon { get; private set; } = "JobIconUnknown";

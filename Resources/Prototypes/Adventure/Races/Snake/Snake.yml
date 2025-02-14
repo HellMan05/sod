@@ -47,7 +47,7 @@
     footstepSoundCollection:
       collection: SnakeStep
       params:
-        volume: -5
+        volume: -8
   - type: Fixtures
     fixtures: 
       fix1:
@@ -67,7 +67,7 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Slash: 5
+        Piercing: 5
   - type: Puller
     needsHands: true
   - type: SnakeAccent # Adventure-Accent
@@ -132,7 +132,6 @@
     species: Zerah
     hideLayersOnEquip:
     - HeadTop
-    - Snout
     - HeadSide
   - type: Inventory
     templateId: Zerah

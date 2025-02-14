@@ -32,6 +32,17 @@
   objectType: Structure
 
 - type: construction
+  id: GunSafe
+  name: оружейный сейф # Adventure
+  graph: GunSafe
+  startNode: start
+  targetNode: done
+  category: construction-category-storage
+  description: Прочный оружейный сейф, который может быть заперт. # Adventure
+  icon: { sprite: Structures/Storage/closet.rsi, state: shotguncase }
+  objectType: Structure
+
+- type: construction
   id: ClosetWall
   name: настенный шкаф # Adventure
   graph: ClosetWall

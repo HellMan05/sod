@@ -10,6 +10,7 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  - ThreeCandles
   - Lighter
   - CigPackGreen
   - CigPackRed
@@ -18,6 +19,7 @@
   - CigarCase
   - CigarGold
   - ClothingNeckLGBTPin
+  - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
   - ClothingNeckAsexualPin
   - ClothingNeckBisexualPin
@@ -26,6 +28,8 @@
   - ClothingNeckLesbianPin
   - ClothingNeckNonBinaryPin
   - ClothingNeckPansexualPin
+  - ClothingNeckOmnisexualPin
+  - ClothingNeckGenderqueerPin
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
@@ -45,6 +49,7 @@
   - TowelColorSilver
   - TowelColorWhite
   - TowelColorYellow
+  - DonateUplink
 
 - type: loadoutGroup
   id: Glasses
@@ -168,6 +173,7 @@
   minLimit: 0
   loadouts:
   - HoPWintercoat
+  - HoPCoat
 
 # Civilian
 - type: loadoutGroup
@@ -725,10 +731,12 @@
 - type: loadoutGroup
   id: StationEngineerHead
   name: loadout-group-station-engineer-head
+  minLimit: 0 # Adventure
   loadouts:
   - StationEngineerHardhatYellow
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
+  - Engineeringsoft # Adventure
   - SeniorEngineerBeret
 
 - type: loadoutGroup
@@ -738,6 +746,7 @@
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
+  - EngineeringWorkUniform # Adventure
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
 
@@ -756,6 +765,7 @@
   loadouts:
   - StationEngineerOuterVest
   - StationEngineerWintercoat
+  - EngineeringJacket # Adventure
 
 - type: loadoutGroup
   id: StationEngineerShoes
@@ -778,6 +788,7 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+  - AtmosWorkUniform # Adventure
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -1076,7 +1087,6 @@
 - type: loadoutGroup
   id: DetectiveOuterClothing
   name: loadout-group-detective-outerclothing
-  minLimit: 0
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat

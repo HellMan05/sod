@@ -21,6 +21,8 @@ public sealed partial class TTSSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _xforms = default!;
     [Dependency] private readonly IRobustRandom _rng = default!;
 
+    private List<ICommonSession> _ignoredRecipients = new();
+
     private readonly List<string> _sampleText =
         new()
         {
@@ -50,6 +52,7 @@ public sealed partial class TTSSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
 
         SubscribeNetworkEvent<RequestPreviewTTSEvent>(OnRequestPreviewTTS);
+        SubscribeNetworkEvent<ClientOptionTTSEvent>(OnClientOptionTTS);
 
         RegisterRateLimits();
     }
@@ -57,6 +60,14 @@ public sealed partial class TTSSystem : EntitySystem
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
         _ttsManager.ResetCache();
+    }
+
+    private async void OnClientOptionTTS(ClientOptionTTSEvent ev, EntitySessionEventArgs args)
+    {
+        if (ev.Enabled)
+            _ignoredRecipients.Remove(args.SenderSession);
+        else
+            _ignoredRecipients.Add(args.SenderSession);
     }
 
     private async void OnRequestPreviewTTS(RequestPreviewTTSEvent ev, EntitySessionEventArgs args)
@@ -104,15 +115,15 @@ public sealed partial class TTSSystem : EntitySystem
     {
         var soundData = await GenerateTTS(message, speaker);
         if (soundData is null) return;
-        RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), Filter.Pvs(uid));
+        RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), Filter.Pvs(uid).RemovePlayers(_ignoredRecipients));
     }
 
     private async void HandleWhisper(EntityUid uid, string message, string obfMessage, string speaker)
     {
-        var fullSoundData = await GenerateTTS(message, speaker, true);
+        var fullSoundData = await GenerateTTS(message, speaker);
         if (fullSoundData is null) return;
 
-        var obfSoundData = await GenerateTTS(obfMessage, speaker, true);
+        var obfSoundData = await GenerateTTS(obfMessage, speaker);
         if (obfSoundData is null) return;
 
         var fullTtsEvent = new PlayTTSEvent(fullSoundData, GetNetEntity(uid), true);
@@ -125,6 +136,9 @@ public sealed partial class TTSSystem : EntitySystem
         foreach (var session in receptions)
         {
             if (!session.AttachedEntity.HasValue) continue;
+
+            if (_ignoredRecipients.Contains(session)) continue;
+
             var xform = xformQuery.GetComponent(session.AttachedEntity.Value);
             var distance = (sourcePos - _xforms.GetWorldPosition(xform, xformQuery)).Length();
             if (distance > ChatSystem.VoiceRange * ChatSystem.VoiceRange)
@@ -135,7 +149,7 @@ public sealed partial class TTSSystem : EntitySystem
     }
 
     // ReSharper disable once InconsistentNaming
-    private async Task<byte[]?> GenerateTTS(string text, string speaker, bool isWhisper = false)
+    private async Task<byte[]?> GenerateTTS(string text, string speaker, string? effect = null)
     {
         var textSanitized = Sanitize(text);
         if (textSanitized == "") return null;
@@ -149,7 +163,7 @@ public sealed partial class TTSSystem : EntitySystem
         // var textSsml = ToSsmlText(textSanitized, ssmlTraits);
         // c4llv07e fix tts end
 
-        return await _ttsManager.ConvertTextToSpeech(speaker, textSanitized); // c4llv07e fix tts
+        return await _ttsManager.ConvertTextToSpeech(speaker, textSanitized, effect); // c4llv07e fix tts
     }
 }
 

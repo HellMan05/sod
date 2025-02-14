@@ -13,6 +13,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Client._Adventure.Sponsors; // Adventure sponsors
 
 namespace Content.Client.Players.PlayTimeTracking;
 
@@ -24,6 +25,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private readonly SponsorsManager _sponsors = default!; // Adventure sponsors
 
     private readonly Dictionary<string, TimeSpan> _roles = new();
     private readonly List<string> _roleBans = new();
@@ -107,6 +109,9 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         if (player == null)
             return true;
 
+        if (_sponsors.GetMySponsor()?.Level >= job.SponsorOpenMinLevel)
+            return true;
+
         return CheckRoleRequirements(job, profile, out reason);
     }
 
@@ -126,7 +131,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         var reasons = new List<string>();
         foreach (var requirement in requirements)
         {
-            if (requirement.Check(_entManager, _prototypes, profile, _roles, out var jobReason))
+            if (requirement.Check(_entManager, _prototypes, profile, _roles, _playerManager.LocalSession, out var jobReason))
                 continue;
 
             reasons.Add(jobReason.ToMarkup());

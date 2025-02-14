@@ -33,7 +33,8 @@ public abstract class SharedIdCardSystem : EntitySystem
         // When a player gets renamed their id card is renamed as well to match.
         // Unfortunately since TryFindIdCard will succeed if the entity is also a card this means that the card will
         // keep renaming itself unless we return early.
-        if (HasComp<IdCardComponent>(ev.Uid))
+        // We also do not include the PDA itself being renamed, as that triggers the same event (e.g. for chameleon PDAs).
+        if (HasComp<IdCardComponent>(ev.Uid) || HasComp<PdaComponent>(ev.Uid))
             return;
 
         if (TryFindIdCard(ev.Uid, out var idCard))
@@ -224,6 +225,35 @@ public abstract class SharedIdCardSystem : EntitySystem
             _adminLogger.Add(LogType.Identity, LogImpact.Low,
                 $"{ToPrettyString(player.Value):player} has changed the name of {ToPrettyString(uid):entity} to {fullName} ");
         }
+        return true;
+    }
+
+    /// <summary>
+    /// Attempts to change the job color of a card.
+    /// Returns true/false.
+    /// </summary>
+    /// <remarks>
+    /// If provided with a player's EntityUid to the player parameter, adds the change to the admin logs.
+    /// </remarks>
+    public bool TryChangeJobColor(EntityUid uid, string? jobColor, bool boldRadio = false, IdCardComponent? id = null, EntityUid? player = null)
+    {
+        if (!Resolve(uid, ref id))
+            return false;
+
+        if (id.JobColor == jobColor && id.RadioBold == boldRadio)
+            return true;
+
+        id.JobColor = jobColor;
+        id.RadioBold = boldRadio;
+        Dirty(uid, id);
+        UpdateEntityName(uid, id);
+
+        if (player != null)
+        {
+            _adminLogger.Add(LogType.Identity, LogImpact.Low,
+                $"{ToPrettyString(player.Value):player} has changed the job color of {ToPrettyString(uid):entity} to {jobColor} ");
+        }
+
         return true;
     }
 

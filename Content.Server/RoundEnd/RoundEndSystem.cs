@@ -59,7 +59,7 @@ namespace Content.Server.RoundEnd
         public TimeSpan? ShuttleTimeLeft => ExpectedCountdownEnd - _gameTiming.CurTime;
 
         public TimeSpan AutoCallStartTime;
-        private bool _autoCalledBefore = false;
+        public bool _autoCalledBefore = false;
 
         public override void Initialize()
         {
@@ -362,7 +362,7 @@ namespace Content.Server.RoundEnd
                 {
                     _autoCalledBefore = true; // Corvax-Announcements: Move before call RequestRoundEnd to play correct announcement sound type
                     RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
-			
+      
                 }
 
                 // Always reset auto-call in case of a recall.

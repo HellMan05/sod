@@ -22,6 +22,8 @@ public sealed partial class IdCardComponent : Component
     [Access(typeof(SharedIdCardSystem), typeof(SharedPdaSystem), typeof(SharedAgentIdCardSystem), Other = AccessPermissions.ReadWrite)]
     public LocId? JobTitle;
 
+    [DataField]
+    [AutoNetworkedField]
     private string? _jobTitle;
 
     [Access(typeof(SharedIdCardSystem), typeof(SharedPdaSystem), typeof(SharedAgentIdCardSystem), Other = AccessPermissions.ReadWriteExecute)]
@@ -40,6 +42,14 @@ public sealed partial class IdCardComponent : Component
     [DataField]
     [AutoNetworkedField]
     public List<ProtoId<DepartmentPrototype>> JobDepartments = new();
+
+    [DataField("jobColor")]
+    [AutoNetworkedField]
+    public string? JobColor;
+
+    [DataField("radioBold")]
+    [AutoNetworkedField]
+    public bool? RadioBold;
 
     /// <summary>
     /// Determines if accesses from this card should be logged by <see cref="AccessReaderComponent"/>

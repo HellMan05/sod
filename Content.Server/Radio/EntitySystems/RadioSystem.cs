@@ -14,6 +14,11 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared.Access.Components;
+using Content.Shared.Inventory;
+using Content.Shared.PDA;
+using System.Globalization;
+using Content.Server.Popups;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -27,6 +32,8 @@ public sealed class RadioSystem : EntitySystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
 
     // set used to prevent radio feedback loops.
@@ -66,6 +73,34 @@ public sealed class RadioSystem : EntitySystem
         SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, escapeMarkup: escapeMarkup);
     }
 
+    // Adventure radio begin
+    private string GetIdCardName(EntityUid senderUid)
+    {
+        var idCardTitle = Loc.GetString("chat-radio-no-id");
+        idCardTitle = GetIdCard(senderUid)?.LocalizedJobTitle ?? idCardTitle;
+
+        if (TryComp<RadioNameComponent>(senderUid, out var radioName) &&
+            radioName.Name != string.Empty)
+            idCardTitle = radioName.Name;
+
+        var textInfo = CultureInfo.CurrentCulture.TextInfo;
+        idCardTitle = textInfo.ToTitleCase(idCardTitle);
+
+        return $"\\[{idCardTitle}\\] ";
+    }
+
+    private string GetIdCardColor(EntityUid senderUid)
+    {
+        var color = GetIdCard(senderUid)?.JobColor;
+        return (!string.IsNullOrEmpty(color)) ? color : "#9FED58";
+    }
+
+    private bool GetIdCardIsBold(EntityUid senderUid)
+    {
+        return GetIdCard(senderUid)?.RadioBold ?? false;
+    }
+    // Adventure raido end
+
     /// <summary>
     /// Send radio message to all active radio listeners
     /// </summary>
@@ -83,6 +118,8 @@ public sealed class RadioSystem : EntitySystem
         var name = evt.VoiceName;
         name = FormattedMessage.EscapeText(name);
 
+        var formattedName = $"[color={GetIdCardColor(messageSource)}]{GetIdCardName(messageSource)}{name}[/color]"; // Adventure radio
+
         SpeechVerbPrototype speech;
         if (evt.SpeechVerb != null && _prototype.TryIndex(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
@@ -93,13 +130,18 @@ public sealed class RadioSystem : EntitySystem
             ? FormattedMessage.EscapeText(message)
             : message;
 
+        if (GetIdCardIsBold(messageSource))
+        {
+            content = $"[bold]{content}[/bold]";
+        }
+
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
             ("color", channel.Color),
             ("fontType", speech.FontId),
             ("fontSize", speech.FontSize),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
+            ("name", formattedName),
             ("message", content));
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
@@ -157,6 +199,26 @@ public sealed class RadioSystem : EntitySystem
 
         _replay.RecordServerMessage(chat);
         _messages.Remove(message);
+    }
+
+    private IdCardComponent? GetIdCard(EntityUid senderUid)
+    {
+        if (!_inventorySystem.TryGetSlotEntity(senderUid, "id", out var idUid))
+            return null;
+
+        if (EntityManager.TryGetComponent(idUid, out PdaComponent? pda) && pda.ContainedId is not null)
+        {
+            // PDA
+            if (TryComp<IdCardComponent>(pda.ContainedId, out var idComp))
+                return idComp;
+        }
+        else if (EntityManager.TryGetComponent(idUid, out IdCardComponent? id))
+        {
+            // ID Card
+            return id;
+        }
+
+        return null;
     }
 
     /// <inheritdoc cref="TelecomServerComponent"/>

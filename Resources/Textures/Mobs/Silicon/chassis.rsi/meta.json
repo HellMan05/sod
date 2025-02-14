@@ -8,6 +8,80 @@
   "copyright": "made by borkroman",
   "states": [
     {
+      "name": "derelict",
+      "directions": 4
+    },
+    {
+      "name": "derelict_e",
+      "directions": 4,
+      "delays": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "derelict_e_r",
+      "directions": 4,
+      "delays": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "derelict_icon",
+      "directions": 1
+    },
+    {
+      "name": "derelict_l",
+      "directions": 4,
+      "delays": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
       "name": "engineer",
       "directions": 4
     },

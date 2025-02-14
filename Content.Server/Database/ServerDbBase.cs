@@ -630,6 +630,18 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
+        // Adventure sponsor api begin
+        public async Task SetPlayerRecordSponsor(NetUserId userId, string? sponsorTier)
+        {
+            await using var db = await GetDb();
+            var record = await db.DbContext.Player.SingleOrDefaultAsync(p => p.UserId == userId.UserId);
+            if (record == null)
+                return;
+            record.SponsorTier = sponsorTier;
+            await db.DbContext.SaveChangesAsync();
+        }
+        // Adventure sponsor api end
+
         public async Task<PlayerRecord?> GetPlayerRecordByUserName(string userName, CancellationToken cancel)
         {
             await using var db = await GetDb();
@@ -671,7 +683,8 @@ namespace Content.Server.Database
                 player.LastSeenUserName,
                 new DateTimeOffset(NormalizeDatabaseTime(player.LastSeenTime)),
                 player.LastSeenAddress,
-                player.LastSeenHWId);
+                player.LastSeenHWId,
+                player.SponsorTier); // Adventure sponsor api
         }
 
         #endregion
@@ -760,6 +773,20 @@ namespace Content.Server.Database
             existing.Flags = admin.Flags;
             existing.Title = admin.Title;
             existing.AdminRankId = admin.AdminRankId;
+            existing.Deadminned = admin.Deadminned;
+            existing.Suspended = admin.Suspended;
+
+            await db.DbContext.SaveChangesAsync(cancel);
+        }
+
+        public async Task UpdateAdminDeadminnedAsync(NetUserId userId, bool deadminned, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+
+            var adminRecord = db.DbContext.Admin.Where(a => a.UserId == userId);
+            await adminRecord.ExecuteUpdateAsync(
+                set => set.SetProperty(p => p.Deadminned, deadminned),
+                cancellationToken: cancel);
 
             await db.DbContext.SaveChangesAsync(cancel);
         }
@@ -1107,7 +1134,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .SingleOrDefaultAsync());
         }
 
-        public async Task SetLastReadRules(NetUserId player, DateTimeOffset date)
+        public async Task SetLastReadRules(NetUserId player, DateTimeOffset? date)
         {
             await using var db = await GetDb();
 
@@ -1117,7 +1144,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 return;
             }
 
-            dbPlayer.LastReadRules = date.UtcDateTime;
+            dbPlayer.LastReadRules = date?.UtcDateTime;
             await db.DbContext.SaveChangesAsync();
         }
 
@@ -1702,13 +1729,13 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .ToListAsync(cancellationToken: cancel);
         }
 
-        public async Task<bool> IsJobWhitelisted(Guid player, ProtoId<JobPrototype> job)
+        public async Task<bool> IsJobWhitelisted(Guid player, ProtoId<JobPrototype> job, CancellationToken cancel = default)
         {
-            await using var db = await GetDb();
+            await using var db = await GetDb(cancel);
             return await db.DbContext.RoleWhitelists
                 .Where(w => w.PlayerUserId == player)
                 .Where(w => w.RoleId == job.Id)
-                .AnyAsync();
+                .AnyAsync(cancel);
         }
 
         public async Task<bool> RemoveJobWhitelist(Guid player, ProtoId<JobPrototype> job)
@@ -1728,6 +1755,75 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         }
 
         #endregion
+
+        # region IPIntel
+
+        public async Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)
+        {
+            while (true)
+            {
+                try
+                {
+                    await using var db = await GetDb();
+
+                    var existing = await db.DbContext.IPIntelCache
+                        .Where(w => ip.Equals(w.Address))
+                        .SingleOrDefaultAsync();
+
+                    if (existing == null)
+                    {
+                        var newCache = new IPIntelCache
+                        {
+                            Time = time,
+                            Address = ip,
+                            Score = score,
+                        };
+                        db.DbContext.IPIntelCache.Add(newCache);
+                    }
+                    else
+                    {
+                        existing.Time = time;
+                        existing.Score = score;
+                    }
+
+                    await Task.Delay(5000);
+
+                    await db.DbContext.SaveChangesAsync();
+                    return true;
+                }
+                catch (DbUpdateException)
+                {
+                    _opsLog.Warning("IPIntel UPSERT failed with a db exception... retrying.");
+                }
+            }
+        }
+
+        public async Task<IPIntelCache?> GetIPIntelCache(IPAddress ip)
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.IPIntelCache
+                .SingleOrDefaultAsync(w => ip.Equals(w.Address));
+        }
+
+        public async Task<bool> CleanIPIntelCache(TimeSpan range)
+        {
+            await using var db = await GetDb();
+
+            // Calculating this here cause otherwise sqlite whines.
+            var cutoffTime = DateTime.UtcNow.Subtract(range);
+
+            await db.DbContext.IPIntelCache
+                .Where(w => w.Time <= cutoffTime)
+                .ExecuteDeleteAsync();
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        #endregion
+
+        public abstract Task SendNotification(DatabaseNotification notification);
 
         // SQLite returns DateTime as Kind=Unspecified, Npgsql actually knows for sure it's Kind=Utc.
         // Normalize DateTimes here so they're always Utc. Thanks.

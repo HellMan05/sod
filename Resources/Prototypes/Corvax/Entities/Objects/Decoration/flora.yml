@@ -56,14 +56,14 @@
     energy: 2.5
   - type: LimitedItemGiver
     spawnEntries:
-      - id: PresentRandom
+      - id: PresentAdventureSafe # Adventure
         orGroup: present
       - id: PresentRandomCash
         prob: 0.20
         orGroup: present
-      - id: PresentRandomAsh
+      - id: PresentRandomCoal
         prob: 0.05
         orGroup: present
     receivedPopup: christmas-tree-got-gift
     deniedPopup: christmas-tree-no-gift
-    requiredHoliday: FestiveSeason
+    requiredHoliday: AdvSeason # Adventure
