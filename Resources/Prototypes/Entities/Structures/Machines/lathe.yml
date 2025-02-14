@@ -207,7 +207,7 @@
     - Instruments
     - Equipment
     - FauxTiles
-    - Adventure
+    - AdventureSolarSail # Adventure
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -266,6 +266,7 @@
     - CameraBoards
     - MechBoards
     - ShuttleBoards
+    - CircuitAdventureDynamic # Adventure
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards
@@ -472,9 +473,9 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
-    - MedAdventure # Adventure
     dynamicPacks:
     - Chemistry
+    - MedAdventure # Adventure
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget

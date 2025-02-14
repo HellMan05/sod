@@ -2,7 +2,16 @@
   id: CircuitAdventureStatic
   recipes:
   - PrinterMachineCircuitboard
+
+- type: latheRecipePack
+  id: CircuitAdventureDynamic
+  recipes:
   - NuclearGeneratorMachineCircuitboard
+
+- type: latheRecipePack
+  id: AdventureSolarSail
+  recipes:
+  - SolarSailAssemblyFlatpack
 
 - type: latheRecipePack
   id: SecurityAdventure
@@ -15,11 +24,6 @@
   - MagazineBoxRiflePulse
   - MagazineBoxLightRiflePulse
   - MagazineBoxRifleExplosive
-
-- type: latheRecipePack
-  id: Adventure
-  recipes:
-  - SolarSailAssemblyFlatpack
 
 - type: latheRecipePack
   id: MedAdventure
