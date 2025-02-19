@@ -15,7 +15,7 @@ RELEASE_DIR = "release"
 # CONFIGURATION PARAMETERS
 # Forks should change these to publish to their own infrastructure.
 #
-ROBUST_CDN_URL = "https://adven.space/cdn/"
+ROBUST_CDN_URL = "https://cdn.adven.space/"
 FORK_ID = "adventure_space"
 
 def main():
