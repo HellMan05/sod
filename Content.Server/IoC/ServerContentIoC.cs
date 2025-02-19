@@ -48,6 +48,7 @@ namespace Content.Server.IoC
             IoCManager.Register<AdventureConfigManager>(); // AdvSpace Config
             IoCManager.Register<AdventurePresetManager>(); // AdvSpace Preset
             IoCManager.Register<DiscordWebhookBanSender>(); // AdvSpace Discord Webhook
+            IoCManager.Register<MentorManager>(); // Adventure mentor help
             IoCManager.Register<IChatManager, ChatManager>();
             IoCManager.Register<ISharedChatManager, ChatManager>();
             IoCManager.Register<IChatSanitizationManager, ChatSanitizationManager>();
@@ -88,7 +89,7 @@ namespace Content.Server.IoC
             IoCManager.Register<IWatchlistWebhookManager, WatchlistWebhookManager>();
             IoCManager.Register<ConnectionManager>();
             IoCManager.Register<MultiServerKickManager>();
-            IoCManager.Register<MentorManager>();
+            IoCManager.Register<CVarControlManager>();
         }
     }
 }
