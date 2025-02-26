@@ -403,6 +403,7 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityAdventure
+    - SecurityDisablers
   - type: MaterialStorage
     whitelist:
       tags:
