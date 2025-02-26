@@ -80,6 +80,12 @@
       "name": "idresearchdirector"
     },
     {
+      "name": "wizard"
+    },
+    {
+      "name": "idwizard"
+    },
+    {
       "name": "gold-inhand-left",
       "directions": 4
     },

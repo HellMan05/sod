@@ -78,11 +78,11 @@ public sealed class TTSSystem : EntitySystem
         if (ev.SourceUid != null)
         {
             var sourceUid = GetEntity(ev.SourceUid.Value);
-            _audio.PlayEntity(audioStream, sourceUid, audioParams);
+            _audio.PlayEntity(audioStream, sourceUid, null, audioParams);
         }
         else
         {
-            _audio.PlayGlobal(audioStream, audioParams);
+            _audio.PlayGlobal(audioStream, null, audioParams);
         }
         _sawmill.Verbose($"Play TTS audio {ev.Data.Length} bytes from {ev.SourceUid} entity");
     }

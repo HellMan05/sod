@@ -1,25 +1,26 @@
-using System.Linq;
-using System.Diagnostics.CodeAnalysis;
 using Content.Client.Administration.Systems;
+using Content.Client.Mind;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.Bwoink;
+using Content.Shared.Input;
+using Content.Shared.Players;
 using Content.Shared._RMC14.CCVar;
 using Content.Shared._RMC14.Mentor;
-using Content.Shared.Input;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
-using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
+using Robust.Client.UserInterface;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using Content.Shared.Players;
-using Content.Client.Mind;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Client._RMC14.Mentor;
 
@@ -41,7 +42,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     private StaffHelpWindow? _staffHelpWindow;
     private MentorHelpWindow? _mentorHelpWindow;
     private MentorWindow? _mentorWindow;
-    private string? _mHelpSound;
+    private ResolvedSoundSpecifier _mHelpSound = string.Empty;
     private bool _unread;
 
     public override void Initialize()
