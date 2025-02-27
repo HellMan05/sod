@@ -89,6 +89,7 @@
     - operationPrefix
     - operationSuffix
   - type: NukeopsRule
+    warDeclarationMinOps: 1 # Adventure
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
