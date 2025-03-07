@@ -32,6 +32,7 @@ public sealed class DiscordAuthBotManager
         BaseAddress = new Uri("https://discord.com/api/v10")
     };
     public Dictionary<Guid, NetUserId> stateToUid = new();
+    public CancellationTokenSource? ListeningCancelation;
 
     public ISawmill _sawmill = default!;
 
@@ -42,13 +43,27 @@ public sealed class DiscordAuthBotManager
         _cfg.OnValueChanged(ACVars.DiscordAuthClientSecret, _ => UpdateAuthHeader(), true);
         _cfg.OnValueChanged(ACVars.DiscordAuthListeningUrl, url => listeningUrl = url, true);
         _cfg.OnValueChanged(ACVars.DiscordAuthRedirectUrl, url => redirectUrl = url, true);
-        _cfg.OnValueChanged(ACVars.DiscordAuthEnabled, val => discordAuthEnabled = val, true);
         _cfg.OnValueChanged(ACVars.DiscordAuthDebugApiUrl, url => discordClient.BaseAddress = new Uri(url), true);
+
         listener = new HttpListener();
         listener.Prefixes.Add(listeningUrl);
-        listener.Start();
-        Task.Run(ListenerThread);
-        _net.Connecting += OnConnecting;
+        _cfg.OnValueChanged(ACVars.DiscordAuthEnabled, OnToggledDiscordAuth, true);
+    }
+
+    public void OnToggledDiscordAuth(bool val)
+    {
+        discordAuthEnabled = val;
+        if (val)
+        {
+            ListeningCancelation = new CancellationTokenSource();
+            listener.Start();
+            Task.Run(ListenerThread, ListeningCancelation.Token);
+            _net.Connecting += OnConnecting;
+        } else {
+            ListeningCancelation?.Cancel();
+            listener.Stop();
+            _net.Connecting -= OnConnecting;
+        }
     }
 
     public async Task OnConnecting(NetConnectingArgs e)
@@ -115,7 +130,7 @@ public sealed class DiscordAuthBotManager
 
     public async Task HandleConnection(HttpListenerContext ctx)
     {
-        if (!discordAuthEnabled) return; // Don't want to handle thread recreation on cvar change.
+        if ((ListeningCancelation?.Token.IsCancellationRequested) ?? true) return;
         HttpListenerRequest request = ctx.Request;
         using HttpListenerResponse resp = ctx.Response;
         resp.Headers.Set("Content-Type", "text/plain; charset=UTF-8");
@@ -195,7 +210,7 @@ public sealed class DiscordAuthBotManager
 
     public async Task ListenerThread()
     {
-        while (true)
+        while (!(ListeningCancelation?.Token.IsCancellationRequested ?? true))
         {
             try {
                 HttpListenerContext ctx = listener.GetContext();
