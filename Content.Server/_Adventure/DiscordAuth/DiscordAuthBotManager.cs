@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System;
 
-namespace Content.Server.Adventure.DiscordAuth;
+namespace Content.Server._Adventure.DiscordAuth;
 
 public sealed class DiscordAuthBotManager
 {

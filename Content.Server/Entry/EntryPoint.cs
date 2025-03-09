@@ -1,4 +1,4 @@
-using Content.Server.Adventure.DiscordAuth; // adventure discord auth
+using Content.Server._Adventure.DiscordAuth; // adventure discord auth
 using Content.Server._Adventure.TTS; // c4llv07e tts
 using Content.Server._Adventure.Sponsors; // c4llv07e sponsors
 using Content.Server._RMC14.Mentor; // c4llv07e sponsors
