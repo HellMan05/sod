@@ -25,4 +25,7 @@ public sealed partial class SponsorTierPrototype : IPrototype
 
     [DataField]
     public bool AllowRespawn { get; private set; } = false;
+
+    [DataField]
+    public string? DiscordRoleId { get; private set; } = null;
 }
