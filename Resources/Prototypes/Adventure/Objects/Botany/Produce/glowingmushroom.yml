@@ -22,7 +22,6 @@
   lifespan: 55
   maturation: 6
   production: 6
-  growstage: 3
   yield: 3
   potency: 10
   growthStages: 3

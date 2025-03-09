@@ -19,8 +19,8 @@
   waterConsumption: 0.60
   chemicals:
     Fiber:
-      Min: 5
-      Max: 10
+      Min: 1
+      Max: 2
       PotencyDivisor: 20
 
 - type: entity
@@ -69,8 +69,8 @@
   waterConsumption: 0.60
   chemicals:
     Fiber:
-      Min: 5
-      Max: 10
+      Min: 1
+      Max: 2
       PotencyDivisor: 20
 
 - type: entity
@@ -119,8 +119,8 @@
   waterConsumption: 0.60
   chemicals:
     Fiber:
-      Min: 5
-      Max: 10
+      Min: 1
+      Max: 2
       PotencyDivisor: 20
 
 - type: entity
@@ -169,8 +169,8 @@
   waterConsumption: 0.60
   chemicals:
     Fiber:
-      Min: 5
-      Max: 10
+      Min: 1
+      Max: 2
       PotencyDivisor: 20
 
 - type: entity
@@ -219,8 +219,8 @@
   waterConsumption: 0.60
   chemicals:
     Fiber:
-      Min: 5
-      Max: 10
+      Min: 1
+      Max: 2
       PotencyDivisor: 20
 
 - type: entity

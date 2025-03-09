@@ -40,6 +40,7 @@
     Water:
       Min: 1
       Max: 4
+      PotencyDivisor: 20
 
 - type: entity
   name: огурец
