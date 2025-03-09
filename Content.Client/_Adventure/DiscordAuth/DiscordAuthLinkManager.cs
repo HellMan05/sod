@@ -14,7 +14,6 @@ public sealed partial class DiscordAuthLinkManager : IPostInjectInit
 
     public void PostInject()
     {
-        Logger.Info("I shitted my pants 2");
         _net.ConnectFailed += OnConnectFailed;
     }
 
