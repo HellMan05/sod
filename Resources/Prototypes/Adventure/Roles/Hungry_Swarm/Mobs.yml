@@ -44,13 +44,6 @@
   - type: Spider
     webPrototype: HungerSwarmWeb
     webAction: ActionHungerSwarmWeb
-  - type: EggLayer
-    hungerUsage: 15
-    eggLayAction: ActionHungerSwarmLayEgg
-    eggLaySound: !type:SoundPathSpecifier
-      path: /Audio/Adventure/Hungry_Swarm/insect_dead.ogg
-    eggSpawn:
-    - id: InsectReaperEgg
   - type: PointLight
     radius: 2
     energy: 2
@@ -63,6 +56,62 @@
     - ActionHungerSwarmWallImplant  
     - ActionHungerSwarmDoorImplant
     - ActionHungerSwarmWebLightImplant
+
+#Королева
+- type: entity
+  name: матка жнецов
+  suffix: BORK (HungerSwarm)
+  description: Им движет только одно - сожрать вас.
+  parent: MobInsectReaper
+  id: MobInsectReaperQueen
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Adventure/Roles/Hungry_Swarm/queen.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      200: 0.7
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 4
+    baseWalkSpeed : 4.5
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Матка улья
+    description: Размножайтесь и поедайте всё, что найдёте.
+    rules: Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с другими членами улья.
+    raffle:
+      settings: short
+  - type: Butcherable
+    spawned:
+      - id: FoodMeat
+        amount: 3
+  - type: EggLayer
+    hungerUsage: 10
+    eggLayAction: ActionHungerSwarmLayEgg
+    eggLaySound: !type:SoundPathSpecifier
+      path: /Audio/Adventure/Hungry_Swarm/insect_dead.ogg
+    eggSpawn:
+    - id: InsectReaperEgg
+  - type: PointLight
+    radius: 2
+    energy: 2
+    color: "#e6a10f"
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    damage:
+      types:
+        Piercing: 20
+        Structural: 30
 
 - type: soundCollection
   id: ReaperFly
