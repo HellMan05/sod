@@ -2,7 +2,7 @@
 - type: entity
   id: ActionDevourHungerSwarm
   name: "[color=red]Пожирать[/color]"
-  description: Ешьте всё!.
+  description: Ешьте всё!
   noSpawn: true
   components:
   - type: EntityTargetAction
