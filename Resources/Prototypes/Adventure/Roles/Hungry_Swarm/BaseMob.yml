@@ -1,7 +1,7 @@
 #База жуков
 - type: entity
   abstract: true
-  parent: [ SimpleMobBase, MobCombat ]
+  parent: [ SimpleSpaceMobBase, MobCombat ]
   id: BaseMobInsectSwarm
   components:
   - type: Sharp
@@ -124,6 +124,7 @@
     - RadiationProtection
     - Drowsiness
     - Adrenaline
+  - type: FloatingVisuals
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -135,10 +136,6 @@
         Airloss: -1.50
         Toxin: -1.50
         Genetic: -1.50
-  - type: Barotrauma
-    damage:
-      types:
-        Blunt: 0.05
   - type: Body
     prototype: HungerSwarm
   - type: GuideHelp
@@ -166,7 +163,6 @@
     Slash: 0.85
     Piercing: 0.70
     Heat: 1.5
-    Cold: 0.5
 
 # Доступ
 - type: accessLevel
