@@ -11,16 +11,34 @@
       "name": "egg"
     },
     {
+      "name": "web"
+    },
+    {
+      "name": "web2"
+    },
+    {
+      "name": "web3"
+    },
+    {
       "name": "sting"
     },
     {
       "name": "light"
     },
     {
+      "name": "light2"
+    },
+    {
+      "name": "light3"
+    },
+    {
       "name": "tile"
     },
     {
       "name": "wall"
+    },
+    {
+      "name": "reinforce_wall"
     },
     {
       "name": "door_spawn",

@@ -1,9 +1,9 @@
-#Жнец
+#Жнец-рабочий
 - type: entity
-  name: жнец
+  name: жнец-рабочий
   suffix: BORK (HungerSwarm)
   description: Им движет только одно - сожрать вас.
-  parent: [ BaseMobInsectSwarm, FlyingMobBase ]
+  parent: BaseMobInsectReaper
   id: MobInsectReaper
   components:
   - type: Sprite
@@ -12,57 +12,89 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: alive
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      100: Dead
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      70: 0.7
   - type: MovementSpeedModifier
-    baseSprintSpeed: 5
-    baseWalkSpeed : 5.5
+    baseSprintSpeed: 4.5
+    baseWalkSpeed : 2.5
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
     makeSentient: true
-    name: Жнец улья
-    description: Размножайтесь и поедайте всё, что найдёте.
+    name: Рабочий жнец улья
+    description: Стройте и укрепляйте улей.
     rules: Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с другими членами улья.
     raffle:
       settings: short
-  - type: GhostTakeoverAvailable
-  - type: Butcherable
-    spawned:
-      - id: FoodMeat
-        amount: 1
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: ReaperFly
-      params: 
-        volume: -10
-  - type: Spider
-    webPrototype: HungerSwarmWeb
-    webAction: ActionHungerSwarmWeb
+  - type: PointLight
+    radius: 2
+    energy: 3
+    color: "#d2af52"
+  - type: AutoImplant
+    implants:
+    - ActionHungerSwarmWallImplant  
+    - ActionHungerSwarmWallReinforseImplant
+    - ActionHungerSwarmDoorImplant
+    - ActionHungerSwarmWebLightImplant
+  - type: Reform
+    actionPrototype: ReaperQuardianEvolutionAction
+    reformTime: 20
+    popupText: Вы начинаете меняться
+    reformPrototype: MobInsectReaperGuardian
+
+#Жнец-страж
+- type: entity
+  name: жнец-страж
+  suffix: BORK (HungerSwarm)
+  description: Им движет только одно - сожрать вас.
+  parent: BaseMobInsectReaper
+  id: MobInsectReaperGuardian
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Adventure/Roles/Hungry_Swarm/guardian.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 5.5
+    baseWalkSpeed : 3.5
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Страж улья
+    description: Защищайте улей и его обитателей.
+    rules: Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с другими членами улья.
+    raffle:
+      settings: short
   - type: PointLight
     radius: 2
     energy: 2
     color: "#d2af52"
-  - type: ActionGun
-    action: ActionReaperSting
-    gunProto: ReaperGun
   - type: AutoImplant
     implants:
-    - ActionHungerSwarmWallImplant  
-    - ActionHungerSwarmDoorImplant
-    - ActionHungerSwarmWebLightImplant
+    - ActionHungerSwarmWebStickyImplant
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        reagents:
+        - ReagentId: ReaperPoison
+          Quantity: 100
+  - type: SolutionRegeneration
+    solution: melee
+    generated:
+      reagents:
+      - ReagentId: ReaperPoison
+        Quantity: 1
+  - type: MeleeChemicalInjector
+    solution: melee
+    transferAmount: 2
 
 #Королева
 - type: entity
   name: матка жнецов
   suffix: BORK (HungerSwarm)
   description: Им движет только одно - сожрать вас.
-  parent: MobInsectReaper
+  parent: BaseMobInsectReaper
   id: MobInsectReaperQueen
   components:
   - type: Sprite
@@ -79,8 +111,8 @@
     speedModifierThresholds:
       200: 0.7
   - type: MovementSpeedModifier
-    baseSprintSpeed: 4
-    baseWalkSpeed : 4.5
+    baseSprintSpeed: 4.5
+    baseWalkSpeed : 2.5
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -112,6 +144,10 @@
       types:
         Piercing: 20
         Structural: 30
+  - type: AutoImplant
+    implants:
+    - ActionHungerSwarmWallImplant  
+    - ActionHungerSwarmDoorImplant
 
 - type: soundCollection
   id: ReaperFly
@@ -128,6 +164,17 @@
   parent: BaseMobInsectSwarm
   id: MobInsectLarva
   components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
   - type: Sprite
     drawdepth: Mobs
     sprite: Adventure/Roles/Hungry_Swarm/larva.rsi
@@ -188,6 +235,9 @@
   - type: Damageable
     damageContainer: Biological
   - type: Sprite
+    sprite: Adventure/Roles/Hungry_Swarm/other.rsi
+    state: egg
+  - type: Icon
     sprite: Adventure/Roles/Hungry_Swarm/other.rsi
     state: egg
   - type: Timer

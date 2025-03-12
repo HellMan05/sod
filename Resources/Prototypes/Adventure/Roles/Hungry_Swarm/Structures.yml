@@ -76,8 +76,8 @@
         Flammable: [Touch]
         Extinguish: [Touch]
     - type: SpeedModifierContacts
-      walkSpeedModifier: 0.5
-      sprintSpeedModifier: 0.5
+      walkSpeedModifier: 0.7
+      sprintSpeedModifier: 0.7
       ignoreWhitelist:
         tags:
         - HungerSwarm
@@ -115,6 +115,43 @@
       radius: 3
       energy: 2
       color: "#d2af52"
+    - type: RandomSprite
+      available:
+      - 0:
+          light: ""
+      - 0:
+          light2: ""
+      - 0:
+          light3: ""
+
+#Слизь улья клейкая
+- type: entity
+  id: HungerSwarmWebSticky
+  suffix: BORK (HungerSwarm)
+  parent: HungerSwarmWeb
+  name: клейкая слизь улья жнецов
+  description: Слизь, вырабатываемая жнецами для ловли добычи.
+  components:
+    - type: Sprite
+      sprite: Adventure/Roles/Hungry_Swarm/other.rsi
+      layers:
+        - state: web
+          map: ["spiderWebLayer"]
+      drawdepth: Overdoors
+    - type: RandomSprite
+      available:
+      - 0:
+          web: ""
+      - 0:
+          web2: ""
+      - 0:
+          web3: ""
+    - type: SpeedModifierContacts
+      walkSpeedModifier: 0.2
+      sprintSpeedModifier: 0.2
+      ignoreWhitelist:
+        tags:
+        - HungerSwarm
 
 #Стена улья
 - type: entity
@@ -145,7 +182,7 @@
           collection: WoodDestroy
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: WallSpawnAsteroid
   id: HungerSwarmWallSpawn
   components:
@@ -154,6 +191,50 @@
     state: wall_spawn
   - type: SpawnOnDespawn
     prototype: HungerSwarmWall
+  - type: TimedDespawn
+    lifetime: 1
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Adventure/Hungry_Swarm/insect_spawn.ogg
+
+#Укреплённая стена улья
+- type: entity
+  parent: BaseWall
+  id: HungerSwarmWallReinforce
+  suffix: BORK (HungerSwarm)
+  name: укреплённая стена улья жнецов
+  description: Довольно крепкое сооружение жнецов из слизи.
+  components:
+  - type: Damageable
+    damageModifierSet: HungerSwarm
+  - type: Sprite
+    sprite: Adventure/Roles/Hungry_Swarm/other.rsi
+    state: reinforce_wall
+  - type: Icon
+    sprite: Adventure/Roles/Hungry_Swarm/other.rsi
+    state: reinforce_wall
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: WallSpawnAsteroid
+  id: HungerSwarmWallReinforceSpawn
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/Hungry_Swarm/other.rsi
+    state: wall_spawn
+  - type: SpawnOnDespawn
+    prototype: HungerSwarmWallReinforce
   - type: TimedDespawn
     lifetime: 1
   - type: EmitSoundOnSpawn
@@ -247,7 +328,7 @@
       - EmagImmune
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: WallSpawnAsteroid
   id: HungerSwarmDoorSpawn
   components:

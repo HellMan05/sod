@@ -75,7 +75,7 @@
     angle: 0
     damage:
       types:
-        Piercing: 8
+        Piercing: 5
         Structural: 30
     soundHit:
      path: /Audio/Adventure/Hungry_Swarm/insect_attack.ogg
@@ -85,7 +85,6 @@
   - type: Tag
     tags:
     - FootstepSound
-    - DoorBumpOpener
     - HungerSwarm
   - type: Hunger 
     thresholds:
@@ -94,7 +93,7 @@
       Peckish: 15
       Starving: 10
       Dead: 0
-    baseDecayRate: 0.050
+    baseDecayRate: 0.210
   - type: Bloodstream
     bloodReagent: InsectBlood
   - type: Devourer
@@ -103,8 +102,8 @@
     soundStructureDevour: /Audio/Adventure/Hungry_Swarm/insect_eat.ogg
     foodPreference: All
     shouldStoreDevoured: true
-    chemical: UncookedAnimalProteins
-    healRate: 10
+    chemical: Protein
+    healRate: 20
     devourTime: 5
     whitelist:
       components:
@@ -134,6 +133,12 @@
         Airloss: -1.50
         Toxin: -1.50
         Genetic: -1.50
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.05
+  - type: Body
+    prototype: HungerSwarm
 
 #Тэг
 - type: Tag
@@ -156,6 +161,7 @@
     Slash: 0.85
     Piercing: 0.70
     Heat: 1.5
+    Cold: 0.5
 
 # Доступ
 - type: accessLevel
@@ -171,3 +177,110 @@
     path: /Audio/Adventure/Hungry_Swarm/insect_speech.ogg
   exclaimSound:
     path: /Audio/Adventure/Hungry_Swarm/insect_speech.ogg
+
+#сердце
+- type: entity
+  id: OrganHeartReaper
+  parent: BaseAnimalOrgan
+  name: сердце жнеца
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: heart-on
+  - type: Organ
+  - type: Metabolizer
+    maxReagents: 2
+    metabolizerTypes: [ HungerSwarm ]
+    groups:
+    - id: Medicine
+    - id: Poison
+    - id: Narcotic
+  - type: Item
+    size: Small
+    heldPrefix: heart
+
+- type: metabolizerType
+  id: HungerSwarm
+  name: Рой
+
+- type: body
+  id: HungerSwarm
+  name: "animal"
+  root: torso
+  slots:
+    torso:
+      part: TorsoAnimal
+      connections:
+      - legs
+      organs:
+        lungs: OrganAnimalLungs
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        heart: OrganHeartReaper
+        kidneys: OrganAnimalKidneys
+    legs:
+      part: LegsAnimal
+      connections:
+      - feet
+    feet:
+      part: FeetAnimal
+
+#Яд жнеца
+- type: reagent
+  id: ReaperPoison
+  name: Яд жнеца
+  group: Toxins
+  desc: Используется жнецами-стражами для защиты улья.
+  flavor: bitter
+  color: "#e6a10f"
+  physicalDesc: мерзкое
+  metabolisms:
+    Poison:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.90
+        sprintSpeedModifier: 0.90
+        conditions:
+        - !type:OrganType
+          type: HungerSwarm
+          shouldHave: false
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 1
+        refresh: false
+        conditions:
+        - !type:OrganType
+          type: HungerSwarm
+          shouldHave: false
+
+#Жнец-рабочий
+- type: entity
+  abstract: true
+  parent: [ BaseMobInsectSwarm, FlyingMobBase ]
+  id: BaseMobInsectReaper
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      70: 0.7
+  - type: GhostTakeoverAvailable
+  - type: Butcherable
+    spawned:
+      - id: FoodMeat
+        amount: 1
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: ReaperFly
+      params: 
+        volume: -10
+  - type: Spider
+    webPrototype: HungerSwarmWeb
+    webAction: ActionHungerSwarmWeb
+  - type: ActionGun
+    action: ActionReaperSting
+    gunProto: ReaperGun
