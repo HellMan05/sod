@@ -86,6 +86,9 @@
         path: /Audio/Adventure/Hungry_Swarm/insect_spawn.ogg
         params: 
           volume: -5
+    - type: GuideHelp
+      guides:
+      - HungerSwarm
 
 #Слизь улья биоэлюмистентная
 - type: entity
@@ -180,6 +183,9 @@
       - !type:PlaySoundBehavior
         sound:
           collection: WoodDestroy
+  - type: GuideHelp
+    guides:
+    - HungerSwarm
 
 - type: entity
   categories: [ HideSpawnMenu ]
@@ -326,6 +332,9 @@
     tags:
       - Airlock
       - EmagImmune
+  - type: GuideHelp
+    guides:
+    - HungerSwarm
 
 - type: entity
   categories: [ HideSpawnMenu ]

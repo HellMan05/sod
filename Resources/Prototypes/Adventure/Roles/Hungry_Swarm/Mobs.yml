@@ -34,6 +34,7 @@
     - ActionHungerSwarmWallReinforseImplant
     - ActionHungerSwarmDoorImplant
     - ActionHungerSwarmWebLightImplant
+    - HungerSwarmImplant
   - type: Reform
     actionPrototype: ReaperQuardianEvolutionAction
     reformTime: 20
@@ -73,6 +74,7 @@
   - type: AutoImplant
     implants:
     - ActionHungerSwarmWebStickyImplant
+    - HungerSwarmImplant
   - type: SolutionContainerManager
     solutions:
       melee:
@@ -148,6 +150,7 @@
     implants:
     - ActionHungerSwarmWallImplant  
     - ActionHungerSwarmDoorImplant
+    - HungerSwarmImplant
 
 - type: soundCollection
   id: ReaperFly
@@ -215,6 +218,9 @@
     reformTime: 20
     popupText: Вы начинаете окукливаться и отращивать крылья
     reformPrototype: MobInsectReaper
+  - type: AutoImplant
+    implants:
+    - HungerSwarmImplant
 
 - type: soundCollection
   id: LarvaRun

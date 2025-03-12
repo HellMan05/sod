@@ -38,9 +38,11 @@
         Base: alive
       Dead:
         Base: dead
-  - type: Access
-    tags:
-    - HungerSwarmAccess
+  - type: Inventory
+    templateId: HungerSwarm
+  - type: InventorySlots
+  - type: Loadout
+    prototypes: [HungerSwarm]
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
@@ -139,6 +141,9 @@
         Blunt: 0.05
   - type: Body
     prototype: HungerSwarm
+  - type: GuideHelp
+    guides:
+    - HungerSwarm
 
 #Тэг
 - type: Tag
@@ -248,14 +253,14 @@
         key: SeeingRainbows
         component: SeeingRainbows
         type: Add
-        time: 1
+        time: 5
         refresh: false
         conditions:
         - !type:OrganType
           type: HungerSwarm
           shouldHave: false
 
-#Жнец-рабочий
+#Жнец-база
 - type: entity
   abstract: true
   parent: [ BaseMobInsectSwarm, FlyingMobBase ]
@@ -284,3 +289,21 @@
   - type: ActionGun
     action: ActionReaperSting
     gunProto: ReaperGun
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: HungerSwarmImplant
+  name: Рой
+  description: Чувство коллективного разума, если дрон умрет.
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      permanent: true
+      whitelist:
+        components:
+        - MobState
+    - type: TriggerOnMobstateChange
+      mobState:
+      - Dead
+    - type: Rattle
+      radioChannel: HungerSwarm
