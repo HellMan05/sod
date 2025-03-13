@@ -118,4 +118,4 @@
   - type: AnimationPlayer
   - type: Pinpointer
     component: ResearchServer
-    targetName: стания
+    targetName: ближайшая станция
