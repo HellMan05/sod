@@ -167,7 +167,7 @@
     weight: 6.5
     earliestStart: 40
     reoccurrenceDelay: 20
-    minimumPlayers: 20
+    minimumPlayers: 30
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
@@ -256,9 +256,9 @@
   - type: StationEvent
     weight: 1 # rare
     duration: 1
-    earliestStart: 30
+    earliestStart: 60
     reoccurrenceDelay: 60
-    minimumPlayers: 10
+    minimumPlayers: 25
   - type: AntagSelection
     agentName: wizard-round-end-name
     definitions:
@@ -504,7 +504,7 @@
   - type: StationEvent
     earliestStart: 60 # Adventure
     weight: 3.5 # Adventure
-    minimumPlayers: 20
+    minimumPlayers: 25
     duration: 1
   - type: RuleGrids
   - type: LoadMapRule
