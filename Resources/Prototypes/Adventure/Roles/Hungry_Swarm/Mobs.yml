@@ -90,6 +90,53 @@
   - type: MeleeChemicalInjector
     solution: melee
     transferAmount: 2
+  - type: Tag
+    tags:
+    - FootstepSound
+    - HungerSwarm
+    - HungerSwarmGuardian
+
+#Жнец-хранитель
+- type: entity
+  name: жнец-хранитель
+  suffix: BORK (HungerSwarm)
+  description: Им движет только одно - сожрать вас.
+  parent: MobInsectReaperGuardian
+  id: MobInsectReaperKeeper
+  components:
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    damage:
+      types:
+        Piercing: 10
+        Structural: 30
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Adventure/Roles/Hungry_Swarm/keeper.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Хранитель улья
+    description: Защищайте королеву.
+    rules: Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с другими членами улья.
+    raffle:
+      settings: short
+  - type: AutoImplant
+    implants:
+    - HungerSwarmImplant
+  - type: Tag
+    tags:
+    - FootstepSound
+    - HungerSwarm
 
 #Королева
 - type: entity
@@ -151,6 +198,8 @@
     - ActionHungerSwarmWallImplant  
     - ActionHungerSwarmDoorImplant
     - HungerSwarmImplant
+    - ActionForceKeeperImplant
+  - type: HungerSwarmQueen
 
 - type: soundCollection
   id: ReaperFly
@@ -315,3 +364,35 @@
     soundGunshot:
       path: /Audio/Adventure/Hungry_Swarm/insect_attack.ogg
     projectileSpeed: 10
+
+# создания хранителя
+- type: entity
+  id: ProjectilePolyboltHungerSwarmKeeper
+  parent: ProjectilePolyboltBase
+  name: феромоны хранителя
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/Hungry_Swarm/other.rsi
+    layers:
+    - state: buff
+  - type: Projectile
+    damage:
+      types:
+        Poison: 0
+  - type: PolymorphOnCollide
+    polymorph: MobInsectReaperKeeperPolymorph
+    whitelist:
+      tags:
+      - HungerSwarmGuardian
+
+- type: polymorph
+  id: MobInsectReaperKeeperPolymorph
+  configuration:
+    entity: MobInsectReaperKeeper
+    forced: true
+    inventory: Transfer
+    transferName: false
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false

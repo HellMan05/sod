@@ -68,12 +68,22 @@
       strippingWindowPos: 0,4
       displayName: Pocket 1
       stripHidden: true
+    - name: pocket2
+      slotTexture: pocket
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 2,3
+      strippingWindowPos: 1,4
+      displayName: Pocket 2
+      stripHidden: true
 
 - type: startingGear
   id: HungerSwarm
   equipment:
     id: HungerSwarmID
     pocket1: PinpointerHungerSwarm
+    pocket2: PinpointerHungerSwarmQueen
 
 #чутьё улья
 - type: entity
@@ -119,3 +129,15 @@
   - type: Pinpointer
     component: ResearchServer
     targetName: ближайшая станция
+
+#чутьё королевы
+- type: entity
+  name: чутьё королевы
+  description: Вы можете чувствовать местонахождение своей королевы.
+  parent: PinpointerHungerSwarm
+  categories: [ HideSpawnMenu ]
+  id: PinpointerHungerSwarmQueen
+  components:
+  - type: Pinpointer
+    component: HungerSwarmQueen
+    targetName: матка улья

@@ -146,6 +146,9 @@
 - type: Tag
   id: HungerSwarm
 
+- type: Tag
+  id: HungerSwarmGuardian
+
 #Радио 
 - type: radioChannel
   id: HungerSwarm

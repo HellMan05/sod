@@ -225,3 +225,33 @@
     priority: 100
     checkCanAccess: false
     range: 0
+
+#Избрать хранителя
+- type: entity
+  id: ActionForceKeeper
+  name: Избрать хранителя
+  categories: [ HideSpawnMenu ]
+  description: Преобразите стражей улья в своих личных хранителей.
+  components:
+  - type: WorldTargetAction
+    useDelay: 300
+    itemIconStyle: BigAction
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 2
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Adventure/Hungry_Swarm/insect_attack.ogg
+    icon:
+      sprite: Adventure/Roles/Hungry_Swarm/keeper.rsi
+      state: icon
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectilePolyboltHungerSwarmKeeper
+
+- type: entity
+  parent: BaseSubdermalImplant 
+  id: ActionForceKeeperImplant
+  name: Избрать хранителя
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionForceKeeper 
