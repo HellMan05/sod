@@ -69,6 +69,7 @@
     sprite: Adventure/Objects/Clothing/black_security/black_security_jumpsuit.rsi
   - type: Clothing
     sprite: Adventure/Objects/Clothing/black_security/black_security_jumpsuit.rsi
+    femaleMask: UniformTop
 
 - type: loadout
   id: SecurityJumpsuitBlack
@@ -87,6 +88,7 @@
     sprite: Adventure/Objects/Clothing/black_security/black_warden_jumpsuit.rsi
   - type: Clothing
     sprite: Adventure/Objects/Clothing/black_security/black_warden_jumpsuit.rsi
+    femaleMask: UniformTop
 
 - type: loadout
   id: SecurityWardenJumpsuitBlack
