@@ -7,6 +7,14 @@
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 36000 #10 hrs
+# Adventure-edit-start
+    - !type:SpeciesRequirement
+      inverted: true
+      species:
+      - Zerah
+      - PigMan
+      - Vox
+# Adventure-edit-end
   startingGear: WardenGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos
