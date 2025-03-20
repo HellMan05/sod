@@ -8,10 +8,10 @@
   markingLimits: MobMothMarkingLimits
   dollPrototype: MobMothDummy
   skinColoration: Hues
-  maleFirstNames: names_moth_first_male
-  femaleFirstNames: names_moth_first_female
-  maleLastNames: names_moth_last # Corvax-LastnameGender
-  femaleLastNames: names_moth_last # Corvax-LastnameGender
+  maleFirstNames: namesMothFirstMale
+  femaleFirstNames: namesMothFirstFemale
+  maleLastNames: namesMothLast # Corvax-LastnameGender
+  femaleLastNames: namesMothLast # Corvax-LastnameGender
   minAge: 16 # Adventure
   youngAge: 25 # Adventure
   oldAge: 42 # Adventure
@@ -22,6 +22,8 @@
   sprites:
     Head: MobMothHead
     Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobMothTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -67,6 +69,12 @@
       points: 1
       required: false
     Head:
+      points: 1
+      required: false
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
       points: 1
       required: false
     Chest:
