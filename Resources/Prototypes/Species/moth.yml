@@ -8,10 +8,10 @@
   markingLimits: MobMothMarkingLimits
   dollPrototype: MobMothDummy
   skinColoration: Hues
-  maleFirstNames: namesMothFirstMale
-  femaleFirstNames: namesMothFirstFemale
-  maleLastNames: namesMothLast # Corvax-LastnameGender
-  femaleLastNames: namesMothLast # Corvax-LastnameGender
+  maleFirstNames: NamesMothFirstMale
+  femaleFirstNames: NamesMothFirstFemale
+  maleLastNames: NamesMothLast # Corvax-LastnameGender
+  femaleLastNames: NamesMothLast # Corvax-LastnameGender
   minAge: 16 # Adventure
   youngAge: 25 # Adventure
   oldAge: 42 # Adventure
