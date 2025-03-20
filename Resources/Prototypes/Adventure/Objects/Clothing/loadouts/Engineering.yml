@@ -16,6 +16,24 @@
   equipment:
     jumpsuit: ClothingWorkUniformJumpsuitEngineering
 
+#рабочий комбинезон инженера
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingWorkUniformJumpsuitEngineering2
+  name: рабочий комбинезон инженера
+  suffix: BORK, AdvClothing
+  description: Униформа из плотной ткани, для длительной возьни с проводами.
+  components:
+  - type: Sprite
+    sprite: Adventure/Objects/Clothing/engineering/work_uniform2.rsi
+  - type: Clothing
+    sprite: Adventure/Objects/Clothing/engineering/work_uniform2.rsi
+
+- type: loadout
+  id: EngineeringWorkUniform2
+  equipment:
+    jumpsuit: ClothingWorkUniformJumpsuitEngineering2
+
 #кепка инженера
 - type: entity
   parent: ClothingHeadHeadHatBaseFlippable
@@ -52,7 +70,7 @@
   equipment:
     outerClothing: ClothingOuterTechJacket
 
-#рабочая форма инженера
+#рабочая форма атмоса
 - type: entity
   parent: ClothingUniformBase
   id: ClothingWorkUniformJumpsuitAtmos

@@ -12,6 +12,7 @@
       - id: ClothingHandsGlovesCaptain
       - id: ClothingOuterWinterCap
       - id: ClothingNeckCloakCap
+      - id: BaseClothingShoesHeeled # Adventure
 
 - type: entity
   id: DresserChiefEngineerFilled
@@ -41,6 +42,7 @@
       - id: ClothingEyesGlasses
       - id: ClothingOuterWinterCMO
       - id: ClothingCloakCmo
+      - id: ClothingShoesHeeledGreen # Adventure
 
 - type: entity
   id: DresserHeadOfPersonnelFilled
@@ -53,6 +55,7 @@
       - id: ClothingOuterWinterHoP
       - id: ClothingEyesGlasses
       - id: ClothingNeckCloakHop
+      - id: ClothingShoesHeeledBlue # Adventure
 
 - type: entity
   id: DresserHeadOfSecurityFilled
@@ -69,6 +72,7 @@
       - id: ClothingUniformJumpsuitHosFormal
       - id: ClothingOuterWinterHoS
       - id: ClothingNeckCloakHos
+      - id: ClothingShoesHeeledRed # Adventure
 
 - type: entity
   id: DresserQuarterMasterFilled

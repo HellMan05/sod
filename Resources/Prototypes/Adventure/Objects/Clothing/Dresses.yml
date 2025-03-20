@@ -3,6 +3,7 @@
   parent: ClothingUniformBase
   id: ClothingLuxDressWhite
   name: роскошное белое платье
+  suffix: BORK, AdvClothing
   description: Оно точно вас не полнит.
   components:
   - type: Sprite
@@ -19,6 +20,7 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingLuxDressRed
+  suffix: BORK, AdvClothing
   name: роскошное красное платье
   description: Оно точно вас не полнит.
   components:
@@ -38,6 +40,7 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingElegantDressRed
+  suffix: BORK, AdvClothing
   name: элегантное красное платье
   description: красивое платье, для приятных вечеров и не менее приятного продолжения.
   components:
@@ -56,6 +59,7 @@
 # элегантное голубое платье
 - type: entity
   parent: ClothingUniformBase
+  suffix: BORK, AdvClothing
   id: ClothingElegantDressBlue
   name: элегантное голубое платье
   description: красивое платье, для приятных вечеров и не менее приятного продолжения.
@@ -76,6 +80,7 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingElegantDressPink
+  suffix: BORK, AdvClothing
   name: элегантное розовое платье
   description: красивое платье, для приятных вечеров и не менее приятного продолжения.
   components:
@@ -95,6 +100,7 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingElegantDressBlack
+  suffix: BORK, AdvClothing
   name: элегантное чёрное платье
   description: красивое платье, для приятных вечеров и не менее приятного продолжения.
   components:
@@ -113,6 +119,7 @@
 # элегантное зелёное платье
 - type: entity
   parent: ClothingUniformBase
+  suffix: BORK, AdvClothing
   id: ClothingElegantDressGreen
   name: элегантное зелёное платье
   description: красивое платье, для приятных вечеров и не менее приятного продолжения.
