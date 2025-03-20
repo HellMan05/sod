@@ -135,6 +135,15 @@
   - sprite: Adventure/Races/Reptilian/Customization/horns.rsi
     state: full_spike
 
+- type: marking
+  id: LizardHornsLittleTrike
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Adventure/Races/Reptilian/Customization/horns.rsi
+    state: little_trike
+
 #Tails
 - type: marking
   id: LizardTailCurved
@@ -192,6 +201,28 @@
     state: tail_spike
   - sprite: Adventure/Races/Reptilian/Customization/tails.rsi
     state: tail_spike2
+
+- type: marking  
+  id: LizardTailOverBig
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Adventure/Races/Reptilian/Customization/tails.rsi
+    state: tail_big
+  - sprite: Adventure/Races/Reptilian/Customization/tails.rsi
+    state: tail_big2
+
+- type: marking  
+  id: LizardTailOverBigSpike
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Adventure/Races/Reptilian/Customization/tails.rsi
+    state: tail_big_spike
+  - sprite: Adventure/Races/Reptilian/Customization/tails.rsi
+    state: tail_big2
 
 #Body
 - type: marking

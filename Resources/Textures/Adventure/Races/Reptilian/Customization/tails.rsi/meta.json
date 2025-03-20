@@ -50,6 +50,18 @@
     {
       "name": "tail_spike2",
       "directions": 4
+    },
+    {
+      "name": "tail_big",
+      "directions": 4
+    },
+    {
+      "name": "tail_big2",
+      "directions": 4
+    },
+    {
+      "name": "tail_big_spike",
+      "directions": 4
     }
   ]
 }
