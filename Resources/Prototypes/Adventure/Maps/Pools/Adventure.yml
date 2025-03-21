@@ -10,7 +10,7 @@
   - AdventureDelta      #min 30 max N/A
   - AdventureLoop       #min 25 max 70
   - AdventureMarathon   #min 25 max 70
-# - AdventureMaus       #min 0  max 40
+  - AdventureMaus       #min 0  max 40
   - AdventureOmega      #min 0  max 25
   - AdventurePacked     #min 0  max 25
 # - AdventureRelict     #min 0  max 25
