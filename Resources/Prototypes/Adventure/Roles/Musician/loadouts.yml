@@ -6,7 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobMusician
-      time: 54000 #15 hrs, special reward for Musician mains
+      time: 180000 #15 hrs, special reward for Musician mains
 
 - type: loadout
   id: SuperSynthesizer
