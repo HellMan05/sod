@@ -71,7 +71,7 @@
       - id: ClothingUniformJumpskirtHosFormal
       - id: ClothingUniformJumpsuitHosFormal
       - id: ClothingOuterWinterHoS
-      - id: ClothingNeckCloakHos
+#      - id: ClothingNeckCloakHos
       - id: ClothingShoesHeeledRed # Adventure
 
 - type: entity
