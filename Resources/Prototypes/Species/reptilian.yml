@@ -52,7 +52,7 @@
       required: true
       defaultMarkings: [ LizardTailSmooth ]
     Snout:
-      points: 2 #Adventure
+      points: 1
       required: true
       defaultMarkings: [ LizardSnoutRound ]
     HeadTop:
