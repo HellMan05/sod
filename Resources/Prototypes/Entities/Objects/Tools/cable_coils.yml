@@ -47,7 +47,7 @@
       - Silicon
     damage:
       types:
-        Shock: -15  
+        Shock: -20  
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
@@ -125,7 +125,7 @@
       - Silicon
     damage:
       types:
-        Shock: -10  
+        Shock: -15  
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
@@ -201,7 +201,7 @@
       - Silicon
     damage:
       types:
-        Shock: -5  
+        Shock: -10
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
