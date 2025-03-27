@@ -1,0 +1,81 @@
+- type: gasReaction
+  id: B3Production
+  priority: 0
+  maximumTemperature: 373.13
+  maximumPressure: 40000 # 40 кПа
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0.01  # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0.01  # n2o
+  - 0     # frezon
+  - 0     # b3
+  effects:
+  - !type:B3ProductionReaction {}
+
+- type: gas
+  id: 9
+  name: gases-b3
+  specificHeat: 40
+  heatCapacityRatio: 1.33
+  molarMass: 44
+  gasOverlaySprite: /Textures/Effects/atmospherics.rsi
+  gasOverlayState: frezon
+  gasMolesVisible: 0.6
+  color: 3a758c
+  reagent: Frezon
+  pricePerMole: 1
+
+- type: entity
+  parent: GasCanister
+  id: B3Canister
+  name: канистра Б3
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Б3. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      layers:
+        - state: green
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 1871.71051 # b3
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            TritiumCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
