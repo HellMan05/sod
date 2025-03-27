@@ -275,11 +275,11 @@ namespace Content.Shared.Atmos
         /// Adventure gases start
 
         /// B3 Gas Synthesis Constants
-// Atmospherics.cs
-public const float B3SynthesisMaxPressure = 40f; // 40 кПа
-public const float B3PlasmaRatio = 0.55f;          // 55% плазмы
-public const float B3N20Ratio = 0.45f;             // 45% N2O
-public const float B3SynthesisEfficiency = 1.0f;   // 100% эффективность
+        // Atmospherics.cs
+        public const float B3SynthesisMaxPressure = 40f; // 40 кПа
+        public const float B3PlasmaRatio = 0.55f;          // 55% плазмы
+        public const float B3N20Ratio = 0.45f;             // 45% N2O
+        public const float B3SynthesisEfficiency = 1.0f;   // 100% эффективность
         ///  Adventure gases end
 
         /// <summary>
