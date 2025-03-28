@@ -40,6 +40,11 @@ public sealed partial class BZProductionReaction : IGasReactionEffect
         mixture.AdjustMoles(Gas.NitrousOxide, -n20Burned);
         mixture.AdjustMoles(Gas.BZ, bzProduced);
 
+        var energyToAdd = bzProduced * Atmospherics.BZFormationEnergy;
+        var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
+        if (heatCapacity > Atmospherics.MinimumHeatCapacity)
+            mixture.Temperature += energyToAdd / heatCapacity;
+
         return ReactionResult.Reacting;
     }
 }

@@ -280,6 +280,7 @@ namespace Content.Shared.Atmos
         public const float BZPlasmaRatio = 0.55f;          // 55% плазмы
         public const float BZN20Ratio = 0.45f;             // 45% N2O
         public const float BZSynthesisEfficiency = 0.25f;   // 25% эффективность
+        public const float BZFormationEnergy = 5000f; // экзотерма
 
         ///  Adventure gases end
 
