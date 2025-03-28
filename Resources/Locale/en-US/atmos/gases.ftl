@@ -9,4 +9,5 @@ gas-tritium-abbreviation = T
 gas-water-vapor-abbreviation = H₂O
 gas-unknown-abbreviation = X
 gas-bz-abbreviation = BZ
-gas-halo-abbreviation = Hl
+gas-halon-abbreviation = Hn
+gas-healium-abbreviation = Hm

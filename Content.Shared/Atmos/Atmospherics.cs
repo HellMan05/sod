@@ -174,9 +174,10 @@ namespace Content.Shared.Atmos
             [Gas.Plasma] = Loc.GetString("gas-plasma-abbreviation"),
             [Gas.Tritium] = Loc.GetString("gas-tritium-abbreviation"),
             [Gas.WaterVapor] = Loc.GetString("gas-water-vapor-abbreviation"),
-        // Adventure gases
+            // Adventure gases
             [Gas.BZ] = Loc.GetString("gas-bz-abbreviation"),
             [Gas.Halon] = Loc.GetString("gas-halon-abbreviation"),
+            [Gas.Healium] = Loc.GetString("gas-healium-abbreviation"),
         };
 
         #region Excited Groups
@@ -206,7 +207,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 11; // Adventure gases
+        public const int TotalNumberOfGases = 12; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -288,6 +289,12 @@ namespace Content.Shared.Atmos
         public const float HalonMaxTemperature = 2000f; // Макс. эффективная температура
         public const float HalonAbsorptionRate = 1f; // Базовая скорость поглощения O2
         public const float HalonHeatAbsorptionFactor = 500000f; // Дж/моль поглощенного O2
+
+        /// Healium Gas Synthesis Constants
+        public const float HealiumMinTemperature = 25f;     // 25K
+        public const float HealiumMaxTemperature = 300f;    // 300K
+        public const float HealiumFormationEnergy = 30000f; // экзотерма
+        public const float HealiumConversionRatio = 4f;     // 4 моля смеси = 1 моль хилиума
 
         ///  Adventure gases end
 
@@ -390,6 +397,7 @@ namespace Content.Shared.Atmos
         Frezon = 8,
     // Adventure gases
         BZ = 9,
-        Halon = 10
+        Halon = 10,
+        Healium = 11
     }
 }

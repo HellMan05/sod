@@ -1,7 +1,7 @@
 # БЗ
 - type: gasReaction
   id: BZProduction
-  priority: 0
+  priority: 3
   maximumTemperature: 373.13
   maximumPressure: 40 # 40 кПа
   minimumRequirements:
@@ -23,7 +23,7 @@
   name: gases-bz
   specificHeat: 20
   heatCapacityRatio: 1.33
-  molarMass: 44
+  molarMass: 100
   color: c56091
   reagent: BZ
   pricePerMole: 2
@@ -134,20 +134,11 @@
         conditions:
         - !type:ReagentThreshold
           reagent: BZ
-          min: 3.5
+          min: 0.5
         ignoreResistances: true
         damage:
           types:
             Poison: 0.25
-      - !type:PopupMessage
-        type: Local
-        visualType: Medium
-        messages: [ "bz-euphoric" ]
-        probability: 0.1
-        conditions:
-        - !type:ReagentThreshold
-          reagent: BZ
-          min: 1
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
@@ -169,7 +160,7 @@
 
 - type: gasReaction
   id: HalonFireSuppression
-  priority: 0
+  priority: -4
   minimumRequirements:
   - 0     # oxygen
   - 0     # nitrogen
@@ -190,7 +181,7 @@
   name: gases-halon
   specificHeat: 175
   heatCapacityRatio: 1.33
-  molarMass: 44
+  molarMass: 150
   gasOverlaySprite: /Textures/Adventure/atmospherics.rsi
   gasOverlayState: halon
   color: 99ccff
@@ -263,8 +254,8 @@
   id: Halon
   name: reagent-name-halon
   desc: reagent-desc-halon
-  physicalDesc: reagent-physical-desc-odorless
-  flavor: bitter
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: minty
   color: "#66ff33"
   metabolisms:
     Gas:
@@ -295,3 +286,129 @@
           type: Plant
           shouldHave: false
         factor: -4
+
+# Хилиум
+
+- type: gasReaction
+  id: HealiumProduction
+  priority: 8
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0.01  # frezon
+  - 0.01  # bz
+  effects:
+  - !type:HealiumProductionReaction {}
+
+- type: gas
+  id: 11
+  name: gases-healium
+  specificHeat: 10
+  heatCapacityRatio: 1.33
+  molarMass: 40
+  gasOverlaySprite: /Textures/Adventure/atmospherics.rsi
+  gasOverlayState: healium
+  color: 512525
+  reagent: Healium
+  pricePerMole: 12
+
+- type: entity
+  parent: GasCanister
+  id: HealiumCanister
+  name: канистра хилиума
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Хилиум. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: healium
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 1871.71051 # healium
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HalonCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: HealiumCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: healium-1
+
+- type: reagent
+  id: Healium
+  name: reagent-name-healium
+  desc: reagent-desc-healium
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: chewy
+  color: "#d97e7e"
+  metabolisms:
+    Gas:
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Healium
+          min: 1
+        scaleByQuantity: true
+        ignoreResistances: true
+        damage:
+          groups:
+            Brute: -1
+            Burn: -1
+            Toxin: -2.5
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Healium
+          min: 2
+        key: ForcedSleep
+        component: ForcedSleeping
+        time: 3
+        type: Add
