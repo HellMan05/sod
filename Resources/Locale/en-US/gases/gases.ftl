@@ -12,4 +12,4 @@ gases-frezon = Frezon
 
 gases-bz = BZ
 gases-halon = Halon
-gases-halon = healium
+gases-healium = Healium
