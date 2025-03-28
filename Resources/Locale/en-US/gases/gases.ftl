@@ -11,3 +11,4 @@ gases-frezon = Frezon
 # Adventure gases
 
 gases-bz = BZ
+gases-halon = Halon

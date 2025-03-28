@@ -176,6 +176,7 @@ namespace Content.Shared.Atmos
             [Gas.WaterVapor] = Loc.GetString("gas-water-vapor-abbreviation"),
         // Adventure gases
             [Gas.BZ] = Loc.GetString("gas-bz-abbreviation"),
+            [Gas.Halon] = Loc.GetString("gas-halon-abbreviation"),
         };
 
         #region Excited Groups
@@ -205,7 +206,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 10; // Adventure gases
+        public const int TotalNumberOfGases = 11; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -281,6 +282,12 @@ namespace Content.Shared.Atmos
         public const float BZN20Ratio = 0.45f;             // 45% N2O
         public const float BZSynthesisEfficiency = 0.25f;   // 25% эффективность
         public const float BZFormationEnergy = 5000f; // экзотерма
+
+        /// Halon Gas Properties
+        public const float HalonActivationTemperature = 400f; // 400K
+        public const float HalonMaxTemperature = 2000f; // Макс. эффективная температура
+        public const float HalonAbsorptionRate = 1f; // Базовая скорость поглощения O2
+        public const float HalonHeatAbsorptionFactor = 500000f; // Дж/моль поглощенного O2
 
         ///  Adventure gases end
 
@@ -382,6 +389,7 @@ namespace Content.Shared.Atmos
         NitrousOxide = 7,
         Frezon = 8,
     // Adventure gases
-        BZ = 9
+        BZ = 9,
+        Halon = 10
     }
 }

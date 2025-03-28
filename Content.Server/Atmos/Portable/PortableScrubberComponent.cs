@@ -31,7 +31,8 @@ namespace Content.Server.Atmos.Portable
             Gas.NitrousOxide,
             Gas.Frezon,
         // Adventure gases
-            Gas.BZ
+            Gas.BZ,
+            Gas.Halon
         };
 
         [ViewVariables(VVAccess.ReadWrite)]
