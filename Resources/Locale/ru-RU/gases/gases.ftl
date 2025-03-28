@@ -7,4 +7,7 @@ gases-water-vapor = Водяной пар
 gases-ammonia = Аммиак
 gases-n2o = Оксид азота
 gases-frezon = Фрезон
-gases-b3 = Б3
+
+# Adventure gases
+
+gases-bz = БЗ

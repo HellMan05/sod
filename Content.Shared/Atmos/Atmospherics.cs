@@ -174,7 +174,8 @@ namespace Content.Shared.Atmos
             [Gas.Plasma] = Loc.GetString("gas-plasma-abbreviation"),
             [Gas.Tritium] = Loc.GetString("gas-tritium-abbreviation"),
             [Gas.WaterVapor] = Loc.GetString("gas-water-vapor-abbreviation"),
-            [Gas.B3] = Loc.GetString("gas-b3-abbreviation"),
+        // Adventure gases
+            [Gas.BZ] = Loc.GetString("gas-bz-abbreviation"),
         };
 
         #region Excited Groups
@@ -204,7 +205,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 10;
+        public const int TotalNumberOfGases = 10; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -274,12 +275,12 @@ namespace Content.Shared.Atmos
 
         /// Adventure gases start
 
-        /// B3 Gas Synthesis Constants
-        // Atmospherics.cs
-        public const float B3SynthesisMaxPressure = 40f; // 40 кПа
-        public const float B3PlasmaRatio = 0.55f;          // 55% плазмы
-        public const float B3N20Ratio = 0.45f;             // 45% N2O
-        public const float B3SynthesisEfficiency = 1.0f;   // 100% эффективность
+        /// BZ Gas Synthesis Constants
+        public const float BZSynthesisMaxPressure = 40f; // 40 кПа
+        public const float BZPlasmaRatio = 0.55f;          // 55% плазмы
+        public const float BZN20Ratio = 0.45f;             // 45% N2O
+        public const float BZSynthesisEfficiency = 0.25f;   // 25% эффективность
+
         ///  Adventure gases end
 
         /// <summary>
@@ -379,6 +380,7 @@ namespace Content.Shared.Atmos
         Ammonia = 6,
         NitrousOxide = 7,
         Frezon = 8,
-        B3 = 9
+    // Adventure gases
+        BZ = 9
     }
 }

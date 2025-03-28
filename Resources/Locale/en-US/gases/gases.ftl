@@ -7,4 +7,7 @@ gases-water-vapor = Water Vapor
 gases-ammonia = Ammonia
 gases-n2o = Nitrous Oxide
 gases-frezon = Frezon
-gases-b3 = B3
+
+# Adventure gases
+
+gases-bz = BZ

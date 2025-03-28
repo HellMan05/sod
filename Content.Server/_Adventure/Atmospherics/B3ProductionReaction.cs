@@ -7,34 +7,38 @@ using JetBrains.Annotations;
 namespace Content.Server.Adventure.Atmos.Reactions;
 
 /// <summary>
-///     Синтез Б3 из плазмы и оксида азота.
+///     Синтез БЗ из плазмы и оксида азота.
 ///     Имеется лимит по давлению, если превышает 40КПа, реакция прекращается.
 /// </summary>
 [UsedImplicitly]
-public sealed partial class B3ProductionReaction : IGasReactionEffect
+public sealed partial class BZProductionReaction : IGasReactionEffect
 {
     public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder, AtmosphereSystem atmosphereSystem, float heatScale)
     {
+        if (mixture.Pressure > Atmospherics.BZSynthesisMaxPressure)
+        {
+            return ReactionResult.NoReaction;
+        }
         var initialPlasma = mixture.GetMoles(Gas.Plasma);
         var initialN20 = mixture.GetMoles(Gas.NitrousOxide);
 
         if (initialPlasma <= 0 || initialN20 <= 0)
             return ReactionResult.NoReaction;
 
-        var plasmaLimit = initialPlasma / Atmospherics.B3PlasmaRatio;
-        var n20Limit = initialN20 / Atmospherics.B3N20Ratio;
+        var plasmaLimit = initialPlasma / Atmospherics.BZPlasmaRatio;
+        var n20Limit = initialN20 / Atmospherics.BZN20Ratio;
         var limitingFactor = Math.Min(plasmaLimit, n20Limit);
 
         if (limitingFactor <= 0)
             return ReactionResult.NoReaction;
 
-        var plasmaBurned = limitingFactor * Atmospherics.B3PlasmaRatio;
-        var n20Burned = limitingFactor * Atmospherics.B3N20Ratio;
-        var b3Produced = (plasmaBurned + n20Burned) * Atmospherics.B3SynthesisEfficiency;
+        var plasmaBurned = limitingFactor * Atmospherics.BZPlasmaRatio;
+        var n20Burned = limitingFactor * Atmospherics.BZN20Ratio;
+        var bzProduced = (plasmaBurned + n20Burned) * Atmospherics.BZSynthesisEfficiency;
 
         mixture.AdjustMoles(Gas.Plasma, -plasmaBurned);
         mixture.AdjustMoles(Gas.NitrousOxide, -n20Burned);
-        mixture.AdjustMoles(Gas.B3, b3Produced);
+        mixture.AdjustMoles(Gas.BZ, bzProduced);
 
         return ReactionResult.Reacting;
     }

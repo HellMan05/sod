@@ -1,8 +1,9 @@
+# БЗ
 - type: gasReaction
-  id: B3Production
+  id: BZProduction
   priority: 0
   maximumTemperature: 373.13
-  maximumPressure: 40000 # 40 кПа
+  maximumPressure: 40 # 40 кПа
   minimumRequirements:
   - 0     # oxygen
   - 0     # nitrogen
@@ -13,32 +14,31 @@
   - 0     # ammonia
   - 0.01  # n2o
   - 0     # frezon
-  - 0     # b3
+  - 0     # bz
   effects:
-  - !type:B3ProductionReaction {}
+  - !type:BZProductionReaction {}
 
 - type: gas
   id: 9
-  name: gases-b3
-  specificHeat: 40
+  name: gases-bz
+  specificHeat: 20
   heatCapacityRatio: 1.33
   molarMass: 44
-  gasOverlaySprite: /Textures/Effects/atmospherics.rsi
-  gasOverlayState: frezon
-  gasMolesVisible: 0.6
-  color: 3a758c
-  reagent: Frezon
-  pricePerMole: 1
+  color: c56091
+  reagent: BZ
+  pricePerMole: 2
 
 - type: entity
   parent: GasCanister
-  id: B3Canister
-  name: канистра Б3
-  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Б3. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  id: BZCanister
+  name: канистра БЗ
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится БЗ. Можно прикрепить к порту коннектора с помощью гаечного ключа.
   components:
     - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
       layers:
-        - state: green
+        - state: pink
     - type: GasCanister
       gasMixture:
         volume: 1000
@@ -52,7 +52,7 @@
           - 0 # ammonia
           - 0 # n20
           - 0 # frezon
-          - 1871.71051 # b3
+          - 1871.71051 # bz
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -79,3 +79,95 @@
         - !type:DumpCanisterBehavior
     - type: Lock
       locked: true
+
+- type: reagent
+  id: BZ
+  name: reagent-name-bz
+  desc: reagent-desc-bz
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#c4f5ff"
+  metabolisms:
+    Gas:
+      effects:
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 0.5
+        - !type:OrganType
+          type: Plant
+          shouldHave: false
+        - !type:OrganType
+          type: Human
+          shouldHave: false
+        - !type:OrganType
+          type: Vox
+          shouldHave: false
+        - !type:OrganType
+          type: Rat
+          shouldHave: false
+        - !type:OrganType
+          type: Animal
+          shouldHave: false
+        - !type:OrganType
+          type: Dragon
+          shouldHave: false
+        type: Local
+        visualType: Medium
+        messages: [ "effect-sleepy" ]
+        probability: 0.1
+      - !type:MovespeedModifier
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 1
+        - !type:OrganType
+          type: Slime
+        walkSpeedModifier: 0.65
+        sprintSpeedModifier: 0.65
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 1.8
+        - !type:OrganType
+          type: Slime
+        key: ForcedSleep
+        component: ForcedSleeping
+        time: 3
+        type: Add
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 3.5
+        ignoreResistances: true
+        damage:
+          types:
+            Poison: 0.25
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        messages: [ "bz-euphoric" ]
+        probability: 0.1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 1
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 1
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 500
+        refresh: false
+      - !type:Drunk
+        boozePower: 500
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 1

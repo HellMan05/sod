@@ -12,3 +12,7 @@ reagent-name-nitrous-oxide = оксид азота
 reagent-desc-nitrous-oxide = Знаешь, как всё кажется смешнее, когда ты устал? Так вот...
 reagent-name-frezon = фрезон
 reagent-desc-frezon = Высокоэффективный хладагент... и галлюциноген.
+
+# Adventure gases
+reagent-name-bz = бз
+reagent-desc-bz = Сильнодействующее психоделическое вещество, одновременно индуцирующее стазис у слаймов и зерах.
