@@ -3,7 +3,7 @@
   id: BZProduction
   priority: 3
   maximumTemperature: 373.13
-  maximumPressure: 40 # 40 кПа
+  maximumPressure: 41 # 40 кПа
   minimumRequirements:
   - 0     # oxygen
   - 0     # nitrogen
@@ -412,3 +412,112 @@
         component: ForcedSleeping
         time: 3
         type: Add
+
+# Гипер-ноблиум
+
+- type: gasReaction
+  id: HyperNobliumProduction
+  priority: 7
+  minimumTemperature: 23.15
+  maximumTemperature: 27.85
+  minimumRequirements:
+  - 0     # oxygen
+  - 0.02  # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0.01  # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0     # bz
+  effects:
+  - !type:HyperNobliumProductionReaction {}
+
+- type: gas
+  id: 12
+  name: gases-hyper-noblium
+  specificHeat: 2000
+  heatCapacityRatio: 1.33
+  molarMass: 150
+  gasOverlaySprite: /Textures/Effects/atmospherics.rsi
+  gasOverlayState: frezon
+  gasMolesVisible: 0.1
+  gasVisbilityFactor: 1000
+  color: 0066ff
+  reagent: Hyper-Noblium
+  pricePerMole: 15
+
+- type: entity
+  parent: GasCanister
+  id: HyperNobliumCanister
+  name: канистра гипер-ноблиума
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Гипер-Ноблиум. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: nob
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 1871.71051 # hyper-noblium
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HyperNobliumCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: HyperNobliumCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: nob-1
+
+- type: reagent
+  id: Hyper-Noblium
+  name: reagent-name-hyper-noblium
+  desc: reagent-desc-hyper-noblium
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: обжигающе холодный
+  color: "#0066ff"
+  boilingPoint: -253.0
+  meltingPoint: -259.2

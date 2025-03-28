@@ -33,7 +33,8 @@ namespace Content.Server.Atmos.Portable
             // Adventure gases
             Gas.BZ,
             Gas.Halon,
-            Gas.Healium
+            Gas.Healium,
+            Gas.HyperNoblium
         };
 
         [ViewVariables(VVAccess.ReadWrite)]

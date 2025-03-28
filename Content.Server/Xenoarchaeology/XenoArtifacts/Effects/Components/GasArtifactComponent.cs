@@ -33,7 +33,8 @@ public sealed partial class GasArtifactComponent : Component
         // Adventure gases
         Gas.BZ,
         Gas.Halon,
-        Gas.Healium
+        Gas.Healium,
+        Gas.HyperNoblium
     };
 
     /// <summary>

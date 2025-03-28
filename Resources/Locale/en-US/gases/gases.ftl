@@ -13,3 +13,4 @@ gases-frezon = Frezon
 gases-bz = BZ
 gases-halon = Halon
 gases-healium = Healium
+gases-hyper-noblium = Hyper-Noblium

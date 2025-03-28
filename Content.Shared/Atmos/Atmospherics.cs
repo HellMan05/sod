@@ -178,6 +178,7 @@ namespace Content.Shared.Atmos
             [Gas.BZ] = Loc.GetString("gas-bz-abbreviation"),
             [Gas.Halon] = Loc.GetString("gas-halon-abbreviation"),
             [Gas.Healium] = Loc.GetString("gas-healium-abbreviation"),
+            [Gas.HyperNoblium] = Loc.GetString("gas-hyper-noblium-abbreviation"),
         };
 
         #region Excited Groups
@@ -207,7 +208,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 12; // Adventure gases
+        public const int TotalNumberOfGases = 13; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -278,23 +279,31 @@ namespace Content.Shared.Atmos
         /// Adventure gases start
 
         /// BZ Gas Synthesis Constants
-        public const float BZSynthesisMaxPressure = 40f; // 40 кПа
-        public const float BZPlasmaRatio = 0.55f;          // 55% плазмы
-        public const float BZN20Ratio = 0.45f;             // 45% N2O
-        public const float BZSynthesisEfficiency = 0.25f;   // 25% эффективность
-        public const float BZFormationEnergy = 5000f; // экзотерма
+        public const float BZSynthesisMaxPressure = 41f;
+        public const float BZPlasmaRatio = 0.55f;
+        public const float BZN20Ratio = 0.45f;
+        public const float BZSynthesisEfficiency = 0.80f;
+        public const float BZFormationEnergy = 5000f;
 
         /// Halon Gas Properties
-        public const float HalonActivationTemperature = 400f; // 400K
-        public const float HalonMaxTemperature = 2000f; // Макс. эффективная температура
-        public const float HalonAbsorptionRate = 1f; // Базовая скорость поглощения O2
-        public const float HalonHeatAbsorptionFactor = 500000f; // Дж/моль поглощенного O2
+        public const float HalonActivationTemperature = 400f;
+        public const float HalonMaxTemperature = 2000f;
+        public const float HalonAbsorptionRate = 1f;
+        public const float HalonHeatAbsorptionFactor = 500000f;
 
         /// Healium Gas Synthesis Constants
-        public const float HealiumMinTemperature = 25f;     // 25K
-        public const float HealiumMaxTemperature = 300f;    // 300K
-        public const float HealiumFormationEnergy = 30000f; // экзотерма
-        public const float HealiumConversionRatio = 4f;     // 4 моля смеси = 1 моль хилиума
+        public const float HealiumMinTemperature = 25f;
+        public const float HealiumMaxTemperature = 300f;
+        public const float HealiumFormationEnergy = 20000f;
+        public const float HealiumConversionRatio = 4f;
+
+        /// Hyper-Noblium Synthesis Constants
+        public const float HyperNobliumFormationMinTemp = 23.15f;
+        public const float HyperNobliumFormationMaxTemp = 27.85f;
+        public const float HyperNobliumFormationEnergy = 20000f;
+        public const float HyperNobliumFormationNitrogenRatio = 10f;
+        public const float HyperNobliumFormationTritiumRatio = 5f;
+        public const float HyperNobliumFullSuppressionThreshold = 5000000f; // можно сказать отключено, пока не придумаю как сделать корректно
 
         ///  Adventure gases end
 
@@ -395,9 +404,10 @@ namespace Content.Shared.Atmos
         Ammonia = 6,
         NitrousOxide = 7,
         Frezon = 8,
-    // Adventure gases
+        // Adventure gases
         BZ = 9,
         Halon = 10,
-        Healium = 11
+        Healium = 11,
+        HyperNoblium = 12
     }
 }

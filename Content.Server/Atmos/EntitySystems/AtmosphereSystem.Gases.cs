@@ -324,6 +324,12 @@ namespace Content.Server.Atmos.EntitySystems
         /// </summary>
         public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder)
         {
+            // Adventure gases start
+            // Проверка гипер-ноблиума перед выполнением любых реакций
+            if (mixture.GetMoles(Gas.HyperNoblium) >= Atmospherics.HyperNobliumFullSuppressionThreshold)
+                return ReactionResult.StopReactions;
+            // Adventure gases end
+
             var reaction = ReactionResult.NoReaction;
             var temperature = mixture.Temperature;
             var energy = GetThermalEnergy(mixture);
