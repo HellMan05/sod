@@ -158,6 +158,7 @@ namespace Content.Server.Atmos.EntitySystems
                             tile.Hotspot.Volume = exposedVolume;
                     }
                 }
+                return;
             }
 
             if ((exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature) &&
