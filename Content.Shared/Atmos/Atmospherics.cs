@@ -180,6 +180,7 @@ namespace Content.Shared.Atmos
             [Gas.Healium] = Loc.GetString("gas-healium-abbreviation"),
             [Gas.HyperNoblium] = Loc.GetString("gas-hyper-noblium-abbreviation"),
             [Gas.Hydrogen] = Loc.GetString("gas-hydrogen-abbreviation"),
+            [Gas.Pluoxium] = Loc.GetString("gas-pluoxium-abbreviation"),
         };
 
         #region Excited Groups
@@ -209,7 +210,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 14; // Adventure gases
+        public const int TotalNumberOfGases = 15; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -298,7 +299,7 @@ namespace Content.Shared.Atmos
         public const float HealiumFormationEnergy = 20000f;
         public const float HealiumConversionRatio = 4f;
 
-        /// Hyper-Noblium Synthesis Constants
+        /// Hyper-Noblium Gas Synthesis Constants
         public const float HyperNobliumFormationMinTemp = 23.15f;
         public const float HyperNobliumFormationMaxTemp = 27.85f;
         public const float HyperNobliumFormationEnergy = 20000f;
@@ -312,6 +313,13 @@ namespace Content.Shared.Atmos
         public const float HydrogenBurnRate = 0.8f; // 80% водорода сгорает за тик
         public const float HydrogenMinIgnitionTemperature = 560f;
         public const float HydrogenBurnOxyFactor = 2f;
+
+        /// Pluoxium Gas Synthesis Constants
+        public const float PluoxiumFormationMaxRate = 5f;
+        public const float PluoxiumOxygenRatio = 0.5f;
+        public const float PluoxiumTritiumRatio = 0.01f;
+        public const float PluoxiumHydrogenByproductRatio = 0.01f;
+        public const float PluoxiumFormationEnergy = 1000f;
 
         ///  Adventure gases end
 
@@ -417,6 +425,7 @@ namespace Content.Shared.Atmos
         Halon = 10,
         Healium = 11,
         HyperNoblium = 12,
-        Hydrogen = 13
+        Hydrogen = 13,
+        Pluoxium = 14
     }
 }

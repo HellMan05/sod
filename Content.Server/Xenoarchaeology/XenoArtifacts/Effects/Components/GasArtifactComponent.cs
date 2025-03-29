@@ -35,7 +35,8 @@ public sealed partial class GasArtifactComponent : Component
         Gas.Halon,
         Gas.Healium,
         Gas.HyperNoblium,
-        Gas.Hydrogen
+        Gas.Hydrogen,
+        Gas.Pluoxium
     };
 
     /// <summary>

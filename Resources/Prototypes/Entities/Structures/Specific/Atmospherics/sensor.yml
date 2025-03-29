@@ -30,6 +30,7 @@
       Healium: danger
       HyperNoblium: danger
       Hydrogen: danger
+      Pluoxium: stationPluoxium
 
   - type: Tag
     tags:

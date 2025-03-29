@@ -28,7 +28,8 @@ namespace Content.Shared.Atmos.Piping.Unary.Components
             Gas.Halon,
             Gas.Healium,
             Gas.HyperNoblium,
-            Gas.Hydrogen
+            Gas.Hydrogen,
+            Gas.Pluoxium
         };
 
         // Presets for 'dumb' air alarm modes

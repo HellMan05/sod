@@ -15,3 +15,4 @@ gases-halon = Halon
 gases-healium = Healium
 gases-hyper-noblium = Hyper-Noblium
 gases-hydrogen = Hydrogen
+gases-pluoxium = Pluoxium

@@ -62,3 +62,5 @@ ent-HyperNobliumCanisterBroken = { ent-GasCanisterBrokenBase }
     .desc = { ent-GasCanisterBrokenBase.desc }
 ent-HydrogenCanisterBroken = { ent-GasCanisterBrokenBase }
     .desc = { ent-GasCanisterBrokenBase.desc }
+ent-PluoxiumCanisterBroken = { ent-GasCanisterBrokenBase }
+    .desc = { ent-GasCanisterBrokenBase.desc }
