@@ -14,3 +14,4 @@ gas-healium-abbreviation = Hm
 gas-hyper-noblium-abbreviation = Hn
 gas-hydrogen-abbreviation = H
 gas-pluoxium-abbreviation = Pl
+gas-nitrium-abbreviation = Nm

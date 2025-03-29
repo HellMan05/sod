@@ -16,3 +16,4 @@ gases-healium = Healium
 gases-hyper-noblium = Hyper-Noblium
 gases-hydrogen = Hydrogen
 gases-pluoxium = Pluoxium
+gases-nitrium = Nitrium

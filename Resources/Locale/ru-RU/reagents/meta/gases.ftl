@@ -24,3 +24,5 @@ reagent-name-hyper-noblium = гипер-ноблиум
 reagent-desc-hyper-noblium = Царь среди газов, гипер-ноблиум в достаточных количествах блокирует все возможные реакции.
 reagent-name-pluoxium = плюоксиум
 reagent-desc-pluoxium = Окисляющий, голубоватый газ, насыщает кровь кратно лучше чем кислород.
+reagent-name-nitrium = нитриум
+reagent-desc-nitrium = Окисляющий, голубоватый газ, насыщает кровь кратно лучше чем кислород.

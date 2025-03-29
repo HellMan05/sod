@@ -16,3 +16,4 @@ gases-healium = Хилиум
 gases-hyper-noblium = Гипер-Ноблиум
 gases-hydrogen = Водород
 gases-pluoxium = Плюоксиум
+gases-nitrium = Нитриум

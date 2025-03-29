@@ -1,4 +1,4 @@
-# БЗ
+#region БЗ
 - type: gasReaction
   id: BZProduction
   priority: 3
@@ -156,7 +156,7 @@
           reagent: BZ
           min: 1
 
-# Галон
+#region Галон
 
 - type: gasReaction
   id: HalonFireSuppression
@@ -287,7 +287,7 @@
           shouldHave: false
         factor: -4
 
-# Хилиум
+#region  Хилиум
 
 - type: gasReaction
   id: HealiumProduction
@@ -413,12 +413,12 @@
         time: 3
         type: Add
 
-# Гипер-ноблиум
+#region Гипер-ноблиум
 
 - type: gasReaction
   id: HyperNobliumProduction
   priority: 7
-  minimumTemperature: 23.15
+  minimumTemperature: 21.67
   maximumTemperature: 27.85
   minimumRequirements:
   - 0     # oxygen
@@ -522,7 +522,7 @@
   boilingPoint: -253.0
   meltingPoint: -259.2
 
-# Водород
+#region Водород
 
 - type: gasReaction
   id: HydrogenFire
@@ -621,7 +621,7 @@
       sprite: Adventure/Structures/Storage/canister.rsi
       state: h2-1
 
-# Плюоксиум
+#region Плюоксиум
 
 - type: gasReaction
   id: PluoxiumProduction
@@ -787,12 +787,157 @@
         time: 5
 
 - type: alarmThreshold
-  id: stationPluoxium  # Измените ID для нового газа
-  lowerBound: !type:AlarmThresholdSetting
-    threshold: 0.0125  # 0.10 / 8
+  id: stationPluoxium
   upperBound: !type:AlarmThresholdSetting
     threshold: 0.0375  # 0.3 / 8
-  lowerWarnAround: !type:AlarmThresholdSetting
-    threshold: 0.1875  # 1.5 / 8
   upperWarnAround: !type:AlarmThresholdSetting
     threshold: 0.1     # 0.8 / 8
+
+#region Нитриум
+
+- type: gasReaction
+  id: NitriumProduction
+  priority: 5
+  minimumTemperature: 1500
+  minimumRequirements:
+  - 0     # oxygen
+  - 0.01  # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0.02  # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0.01  # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0     # hydrogen
+  effects:
+    - !type:NitriumProductionReaction {}
+
+- type: gas
+  id: 15
+  name: gases-nitrium
+  specificHeat: 10
+  heatCapacityRatio: 1.3
+  molarMass: 50
+  gasOverlaySprite: /Textures/Adventure/Effects/atmospherics.rsi
+  gasOverlayState: nitrium
+  gasVisbilityFactor: 500
+  color: b65d40
+  reagent: Nitrium
+  pricePerMole: 12
+
+- type: entity
+  parent: GasCanister
+  id: NitriumCanister
+  name: канистра нитриума
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Нитриум. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: brown
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 0 # hyper-noblium
+          - 0 # h2
+          - 0 # pluoxium
+          - 1871.71051 # nitrium
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            NitriumCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: NitriumCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: brown-1
+
+- type: reagent
+  id: Nitrium
+  name: reagent-name-nitrium
+  desc: reagent-desc-nitrium
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#b65d40"
+  boilingPoint: -253
+  meltingPoint: -259
+  metabolisms:
+    Gas:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+            min: 6
+        key: Stun
+        time: 1
+        type: Remove
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+            min: 6
+        key: KnockedDown
+        time: 4
+        type: Remove
+      - !type:MovespeedModifier
+        conditions:
+          - !type:ReagentThreshold
+            reagent: Nitrium
+            min: 3
+        statusLifetime: 2
+        walkSpeedModifier: 1.5
+        sprintSpeedModifier: 1.5
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            reagent: Nitrium
+            min: 9
+        scaleByQuantity: true
+        ignoreResistances: true
+        damage:
+          types:
+            Poison: 0.05

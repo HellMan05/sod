@@ -5,8 +5,11 @@ using Content.Shared.Atmos.Reactions;
 using JetBrains.Annotations;
 
 namespace Content.Server.Adventure.Atmos.Reactions;
+
 /// <summary>
-/// Реакция синтеза хилиума из фрезона и бз.
+/// Реакция синтеза хилиума из фрезона и BZ
+/// Соотношение: 1 Frezon + 1 BZ → 0.25 Healium
+/// Ограничения: температура, максимальная скорость синтеза
 /// </summary>
 [UsedImplicitly]
 public sealed partial class HealiumProductionReaction : IGasReactionEffect
@@ -26,9 +29,11 @@ public sealed partial class HealiumProductionReaction : IGasReactionEffect
         if (limitingFactor <= 0)
             return ReactionResult.NoReaction;
 
+        limitingFactor = Math.Min(limitingFactor, Atmospherics.HealiumProductionMaxRate);
+
         var frezonBurned = limitingFactor;
         var bzBurned = limitingFactor;
-        var healiumProduced = limitingFactor * 0.25f;
+        var healiumProduced = limitingFactor * Atmospherics.HealiumProductionYield;
 
         mixture.AdjustMoles(Gas.Frezon, -frezonBurned);
         mixture.AdjustMoles(Gas.BZ, -bzBurned);
@@ -39,7 +44,7 @@ public sealed partial class HealiumProductionReaction : IGasReactionEffect
             (Atmospherics.HealiumMaxTemperature - Atmospherics.HealiumMinTemperature),
             0.5f, 2f);
 
-        var energyReleased = healiumProduced * Atmospherics.HealiumFormationEnergy * temperatureFactor;
+        var energyReleased = healiumProduced * Atmospherics.HealiumProductionEnergy * temperatureFactor / heatScale;
         var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
         if (heatCapacity > Atmospherics.MinimumHeatCapacity)
             mixture.Temperature += energyReleased / heatCapacity;

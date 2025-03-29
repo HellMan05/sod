@@ -6,15 +6,16 @@ using JetBrains.Annotations;
 
 namespace Content.Server.Adventure.Atmos.Reactions;
 /// <summary>
-/// Реакция синтеза гипер-ноблиума из азота и трития.
+/// Реакция синтеза гипер-ноблиума из азота и трития
+/// Соотношение: 10 азота + 5 трития → 1 гипер-ноблиума
 /// </summary>
 [UsedImplicitly]
 public sealed partial class HyperNobliumProductionReaction : IGasReactionEffect
 {
     public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder, AtmosphereSystem atmosphereSystem, float heatScale)
     {
-        if (mixture.Temperature < Atmospherics.HyperNobliumFormationMinTemp ||
-            mixture.Temperature > Atmospherics.HyperNobliumFormationMaxTemp)
+        if (mixture.Temperature < Atmospherics.HyperNobliumProductionMinTemp ||
+            mixture.Temperature > Atmospherics.HyperNobliumProductionMaxTemp)
             return ReactionResult.NoReaction;
 
         var initialNitrogen = mixture.GetMoles(Gas.Nitrogen);
@@ -26,29 +27,30 @@ public sealed partial class HyperNobliumProductionReaction : IGasReactionEffect
             ? Math.Clamp(initialTritium / totalGas, 0.001f, 1f)
             : 1f;
 
-
         var nobliumPossible = Math.Min(
             (initialNitrogen + initialTritium) * 0.01f,
             Math.Min(
-                initialTritium / (Atmospherics.HyperNobliumFormationTritiumRatio * tritiumReductionFactor),
-                initialNitrogen / Atmospherics.HyperNobliumFormationNitrogenRatio
+                initialTritium / (Atmospherics.HyperNobliumProductionTritiumRatio * tritiumReductionFactor),
+                initialNitrogen / Atmospherics.HyperNobliumProductionNitrogenRatio
             )
         );
 
+        nobliumPossible = Math.Min(nobliumPossible, Atmospherics.HyperNobliumProductionMaxRate);
+
         if (nobliumPossible <= 0 ||
-            initialTritium < Atmospherics.HyperNobliumFormationTritiumRatio * nobliumPossible * tritiumReductionFactor ||
-            initialNitrogen < Atmospherics.HyperNobliumFormationNitrogenRatio * nobliumPossible)
+            initialTritium < Atmospherics.HyperNobliumProductionTritiumRatio * nobliumPossible * tritiumReductionFactor ||
+            initialNitrogen < Atmospherics.HyperNobliumProductionNitrogenRatio * nobliumPossible)
         {
             return ReactionResult.NoReaction;
         }
 
-        mixture.AdjustMoles(Gas.Nitrogen, -Atmospherics.HyperNobliumFormationNitrogenRatio * nobliumPossible);
-        mixture.AdjustMoles(Gas.Tritium, -Atmospherics.HyperNobliumFormationTritiumRatio * nobliumPossible * tritiumReductionFactor);
+        mixture.AdjustMoles(Gas.Nitrogen, -Atmospherics.HyperNobliumProductionNitrogenRatio * nobliumPossible);
+        mixture.AdjustMoles(Gas.Tritium, -Atmospherics.HyperNobliumProductionTritiumRatio * nobliumPossible * tritiumReductionFactor);
         mixture.AdjustMoles(Gas.HyperNoblium, nobliumPossible);
 
         var energyReleased = nobliumPossible *
-                           (Atmospherics.HyperNobliumFormationEnergy /
-                           Math.Max(initialBZ, 1f));
+                           (Atmospherics.HyperNobliumProductionEnergy /
+                           Math.Max(initialBZ, 1f)) / heatScale;
 
         var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
         if (heatCapacity > Atmospherics.MinimumHeatCapacity)

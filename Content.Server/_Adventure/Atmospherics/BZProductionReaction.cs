@@ -32,6 +32,8 @@ public sealed partial class BZProductionReaction : IGasReactionEffect
         if (limitingFactor <= 0)
             return ReactionResult.NoReaction;
 
+        limitingFactor = Math.Min(limitingFactor, Atmospherics.BZSynthesisMaxRate);
+
         var plasmaBurned = limitingFactor * Atmospherics.BZPlasmaRatio;
         var n20Burned = limitingFactor * Atmospherics.BZN20Ratio;
         var bzProduced = (plasmaBurned + n20Burned) * Atmospherics.BZSynthesisEfficiency;
@@ -40,7 +42,7 @@ public sealed partial class BZProductionReaction : IGasReactionEffect
         mixture.AdjustMoles(Gas.NitrousOxide, -n20Burned);
         mixture.AdjustMoles(Gas.BZ, bzProduced);
 
-        var energyToAdd = bzProduced * Atmospherics.BZFormationEnergy;
+        var energyToAdd = bzProduced * Atmospherics.BZFormationEnergy / heatScale;
         var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
         if (heatCapacity > Atmospherics.MinimumHeatCapacity)
             mixture.Temperature += energyToAdd / heatCapacity;

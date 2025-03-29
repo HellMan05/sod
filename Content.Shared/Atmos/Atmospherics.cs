@@ -181,6 +181,7 @@ namespace Content.Shared.Atmos
             [Gas.HyperNoblium] = Loc.GetString("gas-hyper-noblium-abbreviation"),
             [Gas.Hydrogen] = Loc.GetString("gas-hydrogen-abbreviation"),
             [Gas.Pluoxium] = Loc.GetString("gas-pluoxium-abbreviation"),
+            [Gas.Nitrium] = Loc.GetString("gas-nitrium-abbreviation"),
         };
 
         #region Excited Groups
@@ -210,7 +211,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 15; // Adventure gases
+        public const int TotalNumberOfGases = 16; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -286,6 +287,7 @@ namespace Content.Shared.Atmos
         public const float BZN20Ratio = 0.45f;
         public const float BZSynthesisEfficiency = 0.80f;
         public const float BZFormationEnergy = 5000f;
+        public const float BZSynthesisMaxRate = 3f;
 
         /// Halon Gas Properties
         public const float HalonActivationTemperature = 400f;
@@ -296,18 +298,21 @@ namespace Content.Shared.Atmos
         /// Healium Gas Synthesis Constants
         public const float HealiumMinTemperature = 25f;
         public const float HealiumMaxTemperature = 300f;
-        public const float HealiumFormationEnergy = 20000f;
-        public const float HealiumConversionRatio = 4f;
+        public const float HealiumConversionRatio = 2f;
+        public const float HealiumProductionEnergy = 200000f;
+        public const float HealiumProductionMaxRate = 2.5f;
+        public const float HealiumProductionYield = 0.3f;
 
         /// Hyper-Noblium Gas Synthesis Constants
-        public const float HyperNobliumFormationMinTemp = 23.15f;
-        public const float HyperNobliumFormationMaxTemp = 27.85f;
-        public const float HyperNobliumFormationEnergy = 20000f;
-        public const float HyperNobliumFormationNitrogenRatio = 10f;
-        public const float HyperNobliumFormationTritiumRatio = 5f;
+        public const float HyperNobliumProductionMinTemp = 21.67f;
+        public const float HyperNobliumProductionMaxTemp = 27.85f;
+        public const float HyperNobliumProductionEnergy = 20000f;
+        public const float HyperNobliumProductionNitrogenRatio = 10f;
+        public const float HyperNobliumProductionTritiumRatio = 5f;
+        public const float HyperNobliumProductionMaxRate = 3.5f;
 
         /// Hyper-Noblium effect constant
-        public const float HyperNobliumFullSuppressionThresholdPercentage  = 0.03f; // если в воздушной смеси ноблиума хотя бы 3%, то все реакции прекращаются, даже горение трития или плазмы
+        public const float HyperNobliumFullSuppressionThresholdPercentage  = 0.015f; // если в воздушной смеси ноблиума хотя бы 3%, то все реакции прекращаются, даже горение трития или плазмы
 
         /// Hydrogen burning constants
         public const float HydrogenBurnRate = 0.8f; // 80% водорода сгорает за тик
@@ -320,6 +325,18 @@ namespace Content.Shared.Atmos
         public const float PluoxiumTritiumRatio = 0.01f;
         public const float PluoxiumHydrogenByproductRatio = 0.01f;
         public const float PluoxiumFormationEnergy = 1000f;
+
+        /// Nitrium Production Constants
+        public const float NitriumProductionMinTemp = 1500f;
+        public const float NitriumProductionTempDivisor = 2984f;
+        public const float NitriumProductionEnergy = 100000f;
+        public const float NitriumProductionMaxRate = 5f;
+        public const float NitriumTritiumRatio = 1f;
+        public const float NitriumNitrogenRatio = 1f;
+        public const float NitriumBZRatio = 0.05f;
+        public const float NitriumMinTritium = 20f;
+        public const float NitriumMinNitrogen = 10f;
+        public const float NitriumMinBZ = 5f;
 
         ///  Adventure gases end
 
@@ -426,6 +443,7 @@ namespace Content.Shared.Atmos
         Healium = 11,
         HyperNoblium = 12,
         Hydrogen = 13,
-        Pluoxium = 14
+        Pluoxium = 14,
+        Nitrium = 15
     }
 }

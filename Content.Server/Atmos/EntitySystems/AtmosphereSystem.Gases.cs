@@ -343,8 +343,7 @@ namespace Content.Server.Atmos.EntitySystems
                     }
                     for (int i = 0; i < savedResults.Length; i++)
                     {
-                        if (savedResults[i] > 0)
-                            mixture.ReactionResults[i] = 0;
+                        mixture.ReactionResults[i] = 0;
                     }
 
                     return ReactionResult.StopReactions;
