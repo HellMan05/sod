@@ -13,4 +13,5 @@ gases-frezon = Фрезон
 gases-bz = БЗ
 gases-halon = Галон
 gases-healium = Хилиум
-gases-hyper-noblium = Гипер-Ноблий
+gases-hyper-noblium = Гипер-Ноблиум
+gases-hydrogen = Водород

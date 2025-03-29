@@ -182,7 +182,7 @@
   specificHeat: 175
   heatCapacityRatio: 1.33
   molarMass: 150
-  gasOverlaySprite: /Textures/Adventure/atmospherics.rsi
+  gasOverlaySprite: /Textures/Adventure/Effects/atmospherics.rsi
   gasOverlayState: halon
   color: 99ccff
   reagent: Halon
@@ -312,7 +312,7 @@
   specificHeat: 10
   heatCapacityRatio: 1.33
   molarMass: 40
-  gasOverlaySprite: /Textures/Adventure/atmospherics.rsi
+  gasOverlaySprite: /Textures/Adventure/Effects/atmospherics.rsi
   gasOverlayState: healium
   color: 512525
   reagent: Healium
@@ -521,3 +521,103 @@
   color: "#0066ff"
   boilingPoint: -253.0
   meltingPoint: -259.2
+
+# Водород
+
+- type: gasReaction
+  id: HydrogenFire
+  priority: -1
+  minimumTemperature: 373.149
+  minimumRequirements:
+  - 0.01     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0.02  # hydrogen
+  effects:
+    - !type:HydrogenBurnReaction {}
+
+- type: gas
+  id: 13
+  name: gases-hydrogen
+  specificHeat: 15
+  heatCapacityRatio: 1.5
+  molarMass: 2
+  color: e1e1e1
+  reagent: Hydrogen
+  pricePerMole: 5
+
+- type: entity
+  parent: GasCanister
+  id: HydrogenCanister
+  name: канистра водорода
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Водород. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: h2
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 0 # hyper-noblium
+          - 1871.71051 # h2
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HydrogenCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: HydrogenCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: h2-1
+

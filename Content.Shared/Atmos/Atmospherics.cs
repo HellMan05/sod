@@ -179,6 +179,7 @@ namespace Content.Shared.Atmos
             [Gas.Halon] = Loc.GetString("gas-halon-abbreviation"),
             [Gas.Healium] = Loc.GetString("gas-healium-abbreviation"),
             [Gas.HyperNoblium] = Loc.GetString("gas-hyper-noblium-abbreviation"),
+            [Gas.Hydrogen] = Loc.GetString("gas-hydrogen-abbreviation"),
         };
 
         #region Excited Groups
@@ -208,7 +209,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 13; // Adventure gases
+        public const int TotalNumberOfGases = 14; // Adventure gases
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -303,7 +304,14 @@ namespace Content.Shared.Atmos
         public const float HyperNobliumFormationEnergy = 20000f;
         public const float HyperNobliumFormationNitrogenRatio = 10f;
         public const float HyperNobliumFormationTritiumRatio = 5f;
+
+        /// Hyper-Noblium effect constant
         public const float HyperNobliumFullSuppressionThresholdPercentage  = 0.03f; // если в воздушной смеси ноблиума хотя бы 3%, то все реакции прекращаются, даже горение трития или плазмы
+
+        /// Hydrogen burning constants
+        public const float HydrogenBurnRate = 0.8f; // 80% водорода сгорает за тик
+        public const float HydrogenMinIgnitionTemperature = 560f;
+        public const float HydrogenBurnOxyFactor = 2f;
 
         ///  Adventure gases end
 
@@ -408,6 +416,7 @@ namespace Content.Shared.Atmos
         BZ = 9,
         Halon = 10,
         Healium = 11,
-        HyperNoblium = 12
+        HyperNoblium = 12,
+        Hydrogen = 13
     }
 }
