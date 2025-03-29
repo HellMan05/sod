@@ -148,14 +148,16 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (tile.Hotspot.Valid)
             {
-                if (soh && (plasma > 0.5f || tritium > 0.5f || hydrogen > 0.5f)) // Adventure
+                if (soh)
                 {
-                    if (tile.Hotspot.Temperature < exposedTemperature)
-                        tile.Hotspot.Temperature = exposedTemperature;
-                    if (tile.Hotspot.Volume < exposedVolume)
-                        tile.Hotspot.Volume = exposedVolume;
+                    if (plasma > 0.5f || tritium > 0.5f || hydrogen > 0.5f) // Adventure
+                    {
+                        if (tile.Hotspot.Temperature < exposedTemperature)
+                            tile.Hotspot.Temperature = exposedTemperature;
+                        if (tile.Hotspot.Volume < exposedVolume)
+                            tile.Hotspot.Volume = exposedVolume;
+                    }
                 }
-                return;
             }
 
             if ((exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature) &&
