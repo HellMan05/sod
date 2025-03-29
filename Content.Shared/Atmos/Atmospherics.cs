@@ -303,7 +303,7 @@ namespace Content.Shared.Atmos
         public const float HyperNobliumFormationEnergy = 20000f;
         public const float HyperNobliumFormationNitrogenRatio = 10f;
         public const float HyperNobliumFormationTritiumRatio = 5f;
-        public const float HyperNobliumFullSuppressionThreshold = 5000000f; // можно сказать отключено, пока не придумаю как сделать корректно
+        public const float HyperNobliumFullSuppressionThresholdPercentage  = 0.03f; // если в воздушной смеси ноблиума хотя бы 3%, то все реакции прекращаются, даже горение трития или плазмы
 
         ///  Adventure gases end
 

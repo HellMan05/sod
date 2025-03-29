@@ -1,5 +1,6 @@
 using Content.Server.Atmos;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Adventure.Atmos.Reactions;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Reactions;
 using JetBrains.Annotations;
@@ -14,16 +15,20 @@ public sealed partial class HypernobliumEffect : IGasReactionEffect
 {
     public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder, AtmosphereSystem atmosphereSystem, float heatScale)
     {
-        // Получаем текущее количество Hypernoblium в смеси
-        var hypernobliumAmount = mixture.GetMoles(Gas.HyperNoblium);
+        if (this is HyperNobliumProductionReaction)
+            return ReactionResult.NoReaction;
 
-        // Если Hypernoblium достаточно - останавливаем все реакции
-        if (hypernobliumAmount >= Atmospherics.HyperNobliumFullSuppressionThreshold)
+        var hyperNobliumMoles = mixture.GetMoles(Gas.HyperNoblium);
+        var totalMoles = mixture.TotalMoles;
+
+        if (totalMoles < Atmospherics.GasMinMoles)
+            return ReactionResult.NoReaction;
+
+        var fraction = hyperNobliumMoles / totalMoles;
+
+        if (fraction >= Atmospherics.HyperNobliumFullSuppressionThresholdPercentage)
         {
-            // Очищаем результаты всех реакций
             Array.Clear(mixture.ReactionResults, 0, mixture.ReactionResults.Length);
-
-            // Возвращаем флаг остановки всех последующих реакций
             return ReactionResult.StopReactions;
         }
 
