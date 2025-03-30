@@ -30,6 +30,7 @@ ent-GasMinerAmmonia = газодобытчик аммиака
     .desc = { ent-GasMinerBase.desc }
 ent-GasMinerNitrousOxide = газодобытчик оксида азота N2O
     .desc = { ent-GasMinerBase.desc }
+# Adventure gases begin
 ent-GasMinerBZ = газодобытчик бз
     .desc = { ent-GasMinerBase.desc }
 ent-GasMinerHalon = газодобытчик галона
@@ -52,3 +53,4 @@ ent-GasMinerProtoNitrate = газодобытчик прото-нитрата
     .desc = { ent-GasMinerBase.desc }
 ent-GasMinerZauker = газодобытчик заукера
     .desc = { ent-GasMinerBase.desc }
+# Adventure gases end
