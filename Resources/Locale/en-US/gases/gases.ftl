@@ -8,8 +8,7 @@ gases-ammonia = Ammonia
 gases-n2o = Nitrous Oxide
 gases-frezon = Frezon
 
-# Adventure gases
-
+# Adventure gases begin
 gases-bz = BZ
 gases-halon = Halon
 gases-healium = Healium
@@ -21,3 +20,4 @@ gases-helium = Helium
 gases-anti-noblium = Anti-Noblium
 gases-proto-nitrate = Proto-Nitrate
 gases-zauker = Zauker
+# Adventure gases end
