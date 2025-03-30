@@ -17,3 +17,7 @@ gases-hyper-noblium = Гипер-Ноблиум
 gases-hydrogen = Водород
 gases-pluoxium = Плюоксиум
 gases-nitrium = Нитриум
+gases-helium = Гелий
+gases-anti-noblium = Анти-Ноблиум
+gases-proto-nitrate = Прото-Нитрат
+gases-zauker = Заукер

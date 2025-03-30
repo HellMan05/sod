@@ -30,7 +30,11 @@ namespace Content.Shared.Atmos.Piping.Unary.Components
             Gas.HyperNoblium,
             Gas.Hydrogen,
             Gas.Pluoxium,
-            Gas.Nitrium
+            Gas.Nitrium,
+            Gas.Helium,
+            Gas.AntiNoblium,
+            Gas.ProtoNitrate,
+            Gas.Zauker
         };
 
         // Presets for 'dumb' air alarm modes

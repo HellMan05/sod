@@ -37,7 +37,11 @@ namespace Content.Server.Atmos.Portable
             Gas.HyperNoblium,
             Gas.Hydrogen,
             Gas.Pluoxium,
-            Gas.Nitrium
+            Gas.Nitrium,
+            Gas.Helium,
+            Gas.AntiNoblium,
+            Gas.ProtoNitrate,
+            Gas.Zauker
         };
 
         [ViewVariables(VVAccess.ReadWrite)]

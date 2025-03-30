@@ -31,7 +31,7 @@
 - type: entity
   parent: GasCanister
   id: BZCanister
-  name: канистра БЗ
+  name: канистра бз
   description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится БЗ. Можно прикрепить к порту коннектора с помощью гаечного ключа.
   components:
     - type: Sprite
@@ -257,6 +257,8 @@
   physicalDesc: reagent-physical-desc-gaseous
   flavor: minty
   color: "#66ff33"
+  boilingPoint: -253.0
+  meltingPoint: -259.2
   metabolisms:
     Gas:
       effects:
@@ -291,7 +293,7 @@
 
 - type: gasReaction
   id: HealiumProduction
-  priority: 8
+  priority: 5
   minimumRequirements:
   - 0     # oxygen
   - 0     # nitrogen
@@ -445,7 +447,7 @@
   gasMolesVisible: 0.1
   gasVisbilityFactor: 1000
   color: 0066ff
-  reagent: Hyper-Noblium
+  reagent: HyperNoblium
   pricePerMole: 15
 
 - type: entity
@@ -513,7 +515,7 @@
       state: nob-1
 
 - type: reagent
-  id: Hyper-Noblium
+  id: HyperNoblium
   name: reagent-name-hyper-noblium
   desc: reagent-desc-hyper-noblium
   physicalDesc: reagent-physical-desc-gaseous
@@ -625,7 +627,7 @@
 
 - type: gasReaction
   id: PluoxiumProduction
-  priority: 4
+  priority: 6
   minimumTemperature: 50
   maximumTemperature: 273
   minimumRequirements:
@@ -764,7 +766,7 @@
           type: Vox
           shouldHave: false
         ratios:
-          CarbonDioxide: 8.0
+          CarbonDioxide: 1.0
           Pluoxium: -1.0
       - !type:HealthChange
         conditions:
@@ -797,7 +799,7 @@
 
 - type: gasReaction
   id: NitriumProduction
-  priority: 5
+  priority: 7
   minimumTemperature: 1500
   minimumRequirements:
   - 0     # oxygen
@@ -817,6 +819,33 @@
   effects:
     - !type:NitriumProductionReaction {}
 
+- type: gasReaction
+  id: NitriumDecomposition
+  priority: 8
+  maximumTemperature: 343.13
+  minimumRequirements:
+  - 0.01  # oxygen
+  - 0     # nitrogen
+  - 0     # CO2
+  - 0     # Plasma
+  - 0     # Tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n20
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0     # h2
+  - 0     # pluoxium
+  - 0.01  # nitrium
+  - 0     # helium
+  - 0     # antinob
+  - 0     # protonitrate
+  - 0     # zauker
+  effects:
+    - !type:NitriumDecompositionReaction {}
 - type: gas
   id: 15
   name: gases-nitrium
@@ -941,3 +970,659 @@
         damage:
           types:
             Poison: 0.05
+
+#region Гелий
+
+- type: gas
+  id: 16
+  name: gases-helium
+  specificHeat: 15
+  heatCapacityRatio: 15
+  molarMass: 4
+  color: acac00
+  reagent: Helium
+  pricePerMole: 7
+
+- type: entity
+  parent: GasCanister
+  id: HeliumCanister
+  name: канистра гелия
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Гелий. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: helium
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 0 # hyper-noblium
+          - 0 # h2
+          - 0 # pluoxium
+          - 0 # nitrium
+          - 1871.71051 # helium
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HeliumCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: HeliumCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: helium-1
+
+- type: reagent
+  id: Helium
+  name: reagent-name-helium
+  desc: reagent-desc-helium
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#acac00"
+  boilingPoint: -253.0
+  meltingPoint: -259.2
+
+#region Анти-Ноблиум
+
+- type: gas
+  id: 17
+  name: gases-anti-noblium
+  specificHeat: 1
+  heatCapacityRatio: 1
+  molarMass: 200
+  gasOverlaySprite: /Textures/Adventure/Effects/atmospherics.rsi
+  gasOverlayState: anti_noblium
+  gasMolesVisible: 0.1
+  gasVisbilityFactor: 100
+  color: 003000
+  reagent: AntiNoblium
+  pricePerMole: 20
+
+- type: entity
+  parent: GasCanister
+  id: AntiNobliumCanister
+  name: канистра анти-ноблиума
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Анти-Ноблиум. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: antinob
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 0 # hyper-noblium
+          - 0 # h2
+          - 0 # pluoxium
+          - 0 # nitrium
+          - 0 # helium
+          - 1871.71051 # antinob
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            AntiNobliumCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: AntiNobliumCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: antinob-1
+
+- type: reagent
+  id: AntiNoblium
+  name: reagent-name-anti-noblium
+  desc: reagent-desc-anti-noblium
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#003000"
+  boilingPoint: -253.0
+  meltingPoint: -259.2
+
+#region Прото-Нитрат
+
+- type: gasReaction
+  id: PNProduction
+  priority: 9
+  minimumTemperature: 5000
+  maximumTemperature: 10000
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0.02  # hydrogen
+  - 0.01  # pluoxium
+  effects:
+    - !type:ProtoNitrateProductionReaction {}
+
+- type: gasReaction
+  id: PNHydrogenConversion
+  priority: 10
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 150   # hydrogen
+  - 0     # pluoxium
+  - 0     # nitrium
+  - 0     # helium
+  - 0     # antinob
+  - 0.01  # protonitrate
+  effects:
+    - !type:ProtoNitrateHydrogenConversion {}
+
+- type: gasReaction
+  id: PNTritiumDetox
+  priority: 11
+  minimumTemperature: 150
+  maximumTemperature: 340
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0.01  # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0     # hydrogen
+  - 0     # pluoxium
+  - 0     # nitrium
+  - 0     # helium
+  - 0     # antinob
+  - 0.01  # protonitrate
+  effects:
+    - !type:ProtoNitrateTritiumReaction {}
+
+- type: gasReaction
+  id: ProtoNitrateBZaseAction
+  priority: 12
+  minimumTemperature: 260
+  maximumTemperature: 280
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0.01  # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0     # hydrogen
+  - 0     # pluoxium
+  - 0     # nitrium
+  - 0     # helium
+  - 0     # antinob
+  - 0.01  # protonitrate
+  effects:
+    - !type:ProtoNitrateBZDecomposition {}
+
+- type: gas
+  id: 18
+  name: gases-proto-nitrate
+  specificHeat: 30
+  heatCapacityRatio: 1.33
+  molarMass: 120
+  gasOverlaySprite: /Textures/Adventure/Effects/atmospherics.rsi
+  gasOverlayState: proto_nitrate
+  gasMolesVisible: 0.1
+  gasVisbilityFactor: 800
+  color: 00cd0d
+  reagent: ProtoNitrate
+  pricePerMole: 5
+
+- type: entity
+  parent: GasCanister
+  id: ProtoNitrateCanister
+  name: канистра прото-нитрата
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Прото-Нитрат. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: proto_nitrate
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 0 # hyper-noblium
+          - 0 # h2
+          - 0 # pluoxium
+          - 0 # nitrium
+          - 0 # helium
+          - 0 # antinob
+          - 1871.71051 # protonitrate
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ProtoNitrateCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: ProtoNitrateCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: proto_nitrate-1
+
+- type: reagent
+  id: ProtoNitrate
+  name: reagent-name-proto-nitrate
+  desc: reagent-desc-proto-nitrate
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#00cd0d"
+  boilingPoint: -253.0
+  meltingPoint: -259.2
+
+#region Заукер
+
+- type: gasReaction
+  id: ZaukerProduction
+  priority: 13
+  minimumTemperature: 50000
+  maximumTemperature: 75000
+  minimumRequirements:
+  - 0     # oxygen
+  - 0     # nitrogen
+  - 0     # carbon dioxide
+  - 0     # plasma
+  - 0     # tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n2o
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0.01  # hyper-noblium
+  - 0     # hydrogen
+  - 0     # pluoxium
+  - 0.01  # nitrium
+  effects:
+    - !type:ZaukerProductionReaction {}
+
+- type: gasReaction
+  id: ZaukerDecomposition
+  priority: 14
+  minimumRequirements:
+  - 0     # oxygen
+  - 0.01  # nitrogen
+  - 0     # CO2
+  - 0     # Plasma
+  - 0     # Tritium
+  - 0     # vapor
+  - 0     # ammonia
+  - 0     # n20
+  - 0     # frezon
+  - 0     # bz
+  - 0     # halon
+  - 0     # healium
+  - 0     # hyper-noblium
+  - 0     # h2
+  - 0     # pluoxium
+  - 0     # nitrium
+  - 0     # helium
+  - 0     # antinob
+  - 0     # protonitrate
+  - 0.01  # zauker
+  effects:
+    - !type:ZaukerDecompositionReaction {}
+
+- type: gas
+  id: 19
+  name: gases-zauker
+  specificHeat: 350
+  heatCapacityRatio: 1.33
+  molarMass: 110
+  gasOverlaySprite: /Textures/Adventure/Effects/atmospherics.rsi
+  gasOverlayState: zauker
+  gasMolesVisible: 0.1
+  gasVisbilityFactor: 100
+  color: 000031
+  reagent: Zauker
+  pricePerMole: 30
+
+- type: entity
+  parent: GasCanister
+  id: ZaukerCanister
+  name: канистра заукера
+  description: Канистра, в которой может содержаться газ любого вида. В этой, предположительно, содержится Заукер. Можно прикрепить к порту коннектора с помощью гаечного ключа.
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      noRot: true
+      layers:
+        - state: zauker
+    - type: GasCanister
+      gasMixture:
+        volume: 1000
+        moles:
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 # vapor
+          - 0 # ammonia
+          - 0 # n20
+          - 0 # frezon
+          - 0 # bz
+          - 0 # halon
+          - 0 # healium
+          - 0 # hyper-noblium
+          - 0 # h2
+          - 0 # pluoxium
+          - 0 # nitrium
+          - 0 # helium
+          - 0 # antinob
+          - 0 # protonitrate
+          - 1871.71051 # zauker
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ZaukerCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: ZaukerCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: Adventure/Structures/Storage/canister.rsi
+      state: zauker-1
+
+- type: reagent
+  id: Zauker
+  name: reagent-name-zauker
+  desc: reagent-desc-zauker
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#000031"
+  boilingPoint: -253.0
+  meltingPoint: -259.2
+  metabolisms:
+    Gas:
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Zauker
+          min: 0.25
+          max: 8
+        scaleByQuantity: true
+        ignoreResistances: true
+        damage:
+          types:
+            Slash: 0.75
+            Heat: 0.25
+            Poison: 0.25
+            Bloodloss: 0.25
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Zauker
+          min: 8
+        scaleByQuantity: true
+        ignoreResistances: true
+        damage:
+          types:
+            Slash: 0.015
+            Heat: 0.005
+            Poison: 0.005
+            Bloodloss: 0.005
+
+#region Газодобытчики
+
+- type: entity
+  name: bz gas miner
+  parent: GasMinerBase
+  id: GasMinerBZ
+  components:
+    - type: GasMiner
+      spawnGas: BZ
+
+- type: entity
+  name: halon gas miner
+  parent: GasMinerBase
+  id: GasMinerHalon
+  components:
+    - type: GasMiner
+      spawnGas: Halon
+
+- type: entity
+  name: healium gas miner
+  parent: GasMinerBase
+  id: GasMinerHealium
+  components:
+    - type: GasMiner
+      spawnGas: Healium
+
+- type: entity
+  name: hyper-noblium gas miner
+  parent: GasMinerBase
+  id: GasMinerHyperNoblium
+  components:
+    - type: GasMiner
+      spawnGas: HyperNoblium
+
+- type: entity
+  name: hydrogen gas miner
+  parent: GasMinerBase
+  id: GasMinerHydrogen
+  components:
+    - type: GasMiner
+      spawnGas: Hydrogen
+
+- type: entity
+  name: pluoxium gas miner
+  parent: GasMinerBase
+  id: GasMinerPluoxium
+  components:
+    - type: GasMiner
+      spawnGas: Pluoxium
+
+- type: entity
+  name: nitrium gas miner
+  parent: GasMinerBase
+  id: GasMinerNitrium
+  components:
+    - type: GasMiner
+      spawnGas: Nitrium
+
+- type: entity
+  name: helium gas miner
+  parent: GasMinerBase
+  id: GasMinerHelium
+  components:
+    - type: GasMiner
+      spawnGas: Helium
+
+- type: entity
+  name: anti-noblium gas miner
+  parent: GasMinerBase
+  id: GasMinerAntiNoblium
+  components:
+    - type: GasMiner
+      spawnGas: AntiNoblium
+
+- type: entity
+  name: proto-nitrate gas miner
+  parent: GasMinerBase
+  id: GasMinerProtoNitrate
+  components:
+    - type: GasMiner
+      spawnGas: ProtoNitrate
+
+- type: entity
+  name: zauker gas miner
+  parent: GasMinerBase
+  id: GasMinerZauker
+  components:
+    - type: GasMiner
+      spawnGas: Zauker

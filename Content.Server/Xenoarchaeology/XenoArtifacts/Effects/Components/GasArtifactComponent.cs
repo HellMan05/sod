@@ -37,7 +37,11 @@ public sealed partial class GasArtifactComponent : Component
         Gas.HyperNoblium,
         Gas.Hydrogen,
         Gas.Pluoxium,
-        Gas.Nitrium
+        Gas.Nitrium,
+        Gas.Helium,
+        Gas.AntiNoblium,
+        Gas.ProtoNitrate,
+        Gas.Zauker
     };
 
     /// <summary>
