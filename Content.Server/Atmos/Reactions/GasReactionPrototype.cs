@@ -66,10 +66,11 @@ namespace Content.Server.Atmos.Reactions
         /// <param name="heatScale">Scaling factor that should be applied to all heat input or outputs.</param>
         public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder, AtmosphereSystem atmosphereSystem, float heatScale)
         {
-            // Проверка максимального давления Adventure
+            // Adventure gases begin
+            // Проверка максимального давления
             if (mixture.Pressure > MaximumPressureRequirement)
                 return ReactionResult.NoReaction;
-
+            // Adventure gases end
             var result = ReactionResult.NoReaction;
 
             foreach (var effect in _effects)
