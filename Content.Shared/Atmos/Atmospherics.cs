@@ -174,7 +174,7 @@ namespace Content.Shared.Atmos
             [Gas.Plasma] = Loc.GetString("gas-plasma-abbreviation"),
             [Gas.Tritium] = Loc.GetString("gas-tritium-abbreviation"),
             [Gas.WaterVapor] = Loc.GetString("gas-water-vapor-abbreviation"),
-            // Adventure gases
+            // Adventure gases begin
             [Gas.BZ] = Loc.GetString("gas-bz-abbreviation"),
             [Gas.Halon] = Loc.GetString("gas-halon-abbreviation"),
             [Gas.Healium] = Loc.GetString("gas-healium-abbreviation"),
@@ -186,6 +186,7 @@ namespace Content.Shared.Atmos
             [Gas.AntiNoblium] = Loc.GetString("gas-anti-noblium-abbreviation"),
             [Gas.ProtoNitrate] = Loc.GetString("gas-proto-nitrate-abbreviation"),
             [Gas.Zauker] = Loc.GetString("gas-zauker-abbreviation"),
+            // Adventure gases end
         };
 
         #region Excited Groups
