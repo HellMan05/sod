@@ -30,7 +30,7 @@ namespace Content.Server.Atmos.Portable
             Gas.Ammonia,
             Gas.NitrousOxide,
             Gas.Frezon,
-            // Adventure gases
+            // Adventure gases begin
             Gas.BZ,
             Gas.Halon,
             Gas.Healium,
@@ -42,6 +42,7 @@ namespace Content.Server.Atmos.Portable
             Gas.AntiNoblium,
             Gas.ProtoNitrate,
             Gas.Zauker
+            // Adventure gases end
         };
 
         [ViewVariables(VVAccess.ReadWrite)]
