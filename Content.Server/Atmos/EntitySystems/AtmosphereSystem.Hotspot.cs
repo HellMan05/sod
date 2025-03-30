@@ -125,14 +125,8 @@ namespace Content.Server.Atmos.EntitySystems
             // TODO ATMOS Maybe destroy location here?
         }
 
-        // Adventure gases changes
-        private void HotspotExpose(
-            GridAtmosphereComponent gridAtmosphere,
-            TileAtmosphere tile,
-            float exposedTemperature,
-            float exposedVolume,
-            bool soh = false,
-            EntityUid? sparkSourceUid = null)
+        private void HotspotExpose(GridAtmosphereComponent gridAtmosphere, TileAtmosphere tile,
+            float exposedTemperature, float exposedVolume, bool soh = false, EntityUid? sparkSourceUid = null)
         {
             if (tile.Air == null)
                 return;
