@@ -30,7 +30,7 @@ public sealed partial class GasArtifactComponent : Component
         Gas.Ammonia,
         Gas.NitrousOxide,
         Gas.Frezon,
-        // Adventure gases
+        // Adventure gases begin
         Gas.BZ,
         Gas.Halon,
         Gas.Healium,
@@ -42,6 +42,7 @@ public sealed partial class GasArtifactComponent : Component
         Gas.AntiNoblium,
         Gas.ProtoNitrate,
         Gas.Zauker
+        // Adventure gases end
     };
 
     /// <summary>
