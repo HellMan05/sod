@@ -13,7 +13,7 @@ reagent-desc-nitrous-oxide = Знаешь, как всё кажется смеш
 reagent-name-frezon = фрезон
 reagent-desc-frezon = Высокоэффективный хладагент... и галлюциноген.
 
-# Adventure gases
+# Adventure gases begin
 reagent-name-bz = бз
 reagent-desc-bz = Сильнодействующее психоделическое вещество, одновременно индуцирующее стазис у слаймов и зерах.
 reagent-name-halon = галон
@@ -34,3 +34,4 @@ reagent-name-proto-nitrate = прото-нитрат
 reagent-desc-proto-nitrate = Очень летучий газ, который по-разному реагирует с различными газами.
 reagent-name-zauker = заукер
 reagent-desc-zauker = Высокотоксичный газ, производство которого строго регулируется и к тому же затруднено. Кроме того, он разлагается при контакте с азотом.
+# Adventure gases end
