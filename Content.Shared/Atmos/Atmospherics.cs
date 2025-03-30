@@ -492,7 +492,7 @@ namespace Content.Shared.Atmos
         Ammonia = 6,
         NitrousOxide = 7,
         Frezon = 8,
-        // Adventure gases
+        // Adventure gases begin
         BZ = 9,
         Halon = 10,
         Healium = 11,
@@ -504,5 +504,6 @@ namespace Content.Shared.Atmos
         AntiNoblium = 17,
         ProtoNitrate = 18,
         Zauker = 19
+        // Adventure gases end
     }
 }
