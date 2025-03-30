@@ -8,8 +8,7 @@ gases-ammonia = Аммиак
 gases-n2o = Оксид азота
 gases-frezon = Фрезон
 
-# Adventure gases
-
+# Adventure gases begin
 gases-bz = БЗ
 gases-halon = Галон
 gases-healium = Хилиум
@@ -21,3 +20,4 @@ gases-helium = Гелий
 gases-anti-noblium = Анти-Ноблиум
 gases-proto-nitrate = Прото-Нитрат
 gases-zauker = Заукер
+# Adventure end
