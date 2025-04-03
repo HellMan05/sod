@@ -116,6 +116,26 @@
     {
       "name": "Visor",
       "directions": 4
+    },
+    {
+      "name": "crash",
+      "directions": 4
+    },
+    {
+      "name": "face",
+      "directions": 4
+    },
+    {
+      "name": "miner",
+      "directions": 4
+    },
+    {
+      "name": "box1",
+      "directions": 4
+    },
+    {
+      "name": "box2",
+      "directions": 4
     }
   ]
 }

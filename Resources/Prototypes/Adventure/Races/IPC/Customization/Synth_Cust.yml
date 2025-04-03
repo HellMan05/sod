@@ -157,6 +157,66 @@
   - sprite: Adventure/Races/IPC/Customization/Face.rsi
     state: DoubleCyclops
 
+- type: marking
+  id: SynthScreenMiner
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: screen
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: miner
+
+- type: marking
+  id: SynthMiner
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: miner
+
+- type: marking
+  id: SynthScreenFace
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: screen
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: face  
+
+- type: marking
+  id: SynthFace
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: face
+
+- type: marking
+  id: SynthBox
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: box1
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: box2
+
+- type: marking
+  id: SynthCrash
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: crash
+
 #Head
 - type: marking
   id: SynthAntennaCurves
@@ -235,6 +295,15 @@
     state: antennaRight-unshaded
   - sprite: Adventure/Races/IPC/Customization/Head.rsi
     state: antennaLetf-unshaded
+
+- type: marking
+  id: SynthAntennaCoils
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Head.rsi
+    state: coils
 
 #Body
 - type: marking

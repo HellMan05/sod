@@ -42,6 +42,10 @@
     {
       "name": "wires",
       "directions": 4
+    },
+    {
+      "name": "coils",
+      "directions": 4
     }
   ]
 }
