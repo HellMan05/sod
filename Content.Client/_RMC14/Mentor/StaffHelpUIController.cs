@@ -38,6 +38,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     private readonly Dictionary<NetUserId, List<MentorMessage>> _messages = new();
 
     private bool _isMentor;
+    private bool _soundMutted;
     private bool _canReMentor;
     private StaffHelpWindow? _staffHelpWindow;
     private MentorHelpWindow? _mentorHelpWindow;
@@ -56,6 +57,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         _net.RegisterNetMessage<MentorRequestNamesMsg>();
         _net.RegisterNetMessage<MentorGotNamesMsg>(OnGotNames);
         _config.OnValueChanged(RMCCVars.RMCMentorHelpSound, v => _mHelpSound = v, true);
+        _config.OnValueChanged(ACVars.MentorHelpSoundMuted, v => _soundMutted = v, true);
     }
 
     private void OnGotNames(MentorGotNamesMsg msg)
@@ -119,7 +121,8 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
 
         if (other)
         {
-            _audio?.PlayGlobal(_mHelpSound, Filter.Local(), false);
+            if (!_isMentor || !_soundMutted)
+                _audio?.PlayGlobal(_mHelpSound, Filter.Local(), false);
             _clyde.RequestWindowAttention();
 
             if (!_isMentor)

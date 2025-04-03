@@ -100,6 +100,16 @@ public sealed class ACVars : CVars
         CVarDef.Create("game.lobby_vote", true, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
 
     /*
+     * Mentor
+     */
+
+    /// <summary>
+    /// Working only for mentors, always played when player is not mentor.
+    /// </summary>
+    public static readonly CVarDef<bool> MentorHelpSoundMuted =
+        CVarDef.Create("mentor.sound_mutted", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /*
      * Discord
      */
 

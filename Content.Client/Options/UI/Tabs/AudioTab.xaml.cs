@@ -72,6 +72,7 @@ public sealed partial class AudioTab : Control
         Control.AddOptionCheckBox(CCVars.EventMusicEnabled, EventMusicCheckBox);
         Control.AddOptionCheckBox(CCVars.AdminSoundsEnabled, AdminSoundsCheckBox);
         Control.AddOptionCheckBox(CCVars.BwoinkSoundEnabled, BwoinkSoundCheckBox);
+        Control.AddOptionCheckBox(ACVars.MentorHelpSoundMuted, MentorSoundCheckBox); // adventure mentor sound
         Control.AddOptionCheckBox(ACVars.TTSClientEnabled, TtsClientCheckBox); // c4llv07e tts
 
         Control.Initialize();
@@ -94,6 +95,7 @@ public sealed partial class AudioTab : Control
     private void UpdateAdminButtonsVisibility()
     {
         BwoinkSoundCheckBox.Visible = _admin.IsActive();
+        MentorSoundCheckBox.Visible = _admin.HasFlag(AdminFlags.MentorHelp); // adventure mentor sound
     }
 
     private void OnMasterVolumeSliderChanged(float value)
