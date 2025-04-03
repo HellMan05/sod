@@ -32,10 +32,10 @@
     bloodReagent: Sugar
   - type: GhostRole
     prob: 1
-    name: ghost-role-information-Gingerbread-name
+    name: ghost-role-information-gingerbread-name
     allowMovement: true
-    description: ghost-role-information-Gingerbread-description
-    rules: ghost-role-information-Gingerbread-rules
+    description: ghost-role-information-gingerbread-description
+    rules: ghost-role-information-nonantagonist-rules
   - type: GhostTakeoverAvailable
   - type: Fixtures
     fixtures:
