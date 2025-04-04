@@ -13,9 +13,7 @@ marking-PigSkipper = Троттин, Борода (Подбородок)
 marking-PigDed = Троттин, Борода (Борода деда)
 marking-PigShetina = Троттин, Борода (Щетина)
 marking-PigBigBeard = Троттин, Борода (Широкий подбородок)
-
-
-
+marking-BodyHairP = Троттин, Тело (Волосатое тело)
 
 
 

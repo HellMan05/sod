@@ -60,8 +60,16 @@ marking-LizardTailOverBig-tail_big = Унатх, хвост (Длинный)
 marking-LizardTailOverBig = Унатх, хвост (Длинный)
 marking-LizardTailOverBigSpike-tail_big_spike = Унатх, хвост (Длинный с шипами)
 marking-LizardTailOverBigSpike = Унатх, хвост (Длинный с шипами)
+marking-LizardTailUltraBig-base = Унатх, хвост (Очень длинный)
+marking-LizardTailUltraBig = Унатх, хвост (Очень длинный)
+marking-LizardTailUltraBigSpike-spike = Унатх, хвост (Очень длинный с шипами)
+marking-LizardTailUltraBigSpike = Унатх, хвост (Очень длинный с шипами)
+marking-LizardTailUltraBigRidge-ridge = Унатх, хвост (очень длинный с плавником)
+marking-LizardTailUltraBigRidge = Унатх, хвост (очень длинный с плавником)
+marking-LizardChestRidgeDouble-body_ridge_double = Унатх, спина (Двойной гребень)
+marking-LizardChestRidgeDouble = Унатх, спина (Двойной гребень)
+marking-LizardChestRidgeSmall-body_ridge_small = Унатх, спина (Маленький гребень)
+marking-LizardChestRidgeSmall = Унатх, спина (Маленький гребень)
 
-
-
-
-
+marking-LizardFrillsFinsBig-frills_fins_big = Унатх, Воротник (Головной плавник широкий)
+marking-LizardFrillsFinsBig = Унатх, Воротник (Головной плавник широкий)

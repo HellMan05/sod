@@ -58,6 +58,30 @@
     {
       "name": "punk_tail",
       "directions": 4
+    },
+    {
+      "name": "Arab",
+      "directions": 4
+    },
+    {
+      "name": "Brutal",
+      "directions": 4
+    },
+    {
+      "name": "new_Russian",
+      "directions": 4
+    },
+    {
+      "name": "body_hair_f",
+      "directions": 4
+    },
+    {
+      "name": "body_hair_m",
+      "directions": 4
+    },
+    {
+      "name": "body_hair_p",
+      "directions": 4
     }
   ]
 }

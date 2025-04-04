@@ -30,6 +30,14 @@
     {
       "name": "frills_finsking2",
       "directions": 4
+    },
+    {
+      "name": "frills_fins_big",
+      "directions": 4
+    },
+    {
+      "name": "frills_fins_big2",
+      "directions": 4
     }
   ]
 }

@@ -96,3 +96,21 @@
   sprites:
     - sprite: Adventure/Races/PigMan/Customization/Pig_beard.rsi
       state: hrac
+
+- type: marking
+  id: BodyHairP
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [PigMan]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+        category: Hair
+      fallbackTypes:
+        - !type:CategoryColoring
+          category: FacialHair
+        - !type:SkinColoring
+  sprites:
+  - sprite: Adventure/Races/Human_hair.rsi
+    state: body_hair_p

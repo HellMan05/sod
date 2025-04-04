@@ -11,10 +11,8 @@ marking-HumanFacialHairDED = Борода (Маг)
 marking-HumanFacialHairGusar = Борода (Гусар)
 marking-HumanFacialHairLogan = Борода (Логан)
 marking-HumanFacialHairTrocki = Борода (Лев)
-
-
-
-
-
-
-
+marking-HumanFacialHairArab = Борода (Араб)
+marking-HumanFacialHairBrutal = Борода (Брутал)
+marking-HumanHairNewRussian = Новый русский
+marking-BodyHairM = Волосы на теле (Мужские)
+marking-BodyHairF = Волосы на теле (Женские)
