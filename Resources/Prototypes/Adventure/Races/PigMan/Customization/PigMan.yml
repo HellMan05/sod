@@ -100,7 +100,7 @@
 - type: marking
   id: BodyHairP
   bodyPart: Chest
-  markingCategory: Chest
+  markingCategory: Overlay
   speciesRestriction: [PigMan]
   coloring:
     default:
