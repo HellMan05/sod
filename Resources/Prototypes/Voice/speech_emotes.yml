@@ -375,6 +375,37 @@
     # Adventure-end
 
 - type: emote
+  id: Flip
+  name: chat-emote-name-flip
+  icon: Interface/Emotes/flip.png
+  whitelist:
+    components:
+    - FlipAnimation
+  chatMessages: ["chat-emote-msg-flip"]
+  chatTriggers:
+    - flip
+    - flips
+    - flips out
+    - backflip
+    - backflips
+# Adventure-start
+    - делает сальто
+    - делает сальто назад
+    - делает сальто вперёд
+    - делает сальто вперед
+    - сделал сальто
+    - сделала сальто
+    - делает кувырок
+    - кувыркается
+    - уклоняется
+    - уклоняется от пуль
+    - уклоняется от лазеров
+    - уклоняется от лазера
+    - уклоняется от выстрелов
+    - уклоняется от ударов
+# Adventure-end
+
+- type: emote
   id: Salute
   name: chat-emote-name-salute
   category: Hands
