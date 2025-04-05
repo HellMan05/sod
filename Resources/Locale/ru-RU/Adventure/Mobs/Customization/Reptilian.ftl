@@ -70,6 +70,11 @@ marking-LizardChestRidgeDouble-body_ridge_double = Унатх, спина (Дв�
 marking-LizardChestRidgeDouble = Унатх, спина (Двойной гребень)
 marking-LizardChestRidgeSmall-body_ridge_small = Унатх, спина (Маленький гребень)
 marking-LizardChestRidgeSmall = Унатх, спина (Маленький гребень)
-
 marking-LizardFrillsFinsBig-frills_fins_big = Унатх, Воротник (Головной плавник широкий)
 marking-LizardFrillsFinsBig = Унатх, Воротник (Головной плавник широкий)
+marking-LizardSnoutCroc-snout_croc = Унатх, Морда (Крокодил)
+marking-LizardSnoutCroc = Унатх, Морда (Крокодил)
+marking-LizardSnoutTumb-snout_tumb = Унатх, Морда (Горб)
+marking-LizardSnoutTumb = Унатх, Морда (Горб)
+marking-LizardSnoutBeak-snout_beak = Унатх, Морда (Клюв)
+marking-LizardSnoutBeak = Унатх, Морда (Клюв)

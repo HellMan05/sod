@@ -370,3 +370,33 @@
   sprites:
   - sprite: Adventure/Races/Reptilian/Customization/snout.rsi
     state: snout_high
+
+- type: marking
+  id: LizardSnoutCroc
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Adventure/Races/Reptilian/Customization/snout.rsi
+    state: snout_croc
+
+- type: marking
+  id: LizardSnoutTumb
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Adventure/Races/Reptilian/Customization/snout.rsi
+    state: snout_tumb
+
+- type: marking
+  id: LizardSnoutBeak
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Adventure/Races/Reptilian/Customization/snout.rsi
+    state: snout_beak
