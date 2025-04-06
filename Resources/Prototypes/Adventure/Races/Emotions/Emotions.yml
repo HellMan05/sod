@@ -181,3 +181,17 @@
     - шипит
     - шипит.
     - шипит!
+
+#отрыжка от газировки
+- type: emote
+  id: BruhAll
+  name: рыгать
+  whitelist:
+    components:
+    - Respirator
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["рыгнул"]
+  chatTriggers:
+    - ЧтОбЫнИкТоНеМоГэТоВыВеСтИ666
