@@ -82,6 +82,14 @@
     {
       "name": "body_hair_p",
       "directions": 4
+    },
+    {
+      "name": "body_hair_leg",
+      "directions": 4
+    },
+    {
+      "name": "body_hair_hand",
+      "directions": 4
     }
   ]
 }

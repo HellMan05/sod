@@ -16,3 +16,5 @@ marking-HumanFacialHairBrutal = Борода (Брутал)
 marking-HumanHairNewRussian = Новый русский
 marking-BodyHairM = Волосы на теле (Мужские)
 marking-BodyHairF = Волосы на теле (Женские)
+marking-BodyHairHand = Волосы на теле (Волосатые руки)
+marking-BodyHairLeg = Волосы на теле (Волосатые ноги)
