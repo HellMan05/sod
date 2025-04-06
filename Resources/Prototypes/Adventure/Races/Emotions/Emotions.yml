@@ -193,5 +193,3 @@
     components:
     - BorgChassis
   chatMessages: ["рыгнул"]
-  chatTriggers:
-    - ЧтОбЫнИкТоНеМоГэТоВыВеСтИ666
