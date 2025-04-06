@@ -89,7 +89,7 @@ public sealed class SponsorsManager : ISponsorsManager
         {
             if ((sponsorTier.DiscordRoleId is not null) && (res?.roles?.Contains(sponsorTier.DiscordRoleId) ?? false))
             {
-                _sawmill.Fatal($"Player {userId} got sponsor protoid \"{sponsorTier.ID}\"");
+                _sawmill.Info($"Player {userId} got sponsor protoid \"{sponsorTier.ID}\"");
                 return sponsorTier.ID;
             }
         }
