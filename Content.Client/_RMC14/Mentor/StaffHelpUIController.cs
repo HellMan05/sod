@@ -1,3 +1,4 @@
+using Content.Shared._Adventure.ACVar; // adventure mentor mute
 using Content.Client.Administration.Systems;
 using Content.Client.Mind;
 using Content.Client.Stylesheets;
@@ -38,7 +39,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     private readonly Dictionary<NetUserId, List<MentorMessage>> _messages = new();
 
     private bool _isMentor;
-    private bool _soundMutted;
+    private bool _soundEnabled;
     private bool _canReMentor;
     private StaffHelpWindow? _staffHelpWindow;
     private MentorHelpWindow? _mentorHelpWindow;
@@ -57,7 +58,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         _net.RegisterNetMessage<MentorRequestNamesMsg>();
         _net.RegisterNetMessage<MentorGotNamesMsg>(OnGotNames);
         _config.OnValueChanged(RMCCVars.RMCMentorHelpSound, v => _mHelpSound = v, true);
-        _config.OnValueChanged(ACVars.MentorHelpSoundMuted, v => _soundMutted = v, true);
+        _config.OnValueChanged(ACVars.MentorHelpSoundEnabled, v => _soundEnabled = v, true);
     }
 
     private void OnGotNames(MentorGotNamesMsg msg)
@@ -121,7 +122,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
 
         if (other)
         {
-            if (!_isMentor || !_soundMutted)
+            if (!_isMentor || !_soundEnabled)
                 _audio?.PlayGlobal(_mHelpSound, Filter.Local(), false);
             _clyde.RequestWindowAttention();
 

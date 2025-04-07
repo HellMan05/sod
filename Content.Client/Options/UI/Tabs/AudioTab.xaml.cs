@@ -1,4 +1,5 @@
 using Content.Shared._Adventure.ACVar; // c4llv07e tts
+using Content.Shared.Administration; // adventure mentor sound
 using Content.Client.Administration.Managers;
 using Content.Client.Audio;
 using Content.Shared.CCVar;
@@ -72,7 +73,7 @@ public sealed partial class AudioTab : Control
         Control.AddOptionCheckBox(CCVars.EventMusicEnabled, EventMusicCheckBox);
         Control.AddOptionCheckBox(CCVars.AdminSoundsEnabled, AdminSoundsCheckBox);
         Control.AddOptionCheckBox(CCVars.BwoinkSoundEnabled, BwoinkSoundCheckBox);
-        Control.AddOptionCheckBox(ACVars.MentorHelpSoundMuted, MentorSoundCheckBox); // adventure mentor sound
+        Control.AddOptionCheckBox(ACVars.MentorHelpSoundEnabled, MentorSoundCheckBox); // adventure mentor sound
         Control.AddOptionCheckBox(ACVars.TTSClientEnabled, TtsClientCheckBox); // c4llv07e tts
 
         Control.Initialize();
