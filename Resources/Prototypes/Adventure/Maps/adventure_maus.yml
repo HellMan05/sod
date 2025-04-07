@@ -16,7 +16,7 @@
            !type:NanotrasenNameGenerator
             prefixCreator: "MG"
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
+          emergencyShuttlePath: /Maps/Shuttles/emergency.yml
         - type: StationJobs
           availableJobs:
             # command
