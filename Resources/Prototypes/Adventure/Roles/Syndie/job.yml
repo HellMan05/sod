@@ -1,0 +1,23 @@
+- type: job
+  id: Syndie
+  name: ₴Ɏ₦ĐłɆ
+  description: Восславьте синдикат и несите свободу на станции капиталистов!
+  playTimeTracker: Syndie
+  setPreference: false
+  icon: "JobIconSyndicate"
+  canBeAntag: true
+  access:
+    - NuclearOperative
+    - SyndicateAgent
+
+- type: playTimeTracker
+  id: Syndie
+
+- type: department
+  id: Syndie
+  name: Syndicate
+  description: department-Cargo-description
+  color: "#b35f60"
+  roles:
+  - Syndie
+  editorHidden: true

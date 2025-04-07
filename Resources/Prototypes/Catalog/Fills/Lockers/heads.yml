@@ -167,7 +167,7 @@
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
     - id: RCD 
-    - id: PFD # Adventure
+    - id: RPD # Adventure
     - id: RCDAmmo
     - id: RubberStampCE
     - id: NTECCPU1 # Adventure

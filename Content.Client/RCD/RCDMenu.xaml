@@ -29,10 +29,16 @@
         </ui:RadialMenuTextureButtonWithSector>
     <!-- Adventure-Start -->
         <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-pipes'}" TargetLayer="GasPipes" Visible="False">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Adventure/Interface/PFD/pipe4.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Adventure/Interface/RPD/pipe4.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-ports-and-vents'}" TargetLayer="PortsAndVents" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Adventure/Interface/RPD/scrub.png"/>
+        </ui:RadialMenuTextureButtonWithSector>
+        <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-disposal'}" TargetLayer="Disposal" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Adventure/Interface/RPD/pipe10.png"/>
         </ui:RadialMenuTextureButtonWithSector>
         <ui:RadialMenuTextureButtonWithSector SetSize="64 64" ToolTip="{Loc 'rcd-component-atmosmachine'}" TargetLayer="GasMachine" Visible="False">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Adventure/Interface/PFD/scrub.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Adventure/Interface/RPD/pump.png"/>
         </ui:RadialMenuTextureButtonWithSector>
     <!-- Adventure-End -->
     </ui:RadialContainer>
@@ -55,6 +61,12 @@
     <!-- Adventure-Start -->
     <!-- GasPipes -->
     <ui:RadialContainer Name="GasPipes"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+
+    <!-- PortsAndVents -->
+    <ui:RadialContainer Name="PortsAndVents"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
+
+    <!-- Disposal -->
+    <ui:RadialContainer Name="Disposal"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>
 
     <!-- GasMachine -->
     <ui:RadialContainer Name="GasMachine"  VerticalExpand="True" HorizontalExpand="True" InitialRadius="100"/>

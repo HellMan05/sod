@@ -31,4 +31,13 @@ public sealed partial class RCDDeconstructableComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool Deconstructable = true;
+
+    // Adventure RPD start
+
+    /// <summary>
+    /// Type of the device that can deconstruct this entity (RCD by default, but can be RPD)
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public string DeviceType = "RCD";
+    // Adventure RPD end
 }

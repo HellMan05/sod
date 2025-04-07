@@ -644,10 +644,8 @@
   - type: Sprite
     layers:
     - state: syndie
-  - type: Access
-    tags:
-    - NuclearOperative
-    - SyndicateAgent
+  - type: PresetIdCard # Adventure
+    job: Syndie # Adventure
 
 - type: entity
   parent: IDCardStandard

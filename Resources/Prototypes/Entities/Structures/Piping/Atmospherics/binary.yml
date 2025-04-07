@@ -22,6 +22,10 @@
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: South
+  - type: RCDDeconstructable
+    deviceType: RPD
+    cost: 2
+    delay: 1
 
 - type: entity
   parent: GasBinaryBase

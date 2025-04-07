@@ -6,13 +6,13 @@ rcd-component-examine-build-details = Выбран режим строитель
 ### Interaction Messages
 
 # Mode change
-rcd-component-change-mode = РСУ переключён в режим '{ $mode }'.
-rcd-component-change-build-mode = РСУ переключён в режим строительства. Строится { $name }.
+rcd-component-change-mode = { $targetname } переключён в режим '{ $mode }'.
+rcd-component-change-build-mode = { $targetname } переключён в режим строительства. Строится { $name }.
 # Ammo count
-rcd-component-no-ammo-message = В РСУ закончились заряды!
-rcd-component-insufficient-ammo-message = В РСУ не хватает зарядов!
+rcd-component-no-ammo-message = В { $targetname } закончились заряды!
+rcd-component-insufficient-ammo-message = В { $targetname } не хватает зарядов!
 # Deconstruction
-rcd-component-tile-indestructible-message = Эта клетка не может быть демонтирова!
+rcd-component-tile-indestructible-message = Эта клетка не может быть демонтирована!
 rcd-component-deconstruct-target-not-on-whitelist-message = Вы не можете демонтировать это!
 rcd-component-nothing-to-deconstruct-message = Здесь нечего демонтировать!
 rcd-component-tile-obstructed-message = Вы не можете демонтировать клетку, на которой что-то находится!
@@ -35,7 +35,10 @@ rcd-component-lighting = Освещение
 
 ### Adventure-start
 rcd-component-pipes = Трубы и насосы
-rcd-component-atmosmachine = Порты и вентиляции
+rcd-component-atmosmachine = Атмос устройства
+rcd-component-ports-and-vents = Порты и вентиляции
+rcd-component-disposal = Утилизационные трубы
+rcd-component-wrong-device-type = Этим устройством нельзя это демонтировать!
 ### Adventure-end
 
 ### Prototype names (note: constructable items will be puralized)

@@ -44,13 +44,14 @@ public sealed class RCDAmmoSystem : EntitySystem
         var user = args.User;
         args.Handled = true;
         var count = Math.Min(charges.MaxCharges - charges.Charges, comp.Charges);
+        var targetName = Name(target); // Adventure RPD
         if (count <= 0)
         {
-            _popup.PopupClient(Loc.GetString("rcd-ammo-component-after-interact-full"), target, user);
+            _popup.PopupClient(Loc.GetString("rcd-ammo-component-after-interact-full",("targetname", targetName)),target, user); // Adventure RPD
             return;
         }
 
-        _popup.PopupClient(Loc.GetString("rcd-ammo-component-after-interact-refilled"), target, user);
+        _popup.PopupClient(Loc.GetString("rcd-ammo-component-after-interact-refilled",("targetname", targetName)),target, user); // Adventure RPD
         _charges.AddCharges(target, count, charges);
         comp.Charges -= count;
         Dirty(uid, comp);

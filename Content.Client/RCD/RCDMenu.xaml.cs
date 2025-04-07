@@ -143,7 +143,8 @@ public sealed partial class RCDMenu : RadialMenu
                 if (_playerManager.LocalSession?.AttachedEntity != null &&
                     _protoManager.TryIndex(castChild.ProtoId, out var proto))
                 {
-                    var msg = Loc.GetString("rcd-component-change-mode", ("mode", Loc.GetString(proto.SetName)));
+                    var targetName = _entManager.GetComponent<MetaDataComponent>(_owner).EntityName; // Adventure RPD
+                    var msg = Loc.GetString("rcd-component-change-mode", ("mode", Loc.GetString(proto.SetName)),("targetname", (object)targetName)); // Adventure RPD
 
                     if (proto.Mode == RcdMode.ConstructTile || proto.Mode == RcdMode.ConstructObject)
                     {
@@ -153,7 +154,7 @@ public sealed partial class RCDMenu : RadialMenu
                             _protoManager.TryIndex(proto.Prototype, out var entProto, logError: false))
                             name = entProto.Name;
 
-                        msg = Loc.GetString("rcd-component-change-build-mode", ("name", name));
+                        msg = Loc.GetString("rcd-component-change-build-mode", ("name", name),("targetname", (object)targetName)); // Adventure RPD
                     }
 
                     // Popup message

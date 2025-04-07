@@ -306,12 +306,12 @@ public class RCDSystem : EntitySystem
 
         // Check that the RCD has enough ammo to get the job done
         TryComp<LimitedChargesComponent>(uid, out var charges);
-
+        var deviceName = Name(uid);  // Adventure RPD
         // Both of these were messages were suppose to be predicted, but HasInsufficientCharges wasn't being checked on the client for some reason?
         if (_charges.IsEmpty(uid, charges))
         {
             if (popMsgs)
-                _popup.PopupClient(Loc.GetString("rcd-component-no-ammo-message"), uid, user);
+                _popup.PopupClient(Loc.GetString("rcd-component-no-ammo-message", ("targetname", deviceName)), uid, user); // Adventure RPD
 
             return false;
         }
@@ -319,7 +319,7 @@ public class RCDSystem : EntitySystem
         if (_charges.HasInsufficientCharges(uid, component.CachedPrototype.Cost, charges))
         {
             if (popMsgs)
-                _popup.PopupClient(Loc.GetString("rcd-component-insufficient-ammo-message"), uid, user);
+                _popup.PopupClient(Loc.GetString("rcd-component-insufficient-ammo-message", ("targetname", deviceName)), uid, user); // Adventure RPD
 
             return false;
         }
@@ -331,6 +331,19 @@ public class RCDSystem : EntitySystem
 
         if (!unobstructed)
             return false;
+
+        // Adventure RPD start
+        if (component.CachedPrototype.Mode == RcdMode.Deconstruct && target != null)
+        {
+            if (TryComp<RCDDeconstructableComponent>(target, out var deconstructable) &&
+                deconstructable.DeviceType != component.DeviceType)
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-wrong-device-type"), uid, user);
+                return false;
+            }
+        }
+        // Adventure RPD end
 
         // Return whether the operation location is valid
         switch (component.CachedPrototype.Mode)
