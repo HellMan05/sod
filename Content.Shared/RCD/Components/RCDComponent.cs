@@ -15,6 +15,15 @@ namespace Content.Shared.RCD.Components;
 [Access(typeof(RCDSystem))]
 public sealed partial class RCDComponent : Component
 {
+    // Adventure RPD start
+
+    /// <summary>
+    /// Type of this device (RCD by default, but can be RPD)
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public string DeviceType = "RCD";
+    // Adventure RPD end
+
     /// <summary>
     /// List of RCD prototypes that the device comes loaded with
     /// </summary>

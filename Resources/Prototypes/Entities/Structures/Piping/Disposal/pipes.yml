@@ -60,6 +60,10 @@
       DisposalTube: !type:Container
   - type: StaticPrice
     price: 30
+  - type: RCDDeconstructable
+    deviceType: RPD
+    cost: 2
+    delay: 1
 
 - type: entity
   id: DisposalHolder
