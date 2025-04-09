@@ -36,6 +36,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
 
     public Dictionary<Button, NetUserId> PlayersButtons = new();
     public Dictionary<NetUserId, string> PlayersNames = new();
+    public Dictionary<NetUserId, bool> PlayersSeen = new();
     private readonly Dictionary<NetUserId, List<MentorMessage>> _messages = new();
 
     private bool _isMentor;
@@ -107,6 +108,10 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
                 {
                     _mentorWindow.Messages.AddMessage(CreateMessageLabel(message));
                     _mentorWindow.Messages.ScrollToBottom();
+                }
+                else
+                {
+                    PlayersSeen[message.Destination] = false;
                 }
 
                 continue;
@@ -300,10 +305,19 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
             Text = playerName,
             StyleClasses = { "OpenBoth" },
         };
+
+        if (PlayersSeen.ContainsKey(player) && !PlayersSeen[player])
+            playerButton.StyleClasses.Add(StyleNano.StyleClassButtonColorRed);
+
         playerButton.OnPressed += _ =>
         {
             if (_mentorWindow is not { IsOpen: true })
                 return;
+
+            PlayersSeen[player] = true;
+            var styles = playerButton.StyleClasses;
+            if (styles.Contains(StyleNano.StyleClassButtonColorRed))
+                styles.Remove(StyleNano.StyleClassButtonColorRed);
 
             _mentorWindow.SelectedPlayer = player;
             _mentorWindow.Messages.Clear();
