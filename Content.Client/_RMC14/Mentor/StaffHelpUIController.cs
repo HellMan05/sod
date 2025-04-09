@@ -112,6 +112,9 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
                 else
                 {
                     PlayersSeen[message.Destination] = false;
+                    var style = _mentorWindow.PlayerDict[message.Destination].StyleClasses;
+                    if (!style.Contains(StyleNano.StyleClassButtonColorRed))
+                        style.Add(StyleNano.StyleClassButtonColorRed);
                 }
 
                 continue;
