@@ -1,3 +1,4 @@
+using Robust.Shared.Timing;
 using Content.Shared._Adventure.ACVar; // adventure mentor mute
 using Content.Client.Administration.Systems;
 using Content.Client.Mind;
@@ -27,6 +28,7 @@ namespace Content.Client._RMC14.Mentor;
 
 public sealed class StaffHelpUIController : UIController, IOnSystemChanged<BwoinkSystem>
 {
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly AHelpUIController _aHelp = default!;
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
@@ -35,8 +37,11 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
     [UISystemDependency] private readonly AudioSystem? _audio = default!;
 
     public Dictionary<Button, NetUserId> PlayersButtons = new();
+    public Dictionary<NetUserId, List<(TimeSpan, string)>> TypingIndicators = new();
+    public TimeSpan MinTimeWait = TimeSpan.MaxValue;
     public Dictionary<NetUserId, string> PlayersNames = new();
     public Dictionary<NetUserId, bool> PlayersSeen = new();
+    public TimeSpan LastSendTyping = TimeSpan.MinValue;
     private readonly Dictionary<NetUserId, List<MentorMessage>> _messages = new();
 
     private bool _isMentor;
@@ -54,12 +59,103 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
         _net.RegisterNetMessage<MentorMessagesReceivedMsg>(OnMentorHelpReceived);
         _net.RegisterNetMessage<MentorSendMessageMsg>();
         _net.RegisterNetMessage<MentorHelpMsg>();
-        _net.RegisterNetMessage<DeMentorMsg>();
+        _net.RegisterNetMessage<MentorTypingMsg>();
+        _net.RegisterNetMessage<MentorReceivedTypingMsg>(OnReceivedTyping);
         _net.RegisterNetMessage<ReMentorMsg>();
         _net.RegisterNetMessage<MentorRequestNamesMsg>();
         _net.RegisterNetMessage<MentorGotNamesMsg>(OnGotNames);
         _config.OnValueChanged(RMCCVars.RMCMentorHelpSound, v => _mHelpSound = v, true);
         _config.OnValueChanged(ACVars.MentorHelpSoundEnabled, v => _soundEnabled = v, true);
+    }
+
+    public override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+        if (_gameTiming.CurTime < MinTimeWait) return;
+        var text = GetTypingText();
+        Logger.Error($"New text: {text}");
+        MinTimeWait = GetNextAttentionTime();
+        Logger.Error($"Next update time {MinTimeWait}");
+    }
+
+    public string GetTypingText()
+    {
+        Logger.Info("1");
+        if (_mentorWindow is null) return string.Empty;
+        Logger.Info("2");
+        var userId = _mentorWindow.SelectedPlayer;
+        Logger.Info($"{userId}");
+        if (!TypingIndicators.ContainsKey(userId)) return string.Empty;
+        Logger.Info("3");
+        var lastTyping = _gameTiming.CurTime - TimeSpan.FromSeconds(5);
+        string str = string.Empty;
+        foreach (var item in TypingIndicators[userId])
+        {
+            Logger.Info($"item {item.Item2}");
+            if (item.Item1 < lastTyping) continue;
+            if (!string.IsNullOrEmpty(str))
+                str += ", ";
+            Logger.Info($"4");
+            str += item.Item2;
+            Logger.Info($"new str {str}");
+        }
+        Logger.Info($"5");
+        if (string.IsNullOrEmpty(str)) return string.Empty;
+        Logger.Info($"6");
+        str += " is typing";
+        Logger.Error($"typing \"{str}\"");
+        return str;
+    }
+
+    private void OnReceivedTyping(MentorReceivedTypingMsg msg)
+    {
+        Logger.Error($"Typing message: {msg.To} {msg.Author}");
+        var typingList = TypingIndicators.GetOrNew(new NetUserId(msg.To));
+        for (int i = 0; i < typingList.Count; i += 1)
+        {
+            if (typingList[i].Item2 == msg.Author)
+            {
+                typingList[i] = (_gameTiming.CurTime, msg.Author);
+                foreach (var item in TypingIndicators)
+                {
+                    Logger.Error($"aa {item.Key}:");
+                    foreach (var v in item.Value)
+                    {
+                        Logger.Error($"aa   {v.Item1} {v.Item2}");
+                    }
+                }
+                return;
+            }
+        }
+        typingList.Add((_gameTiming.CurTime, msg.Author));
+        foreach (var item in TypingIndicators)
+        {
+            Logger.Error($"{item.Key}:");
+            foreach (var v in item.Value)
+            {
+                Logger.Error($" {v.Item1} {v.Item2}");
+            }
+        }
+        MinTimeWait = _gameTiming.CurTime;
+    }
+
+    private TimeSpan GetNextAttentionTime()
+    {
+        foreach (var ti in TypingIndicators)
+        {
+            ti.Value.RemoveAll(x => x.Item1 < (_gameTiming.CurTime - TimeSpan.FromSeconds(5)));
+        }
+        if (_mentorWindow is null) return TimeSpan.MaxValue;
+        if (!TypingIndicators.ContainsKey(_mentorWindow.SelectedPlayer)) return TimeSpan.MaxValue;
+        var typingInds = TypingIndicators[_mentorWindow.SelectedPlayer];
+        var minimalTime = TimeSpan.MaxValue;
+        foreach (var ti in typingInds)
+        {
+            var nt = ti.Item1 + TimeSpan.FromSeconds(5);
+            if (nt < minimalTime)
+                minimalTime = nt;
+        }
+        return minimalTime;
     }
 
     private void OnGotNames(MentorGotNamesMsg msg)
@@ -278,6 +374,18 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
             window.Chat.Clear();
         };
 
+        window.Chat.OnTextChanged += args =>
+        {
+            Logger.Error("text changed");
+            if (LastSendTyping <= _gameTiming.CurTime - TimeSpan.FromSeconds(2))
+            {
+                Logger.Error($"sending typing indicator to {window.SelectedPlayer}");
+                LastSendTyping = _gameTiming.CurTime;
+                var typingMsg = new MentorTypingMsg() { To = window.SelectedPlayer };
+                _net.ClientSendMessage(typingMsg);
+            }
+        };
+
         return window;
     }
 
@@ -328,6 +436,7 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
             _mentorWindow.SelectedPlayer = player;
             _mentorWindow.Messages.Clear();
             _mentorWindow.Chat.Editable = true;
+            MinTimeWait = GetNextAttentionTime();
             if (!_messages.TryGetValue(player, out var authorMessages))
                 return;
 
