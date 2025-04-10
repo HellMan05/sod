@@ -192,4 +192,4 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["рыгнул"]
+  chatMessages: ["рыгает"]

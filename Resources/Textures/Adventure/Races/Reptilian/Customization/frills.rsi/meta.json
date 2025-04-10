@@ -38,6 +38,18 @@
     {
       "name": "frills_fins_big2",
       "directions": 4
+    },
+    {
+      "name": "frills_ridge",
+      "directions": 4
+    },
+    {
+      "name": "frills_ridge_full",
+      "directions": 4
+    },
+    {
+      "name": "frills_ridge_small",
+      "directions": 4
     }
   ]
 }
