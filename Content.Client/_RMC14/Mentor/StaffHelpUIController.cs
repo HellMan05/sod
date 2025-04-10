@@ -99,6 +99,8 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
                 _aHelp.UnreadAHelpReceived();
             }
 
+            PlayersSeen[message.Destination] = false;
+
             _messages.GetOrNew(message.Destination).Add(message);
             if (_mentorWindow is { IsOpen: true })
             {
@@ -106,12 +108,13 @@ public sealed class StaffHelpUIController : UIController, IOnSystemChanged<Bwoin
 
                 if (_mentorWindow.SelectedPlayer == message.Destination)
                 {
+                    PlayersSeen[message.Destination] = true;
                     _mentorWindow.Messages.AddMessage(CreateMessageLabel(message));
                     _mentorWindow.Messages.ScrollToBottom();
                 }
-                else
+
+                if (!PlayersSeen[message.Destination])
                 {
-                    PlayersSeen[message.Destination] = false;
                     var style = _mentorWindow.PlayerDict[message.Destination].StyleClasses;
                     if (!style.Contains(StyleNano.StyleClassButtonColorRed))
                         style.Add(StyleNano.StyleClassButtonColorRed);
