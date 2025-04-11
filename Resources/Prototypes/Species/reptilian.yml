@@ -36,6 +36,7 @@
     RLeg: MobReptilianRLeg
     LFoot: MobReptilianLFoot
     RFoot: MobReptilianRFoot
+    Back: MobHumanoidAnyMarking # Adventure
 
 - type: markingPoints
   id: MobReptilianMarkingLimits
@@ -76,6 +77,11 @@
     Arms:
       points: 2
       required: false
+# Adventure-star
+    Back:
+      points: 2
+      required: false
+# Adventure-end
 
 - type: humanoidBaseSprite
   id: MobReptilianHead

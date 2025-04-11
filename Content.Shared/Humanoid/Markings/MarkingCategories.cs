@@ -18,6 +18,7 @@ namespace Content.Shared.Humanoid.Markings
         Arms,
         Legs,
         Tail,
+        Back, // Adventure
         Overlay
     }
 

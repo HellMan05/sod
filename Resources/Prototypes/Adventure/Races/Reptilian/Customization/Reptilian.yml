@@ -262,8 +262,8 @@
 #Body
 - type: marking
   id: LizardChestPrickly
-  bodyPart: Chest
-  markingCategory: Chest
+  bodyPart: Back
+  markingCategory: Back
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Adventure/Races/Reptilian/Customization/body.rsi
@@ -271,8 +271,8 @@
 
 - type: marking
   id: LizardChestRidge
-  bodyPart: Chest
-  markingCategory: Chest
+  bodyPart: Back
+  markingCategory: Back
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Adventure/Races/Reptilian/Customization/body.rsi
@@ -289,8 +289,8 @@
 
 - type: marking
   id: LizardChestRidgeDouble
-  bodyPart: Chest
-  markingCategory: Chest
+  bodyPart: Back
+  markingCategory: Back
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Adventure/Races/Reptilian/Customization/body.rsi
@@ -298,8 +298,8 @@
 
 - type: marking
   id: LizardChestRidgeSmall
-  bodyPart: Chest
-  markingCategory: Chest
+  bodyPart: Back
+  markingCategory: Back
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Adventure/Races/Reptilian/Customization/body.rsi
