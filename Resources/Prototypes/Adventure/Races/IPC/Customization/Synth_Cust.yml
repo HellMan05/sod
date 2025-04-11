@@ -346,6 +346,20 @@
   - sprite: Adventure/Races/IPC/Customization/Body.rsi
     state: Light
 
+- type: marking
+  id: SynthChestRust
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: rust
+
 
 
 

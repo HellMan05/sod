@@ -17,6 +17,48 @@ log-probe-label-accessor = Использовано:
 log-probe-label-number = #
 astro-nav-program-name = АстроНав
 med-tek-program-name = МедТек
+
+# NanoTask cartridge
+
+nano-task-ui-heading-high-priority-tasks =
+    { $amount ->
+        [zero] Нет задач высокого приоритета
+        [one] 1 задача высокого приоритета
+       *[other] {$amount} задач высокого приоритета
+    }
+nano-task-ui-heading-medium-priority-tasks =
+    { $amount ->
+        [zero] Нет задач среднего приоритета
+        [one] 1 задача среднего приоритета
+       *[other] {$amount} задач среднего приоритета
+    }
+nano-task-ui-heading-low-priority-tasks =
+    { $amount ->
+        [zero] Нет задач низкого приоритета
+        [one] 1 задача низкого приоритета
+       *[other] {$amount} задач низкого приоритета
+    }
+nano-task-ui-done = Выполненно
+nano-task-ui-revert-done = Восстановить
+nano-task-ui-priority-low = Низкий
+nano-task-ui-priority-medium = Средний
+nano-task-ui-priority-high = Высокий
+nano-task-ui-cancel = Закрыть
+nano-task-ui-print = Распечатать
+nano-task-ui-delete = Удалить
+nano-task-ui-save = Сохранить
+nano-task-ui-new-task = Новая задача
+nano-task-ui-description-label = Описание
+nano-task-ui-description-placeholder = Найти что-то важное
+nano-task-ui-requester-label = Заказчик:
+nano-task-ui-requester-placeholder = Иван Иванов
+nano-task-ui-item-title = Редактировать
+nano-task-printed-description = Описание: {$description}
+nano-task-printed-requester = Заказчик: {$requester}
+nano-task-printed-high-priority = Приоритет: Высокий
+nano-task-printed-medium-priority = Приоритет: Средний
+nano-task-printed-low-priority = Приоритет: Низкий
+
 # Wanted list cartridge
 wanted-list-program-name = Список разыскиваемых
 wanted-list-label-no-records = Всё спокойно, ковбой.

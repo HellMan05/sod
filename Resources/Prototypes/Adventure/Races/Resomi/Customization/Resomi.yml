@@ -165,8 +165,8 @@
 - type: marking
   id: PlumageFoot
   name: Резоми, Ноги (Оперение)
-  bodyPart: RLeg
-  markingCategory: Legs
+  bodyPart: LLeg
+  markingCategory: Overlay
   speciesRestriction: [Resomi]
   sprites:
     - sprite: Adventure/Races/Resomi/Customization/Hands-Foot.rsi
@@ -175,8 +175,8 @@
 - type: marking
   id: PlumageHand
   name: Резоми, Руки (Оперение)
-  bodyPart: LArm
-  markingCategory: Arms
+  bodyPart: LLeg
+  markingCategory: Overlay
   speciesRestriction: [Resomi]
   sprites:
     - sprite: Adventure/Races/Resomi/Customization/Hands-Foot.rsi

@@ -380,8 +380,9 @@
     damage:
       types:
         Poison: 0
-  - type: PolymorphOnCollide
+  - type: PolymorphOnTrigger
     polymorph: MobInsectReaperKeeperPolymorph
+  - type: TriggerWhitelist
     whitelist:
       tags:
       - HungerSwarmGuardian

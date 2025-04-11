@@ -22,6 +22,10 @@
     {
       "name": "Light",
       "directions": 4
+    },
+    {
+      "name": "rust",
+      "directions": 4
     }
   ]
 }
