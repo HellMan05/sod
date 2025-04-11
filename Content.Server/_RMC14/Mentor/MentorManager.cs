@@ -532,6 +532,38 @@ public sealed partial class MentorManager : IPostInjectInit
         };
     }
 
+    private void OnMentorTypingMessage(MentorTypingMsg message)
+    {
+        var author = message.MsgChannel.UserId;
+        if (!_player.TryGetSessionById(author, out var authorSession))
+            return;
+
+        var destination = new NetUserId(message.To);
+        if (!_player.TryGetSessionById(destination, out var destinationSession))
+            return;
+
+        var recipients = new HashSet<INetChannel> { };
+        foreach (var active in _activeMentors)
+        {
+            if (active.UserId == author)
+                continue;
+            recipients.Add(active.Channel);
+        }
+
+        var receive = new MentorReceivedTypingMsg { To = message.To, Author = authorSession.Name };
+        foreach (var recipient in recipients)
+        {
+            try
+            {
+                _net.ServerSendMessage(receive, recipient);
+            }
+            catch (Exception e)
+            {
+                _sawmill.Error($"Error sending mentor received typing message:\n{e}");
+            }
+        }
+    }
+
     void IPostInjectInit.PostInject()
     {
         _net.RegisterNetMessage<MentorStatusMsg>();
@@ -540,6 +572,8 @@ public sealed partial class MentorManager : IPostInjectInit
         _net.RegisterNetMessage<MentorMessagesReceivedMsg>();
         _net.RegisterNetMessage<DeMentorMsg>(OnDeMentor);
         _net.RegisterNetMessage<ReMentorMsg>(OnReMentor);
+        _net.RegisterNetMessage<MentorReceivedTypingMsg>();
+        _net.RegisterNetMessage<MentorTypingMsg>(OnMentorTypingMessage);
         _net.RegisterNetMessage<MentorRequestNamesMsg>(OnRequestNames);
         _net.RegisterNetMessage<MentorGotNamesMsg>();
         _userDb.AddOnLoadPlayer(LoadData);

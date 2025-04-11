@@ -31,6 +31,7 @@
                       SizeFlagsStretchRatio="3">
             <OutputPanel Name="Messages" Access="Public"
                          VerticalExpand="True" Margin="6 6 6 6"/>
+            <Label Name="TypingIndLabel" Access="Public" HorizontalExpand="True" />
             <LineEdit Name="Chat" Access="Public" HorizontalExpand="True" Editable="False" />
         </BoxContainer>
     </BoxContainer>
