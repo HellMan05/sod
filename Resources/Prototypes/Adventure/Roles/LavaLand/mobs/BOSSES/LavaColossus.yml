@@ -1,0 +1,90 @@
+#Колосс
+- type: entity
+  id: MobLavaLandColossusBOSS
+  parent: BaseMobLavaLand
+  suffix: LavaLand
+  name: лавовый колосс
+  description: Огромный каменный танк.
+  components:
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/BOSSES/colossus.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.0
+    baseSprintSpeed : 2.0
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      5000: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 20
+        Piercing: 20
+        Heat: 10
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.90
+        density: 10000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Butcherable
+    butcherDelay: 30
+    spawned:
+    - id: DiamondOre1
+      amount: 10
+    - id: GoldOre1
+      amount: 10
+    - id: Coal1
+      amount: 10
+    - id: ArtifactFragment
+      amount: 10
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    showExamineText: false
+    availableModes:
+    - SemiAuto
+    soundGunshot: null
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 5
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: MobLavaCrabLavaLand
+    capacity: 1
+    count: 1
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        9
+      AggroVisionRadius: !type:Single
+        9
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageGroupTrigger
+        damageGroup: Brute
+        damage: 6000

@@ -1,0 +1,232 @@
+- type: entity
+  id: BaseMobLavaLand
+  parent: BaseMobAsteroid
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/goliath.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: light_alive
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+        BaseUnshaded: light_alive
+      Dead:
+        Base: dead
+        BaseUnshaded: light_dead
+  - type: Flammable
+    fireSpread: false
+    canResistFire: false
+    damage:
+      types:
+        Heat: 0.0
+  - type: ZombieImmune
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: NoSlip
+  - type: Temperature
+    heatDamageThreshold: 100273,15 
+    specificHeat: 10000
+
+#Голиаф
+- type: entity
+  id: MobLavaLandGoliath
+  parent: BaseMobLavaLand
+  suffix: LavaLand
+  name: голиаф
+  description: Массивное чудовище, использующее свои длинные щупальца для ловли добычи. Не рекомендуется угрожать им ни при каких условиях.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/goliath.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.00
+    baseSprintSpeed : 3.00
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 10
+        Piercing: 10
+  - type: HTN
+    rootTask:
+      task: GoliathCompound
+    blackboard:
+      VisionRadius: !type:Single
+        6
+      AggroVisionRadius: !type:Single
+        10
+  - type: NPCUseActionOnTarget
+    actionId: ActionGoliathTentacle
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatGoliath
+      amount: 3
+    - id: MaterialGoliathHide1
+      amount: 3
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+
+#Голиаф Древний
+- type: entity
+  id: MobLavaLandGoliathAncient
+  parent: MobLavaLandGoliath
+  suffix: LavaLand
+  name: древний голиаф
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/old_goliath.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      600: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 20
+        Piercing: 10
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatGoliath
+      amount: 6
+    - id: MaterialGoliathHide1
+      amount: 6
+
+# повелитель роя
+- type: entity
+  id: MobHivelordLavaLand
+  parent: [ BaseMobLavaLand, MobHivelord ]
+  name: повелитель роя
+  suffix: LavaLand
+  description: Воистину инопланетное существо, представляющее собой массу неизвестного органического, постоянно колышущегося материала. Во время атаки его части отделяются и атакуют совместно с оригиналом.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/hivelord.rsi
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead   
+
+# наблюдатель
+- type: entity
+  id: MobWatcherLavaLandFire
+  parent: [ BaseMobLavaLand, MobWatcherBase ]
+  name: наблюдатель за огнём
+  suffix: LavaLand
+  description: This rare subspecies only appears in June.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/watcher.rsi
+  - type: Butcherable
+    spawned:
+    - id: DiamondOre1
+      amount: 5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: ProjectileBatteryAmmoProvider
+    proto: FireBallFlamethrower
+    fireCost: 50
+  - type: Gun
+    maxAngle: 60
+    minAngle: 30
+    fireRate: 0.5
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot: /Audio/Magic/fireball.ogg 
+
+#  лавовый краб
+- type: entity
+  id: MobLavaCrabLavaLand
+  name: лавовый краб
+  suffix: LavaLand
+  description: Такой красивый, такой опасный.
+  parent: [ MobOreCrab, BaseMobLavaLand ]
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/lavacrab.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: light_alive
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+        BaseUnshaded: light_alive
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Blunt: 5
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2
+    baseSprintSpeed : 2.5
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Coal1:
+            min: 2
+            max: 4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
