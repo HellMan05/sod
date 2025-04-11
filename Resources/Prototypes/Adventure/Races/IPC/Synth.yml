@@ -92,6 +92,7 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
+  - type: DamagedSiliconAccent
   - type: AtmosExposed
   - type: Barotrauma
     damage:
