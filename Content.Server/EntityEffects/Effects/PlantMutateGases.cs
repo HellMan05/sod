@@ -28,9 +28,19 @@ public sealed partial class PlantMutateExudeGasses : EntityEffect
         var random = IoCManager.Resolve<IRobustRandom>();
         var gasses = plantholder.Seed.ExudeGasses;
 
+        // Adventure gases begin
+        var availableGases = Enum.GetValues(typeof(Gas))
+            .Cast<Gas>()
+            .Where(g => g != Gas.Zauker && g != Gas.ProtoNitrate && g != Gas.Nitrium)
+            .ToList();
+
+        if (availableGases.Count == 0)
+            return;
+        // Adventure gases end
+
         // Add a random amount of a random gas to this gas dictionary
         float amount = random.NextFloat(MinValue, MaxValue);
-        Gas gas = random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList());
+        Gas gas = random.Pick(availableGases); // Adventure gases
         if (gasses.ContainsKey(gas))
         {
             gasses[gas] += amount;
