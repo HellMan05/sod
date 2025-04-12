@@ -17,7 +17,9 @@ public sealed partial class GasLeakRuleComponent : Component
         // Adventure gases begin
         // kinda funny xd
         Gas.Healium,
-        Gas.Nitrium,
+        Gas.Halon,
+        Gas.Helium,
+        Gas.AntiNoblium,
         // Adventure gases end
     };
 
