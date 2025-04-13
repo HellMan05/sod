@@ -1,0 +1,167 @@
+#магматит
+- type: entity
+  parent: MaterialBase
+  id: MaterialMagmatite
+  name: магматит
+  description: Невероятно крепкий материал, способный выдерживать высокие температуры.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/Magma.rsi
+    layers:
+    - state: magmatite
+    - state: magmatite_light
+      shader: unshaded
+  - type: StaticPrice
+    price: 2000
+  - type: StackPrice
+    price: 1500
+  - type: Appearance
+  - type: Stack
+    stackType: Magmatite
+  - type: Item
+    size: Large
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
+
+- type: entity
+  parent: MaterialMagmatite
+  id: MaterialMagmatite1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+  - type: Construction
+    graph: Magmatite
+    node: done
+
+- type: stack
+  id: Magmatite
+  name: магматит
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/Magma.rsi, state: magmatite }
+  spawn: MaterialMagmatite1
+  maxCount: 30
+
+#осколок магматита
+- type: entity
+  parent: MaterialBase
+  id: MaterialMagmatiteFragment
+  name: осколок магматита
+  description: Невероятно крепкий материал, способный выдерживать высокие температуры.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/Magma.rsi
+    layers:
+    - state: fragment
+    - state: fragment_light
+      shader: unshaded
+  - type: StaticPrice
+    price: 200
+  - type: StackPrice
+    price: 500
+  - type: Appearance
+  - type: Stack
+    stackType: MagmatiteFragment
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - ArtifactFragment
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
+
+- type: entity
+  parent: MaterialMagmatiteFragment
+  id: MaterialMagmatiteFragment1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  id: MagmatiteFragment
+  name: осколок магматита
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/Magma.rsi, state: fragment }
+  spawn: MaterialMagmatiteFragment1
+  maxCount: 30
+
+#крафт магматита
+- type: constructionGraph
+  id: Magmatite
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: MagmatiteFragment
+        amount: 10
+        doAfter: 10
+  - node: done
+    entity: MaterialMagmatite1
+
+- type: construction
+  name: магматит
+  id: Magmatite
+  graph: Magmatite
+  startNode: start
+  targetNode: done
+  category: construction-category-misc
+  objectType: Item
+  description: Невероятно крепкий материал, способный выдерживать высокие температуры.
+  icon:
+    sprite: Adventure/Roles/LavaLand/materials/Magma.rsi
+    state: magmatite
+
+#Залежи 
+- type: entity
+  id: WallRockBasaltMagmatite
+  name: базальт
+  parent: WallRockBasalt
+  description: Рудная жила, богатая магматитом.
+  suffix: Магматит LavaLand
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreMagmatiteFragment
+    - type: Sprite
+      layers:
+        - state: rock_wall
+        - map: [ "enum.EdgeLayer.South" ]
+          state: rock_wall_south
+        - map: [ "enum.EdgeLayer.East" ]
+          state: rock_wall_east
+        - map: [ "enum.EdgeLayer.North" ]
+          state: rock_wall_north
+        - map: [ "enum.EdgeLayer.West" ]
+          state: rock_wall_west
+        - state: rock_magma
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+    - type: PointLight
+      radius: 2
+      energy: 1.5
+      color: "#f2511e"
+
+- type: ore
+  id: OreMagmatiteFragment
+  oreEntity: MaterialMagmatiteFragment1
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: entity
+  id: WallRockBasaltMagmatiteCrab
+  parent: WallRockBasaltMagmatite
+  suffix: Магматититовый краб LavaLand
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreLavaCrab
+
+- type: ore
+  id: OreLavaCrab
+  oreEntity: MobLavaCrabLavaLand

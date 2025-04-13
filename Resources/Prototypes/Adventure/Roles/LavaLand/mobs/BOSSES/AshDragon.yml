@@ -1,0 +1,141 @@
+#пепельный дракон
+- type: entity
+  id: MobLavaLandAshDragonBOSS
+  parent: [ BaseMobLavaLand, FlyingMobBase ]
+  suffix: LavaLand
+  name: пепельный дракон
+  description: Горит и пылает.
+  components:
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/BOSSES/dragon.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: ExplosionResistance
+    damageCoefficient: 0.0
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 20
+        Piercing: 20
+        Heat: 10
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.90
+        density: 10000
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Butcherable
+    butcherDelay: 30
+    spawned:
+    - id: Coal1
+      amount: 10
+    - id: MaterialMagmatite1
+      amount: 10
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: PointLight
+    radius: 4
+    energy: 1.5
+    color: "#f2511e"
+  - type: ProjectileBatteryAmmoProvider
+    proto: FireBallAshDragonSpread
+    fireCost: 50
+  - type: Gun
+    projectileSpeed: 8
+    maxAngle: 60
+    minAngle: 30
+    fireRate: 0.5
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot: /Audio/Magic/fireball.ogg 
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 50
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        9
+      AggroVisionRadius: !type:Single
+        9
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageGroupTrigger
+        damageGroup: Brute
+        damage: 6000
+
+# пламя
+- type: entity
+  id: FireBallAshDragon
+  name: драконье пламя
+  categories: [ HideSpawnMenu ]
+  parent: BaseBulletTrigger
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 10
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: fireball
+      shader: unshaded
+  - type: Ammo
+    muzzleFlash: null
+  - type: IgniteOnCollide
+    fireStacks: 1
+  - type: RepeatingTrigger
+    delay: 0.3
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: FireBomb
+    totalIntensity: 5
+    intensitySlope: 1
+    maxIntensity: 3
+    canCreateVacuum: false
+    deleteAfterExplosion: false
+    repeatable: true
+  - type: PointLight
+    enabled: true
+    color: "#ff8d26"
+    radius: 3
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
+  id: FireBallAshDragonSpread
+  categories: [ HideSpawnMenu ]
+  parent: FireBallAshDragon
+  components:
+  - type: ProjectileSpread
+    proto: FireBallAshDragon
+    count: 3
+    spread: 50

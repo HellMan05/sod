@@ -170,7 +170,7 @@
 #  лавовый краб
 - type: entity
   id: MobLavaCrabLavaLand
-  name: лавовый краб
+  name: магматитовый краб
   suffix: LavaLand
   description: Такой красивый, такой опасный.
   parent: [ MobOreCrab, BaseMobLavaLand ]
@@ -224,9 +224,113 @@
           Coal1:
             min: 2
             max: 4
+          MaterialMagmatiteFragment1:
+            min: 0
+            max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: PointLight
     radius: 2
     energy: 1.5
     color: "#f2511e"
+
+#легион
+- type: entity
+  id: MobLavaLandLegion
+  parent: BaseMobLavaLand
+  suffix: LavaLand
+  name: легион
+  description: Головастый парень.
+  components:
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/legions/legion.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.0
+    baseSprintSpeed : 2.0
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 5
+  - type: Butcherable
+    butcherDelay: 10
+    spawned:
+    - id: SalvageHumanCorpse
+      amount: 1
+    - id: Coal1
+      amount: 2
+    - id: MaterialMagmatiteFragment1
+      amount: 1
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    showExamineText: false
+    availableModes:
+    - SemiAuto
+    soundGunshot: null
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 5
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: MobLavaLandLegionSkull
+    capacity: 1
+    count: 1
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        9
+      AggroVisionRadius: !type:Single
+        9
+
+- type: entity
+  id: MobLavaLandLegionSkull
+  parent: [ MobHivelordBrood, BaseMobLavaLand ]
+  name: череп легиона
+  suffix: LavaLand
+  description: Чуть менее головастый парень.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/legions/legionSkull.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: light_alive
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+        BaseUnshaded: light_alive
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.5
+    baseSprintSpeed : 4.0
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      5: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    attackRate: 1.0
+    range: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 5
