@@ -4,8 +4,8 @@ meta:
   engineVersion: 250.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/13/2025 04:55:40
-  entityCount: 20418
+  time: 04/13/2025 11:23:22
+  entityCount: 20416
 maps:
 - 1
 grids:
@@ -97249,11 +97249,6 @@ entities:
     - type: Transform
       pos: -0.5,-40.5
       parent: 2
-  - uid: 11903
-    components:
-    - type: Transform
-      pos: -18.5,-53.5
-      parent: 2
   - uid: 11904
     components:
     - type: Transform
@@ -102509,6 +102504,11 @@ entities:
       parent: 2
 - proto: Printer
   entities:
+  - uid: 6853
+    components:
+    - type: Transform
+      pos: -18.5,-53.5
+      parent: 2
   - uid: 12838
     components:
     - type: Transform
@@ -102521,11 +102521,6 @@ entities:
       parent: 2
 - proto: PrinterDoc
   entities:
-  - uid: 12628
-    components:
-    - type: Transform
-      pos: -18.5,-52.5
-      parent: 2
   - uid: 12630
     components:
     - type: Transform
@@ -118569,11 +118564,6 @@ entities:
       parent: 18619
 - proto: VendingMachineMedicalBrig
   entities:
-  - uid: 6853
-    components:
-    - type: Transform
-      pos: -16.5,-19.5
-      parent: 2
   - uid: 11980
     components:
     - type: Transform
