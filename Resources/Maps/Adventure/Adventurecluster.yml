@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 248.0.2
+  engineVersion: 250.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/21/2025 09:55:06
-  entityCount: 12679
+  time: 04/13/2025 04:32:13
+  entityCount: 12680
 maps:
 - 12679
 grids:
@@ -4613,9 +4613,25 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           immutable: True
           moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -4643,6 +4659,14 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
@@ -4658,9 +4682,25 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -4688,11 +4728,27 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
           - 0
           - 6666.982
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -8351,6 +8407,14 @@ entities:
         immutable: False
         temperature: 75.31249
         moles:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -27371,6 +27435,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: ClosetL3JanitorFilled
   entities:
   - uid: 7662
@@ -27386,6 +27458,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -27599,6 +27679,14 @@ entities:
         moles:
         - 1.8856695
         - 7.0937095
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -28703,6 +28791,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -36586,6 +36682,13 @@ entities:
     components:
     - type: Transform
       pos: 44.5,-7.5
+      parent: 1
+- proto: GasMinerPlasma
+  entities:
+  - uid: 7536
+    components:
+    - type: Transform
+      pos: 44.5,-15.5
       parent: 1
 - proto: GasMinerWaterVapor
   entities:
@@ -56313,6 +56416,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: LockerBoozeFilled
   entities:
   - uid: 5951
@@ -56354,6 +56465,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -56414,6 +56533,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -56440,6 +56567,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -56557,6 +56692,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: LockerHeadOfPersonnelFilled
   entities:
   - uid: 4965
@@ -56572,6 +56715,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -56700,6 +56851,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -66741,29 +66900,25 @@ entities:
     - type: Transform
       pos: 18.5,-0.5
       parent: 1
-- proto: SMESBasic
+- proto: SMESAdvanced
   entities:
   - uid: 1097
     components:
-    - type: MetaData
-      name: SMES Bank 1
-    - type: Transform
-      pos: 23.5,-14.5
-      parent: 1
-  - uid: 1118
-    components:
-    - type: MetaData
-      name: SMES Bank 2
-    - type: Transform
-      pos: 24.5,-14.5
-      parent: 1
-  - uid: 1119
-    components:
-    - type: MetaData
-      name: SMES Bank 3
     - type: Transform
       pos: 25.5,-14.5
       parent: 1
+  - uid: 1118
+    components:
+    - type: Transform
+      pos: 23.5,-14.5
+      parent: 1
+  - uid: 1119
+    components:
+    - type: Transform
+      pos: 24.5,-14.5
+      parent: 1
+- proto: SMESBasic
+  entities:
   - uid: 2445
     components:
     - type: MetaData
