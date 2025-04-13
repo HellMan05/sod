@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 248.0.2
+  engineVersion: 250.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/21/2025 09:16:43
+  time: 04/13/2025 05:02:48
   entityCount: 15488
 maps:
 - 126
@@ -1919,9 +1919,25 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           immutable: True
           moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -1949,9 +1965,25 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -1979,6 +2011,14 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
@@ -1994,11 +2034,27 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
           - 0
           - 6666.982
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -9616,7 +9672,7 @@ entities:
       pos: 44.5,30.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -2820.6125
+      secondsUntilStateChange: -2916.7007
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -12131,11 +12187,6 @@ entities:
       parent: 2
 - proto: BoxFolderBlack
   entities:
-  - uid: 10293
-    components:
-    - type: Transform
-      pos: 19.70301,-2.360692
-      parent: 2
   - uid: 12101
     components:
     - type: Transform
@@ -12147,11 +12198,6 @@ entities:
     components:
     - type: Transform
       pos: 20.522104,32.67386
-      parent: 2
-  - uid: 10290
-    components:
-    - type: Transform
-      pos: 19.281136,-2.391942
       parent: 2
   - uid: 11892
     components:
@@ -12189,11 +12235,6 @@ entities:
     - type: Transform
       pos: 20.53773,30.345732
       parent: 2
-  - uid: 10291
-    components:
-    - type: Transform
-      pos: 19.374886,-2.470067
-      parent: 2
   - uid: 11890
     components:
     - type: Transform
@@ -12222,11 +12263,6 @@ entities:
     components:
     - type: Transform
       pos: 43.630394,20.021849
-      parent: 2
-  - uid: 10292
-    components:
-    - type: Transform
-      pos: 19.48426,-2.579442
       parent: 2
   - uid: 14766
     components:
@@ -38653,6 +38689,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -38674,6 +38718,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -40395,6 +40447,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -40638,6 +40698,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -47778,6 +47846,14 @@ entities:
     components:
     - type: Transform
       pos: 49.5,-25.5
+      parent: 2
+- proto: GasMinerPlasma
+  entities:
+  - uid: 10293
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 49.5,-31.5
       parent: 2
 - proto: GasMinerWaterVapor
   entities:
@@ -67671,6 +67747,13 @@ entities:
       parent: 2
     - type: Physics
       bodyType: Static
+- proto: HalonCanister
+  entities:
+  - uid: 11975
+    components:
+    - type: Transform
+      pos: 45.5,-38.5
+      parent: 2
 - proto: Handcuffs
   entities:
   - uid: 9397
@@ -69266,6 +69349,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: LockerSalvageSpecialistFilledHardsuit
   entities:
   - uid: 705
@@ -70187,11 +70278,6 @@ entities:
     components:
     - type: Transform
       pos: 55.38082,-10.156126
-      parent: 2
-  - uid: 11975
-    components:
-    - type: Transform
-      pos: 18.920185,-2.2376757
       parent: 2
   - uid: 11976
     components:
@@ -73577,6 +73663,13 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 41.5,-12.5
+      parent: 2
+- proto: Printer
+  entities:
+  - uid: 10290
+    components:
+    - type: Transform
+      pos: 19.5,-2.5
       parent: 2
 - proto: Protolathe
   entities:
@@ -83730,6 +83823,12 @@ entities:
     components:
     - type: Transform
       pos: 40.5,35.5
+      parent: 2
+  - uid: 10292
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 23.5,-3.5
       parent: 2
   - uid: 10310
     components:
@@ -95903,6 +96002,14 @@ entities:
         - 0
         - 0
         - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
   - uid: 13063
     components:
     - type: Transform
@@ -95916,6 +96023,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -96132,6 +96247,12 @@ entities:
     components:
     - type: Transform
       pos: 39.5,21.5
+      parent: 2
+  - uid: 10291
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 23.5,-3.5
       parent: 2
   - uid: 11146
     components:
