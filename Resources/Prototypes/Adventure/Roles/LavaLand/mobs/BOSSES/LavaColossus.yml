@@ -3,7 +3,7 @@
   id: MobLavaLandColossusBOSS
   parent: BaseMobLavaLand
   suffix: LavaLand
-  name: лавовый колосс
+  name: магматитовый колосс
   description: Огромный каменный танк.
   components:
   - type: Tag
@@ -50,13 +50,13 @@
       amount: 10
     - id: Coal1
       amount: 10
-    - id: ArtifactFragment
+    - id: MaterialMagmatite1
       amount: 10
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepThud
   - type: PointLight
-    radius: 2
+    radius: 4
     energy: 1.5
     color: "#f2511e"
   - type: Gun
