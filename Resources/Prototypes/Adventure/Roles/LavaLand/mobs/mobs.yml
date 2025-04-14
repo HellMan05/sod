@@ -36,13 +36,15 @@
   - type: Temperature
     heatDamageThreshold: 100273,15 
     specificHeat: 10000
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
 
 #Голиаф
 - type: entity
   id: MobLavaLandGoliath
   parent: BaseMobLavaLand
   suffix: LavaLand
-  name: голиаф
+  name: магмавый голиаф
   description: Массивное чудовище, использующее свои длинные щупальца для ловли добычи. Не рекомендуется угрожать им ни при каких условиях.
   components:
   - type: Sprite
@@ -78,19 +80,23 @@
     spawned:
     - id: FoodMeatGoliath
       amount: 3
-    - id: MaterialGoliathHide1
+    - id: MaterialMagmatiteFragment1
       amount: 3
   - type: Tag
     tags:
     - CannotSuicide
     - FootstepSound
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
 
 #Голиаф Древний
 - type: entity
   id: MobLavaLandGoliathAncient
   parent: MobLavaLandGoliath
   suffix: LavaLand
-  name: древний голиаф
+  name: древний магмавый голиаф
   components:
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/old_goliath.rsi
@@ -115,8 +121,8 @@
     spawned:
     - id: FoodMeatGoliath
       amount: 6
-    - id: MaterialGoliathHide1
-      amount: 6
+    - id: MaterialMagmatite1
+      amount: 1
 
 # повелитель роя
 - type: entity
@@ -139,7 +145,7 @@
   parent: [ BaseMobLavaLand, MobWatcherBase ]
   name: наблюдатель за огнём
   suffix: LavaLand
-  description: This rare subspecies only appears in June.
+  description: Смотрит и поджигает.
   components:
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/watcher.rsi
@@ -167,7 +173,7 @@
     - SemiAuto
     soundGunshot: /Audio/Magic/fireball.ogg 
 
-#  лавовый краб
+#лавовый краб
 - type: entity
   id: MobLavaCrabLavaLand
   name: магматитовый краб
@@ -229,10 +235,24 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:ExplodeBehavior
   - type: PointLight
     radius: 2
     energy: 1.5
     color: "#f2511e"
+  - type: AmbientSound
+    range: 10
+    sound:
+      path: /Audio/Adventure/LavaLand/Magma.ogg
+  - type: ExplosionResistance
+    damageCoefficient: 0.0
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 5
+    intensitySlope: 1
+    maxIntensity: 3
+    canCreateVacuum: false
+    deleteAfterExplosion: false
 
 #легион
 - type: entity

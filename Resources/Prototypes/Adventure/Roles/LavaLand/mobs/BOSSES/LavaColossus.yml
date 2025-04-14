@@ -3,6 +3,7 @@
   id: MobLavaLandColossusBOSS
   parent: BaseMobLavaLand
   suffix: LavaLand
+  categories: [ HideSpawnMenu ]
   name: магматитовый колосс
   description: Огромный каменный танк.
   components:
@@ -18,7 +19,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      5000: Dead
+      3500: Dead
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
@@ -76,15 +77,118 @@
     count: 1
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: SimpleRangedHostileCompoundAudioTrigger
     blackboard:
       VisionRadius: !type:Single
         9
       AggroVisionRadius: !type:Single
         9
+      SoundTargetInLOS: !type:SoundPathSpecifier
+        path: /Audio/Adventure/LavaLand/StoneMagma.ogg
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageGroupTrigger
         damageGroup: Brute
         damage: 6000
+  - type: AmbientSound
+    range: 10
+    sound:
+      path: /Audio/Adventure/LavaLand/Magma.ogg
+  - type: ExplosionResistance
+    damageCoefficient: 0.0
+
+# Спавн
+- type: entity
+  id: MobSpawnLavaColossus
+  categories: [ HideSpawnMenu ]
+  name: спавн колосса
+  components:
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/BOSSES/colossus.rsi
+    layers:
+    - state: spawn
+    - state: spawn_light
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.48,-0.48,0.48,0.48"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+  - type: TimedDespawn
+    lifetime: 5.0
+  - type: SpawnOnDespawn
+    prototype: MobLavaLandColossusBOSS
+  - type: PointLight
+    radius: 4
+    energy: 1.5
+    color: "#f2511e"
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Adventure/LavaLand/ColossusSpawn.ogg
+
+- type: entity
+  id: MobLavaLandColossusSleep
+  parent: BaseStructure
+  suffix: Спавн колосса LavaLand
+  name: магматитовая скала
+  description: Огромная сказал магматита.
+  components:
+    - type: Sprite
+      sprite: Adventure/Roles/LavaLand/mobs/BOSSES/colossus.rsi
+      layers:
+      - state: sleep
+      - state: sleep_light
+        shader: unshaded
+      noRot: true
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.60
+          density: 10000
+          mask:
+            - MachineMask
+          layer:
+            - MidImpassable
+            - LowImpassable
+            - BulletImpassable
+            - Opaque
+    - type: PointLight
+      radius: 4
+      energy: 1.5
+      color: "#f2511e"
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Glass
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 2
+          behaviors:
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                MobSpawnLavaColossus:
+                  min: 1
+                  max: 1
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+    - type: AmbientSound
+      range: 10
+      sound:
+        path: /Audio/Adventure/LavaLand/Magma.ogg
