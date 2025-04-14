@@ -1,0 +1,213 @@
+#изумрудная руда
+- type: entity
+  parent: OreBase
+  id: OreEmerald
+  name: изумрудная руда
+  description: Кусок неообработанного драгоценного камня.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    layers:
+    - state: Emerald_ore
+  - type: Appearance
+  - type: Stack
+    stackType: OreEmerald
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      RawEmerald: 100
+
+- type: entity
+  parent: OreEmerald
+  id: OreEmerald1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  id: OreEmerald
+  name: изумрудная руда
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/gems.rsi, state: Emerald_ore }
+  spawn: OreEmerald1
+  maxCount: 30
+
+- type: material
+  id: RawEmerald
+  name: изумрудная руда
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Emerald_ore }
+  color: "#2ad75a"
+  price: 0.5
+
+#рубиновая руда
+- type: entity
+  parent: OreBase
+  id: OreRuby
+  name: рубиновая руда
+  description: Кусок неообработанного драгоценного камня.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    layers:
+    - state: Ruby_ore
+  - type: Appearance
+  - type: Stack
+    stackType: OreRuby
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      RawRuby: 100
+
+- type: entity
+  parent: OreRuby
+  id: OreRuby1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  id: OreRuby
+  name: рубиновая руда
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/gems.rsi, state: Ruby_ore }
+  spawn: OreRuby1
+  maxCount: 30
+
+- type: material
+  id: RawRuby
+  name: рубиновая руда
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Ruby_ore }
+  color: "#f24646"
+  price: 0.5
+
+#сапфировая руда
+- type: entity
+  parent: OreBase
+  id: OreSapphire
+  name: сапфировая руда
+  description: Кусок неообработанного драгоценного камня.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    layers:
+    - state: Sapphire_ore
+  - type: Appearance
+  - type: Stack
+    stackType: OreSapphire
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      RawSapphire: 100
+
+- type: entity
+  parent: OreSapphire
+  id: OreSapphire1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  id: OreSapphire
+  name: сапфировая руда
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/gems.rsi, state: Sapphire_ore }
+  spawn: OreSapphire1
+  maxCount: 30
+
+- type: material
+  id: RawSapphire
+  name: сапфировая руда
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Sapphire_ore }
+  color: "#305de4"
+  price: 0.5
+
+#топазовая руда
+- type: entity
+  parent: OreBase
+  id: OreTopaz
+  name: топазовая руда
+  description: Кусок неообработанного драгоценного камня.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    layers:
+    - state: Topaz_ore
+  - type: Appearance
+  - type: Stack
+    stackType: OreTopaz
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      RawTopaz: 100
+
+- type: entity
+  parent: OreTopaz
+  id: OreTopaz1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  id: OreTopaz
+  name: топазовая руда
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/gems.rsi, state: Topaz_ore }
+  spawn: OreTopaz1
+  maxCount: 30
+
+- type: material
+  id: RawTopaz
+  name: топазовая руда
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Topaz_ore }
+  color: "#f29d46"
+  price: 0.5
+
+#Залежи 
+- type: entity
+  id: WallRockBasaltGem
+  name: базальт
+  parent: WallRockBasalt
+  description: Рудная жила, богатая драгоценными камнями.
+  suffix: Драгоценные камни LavaLand
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: RandomOreGem
+    - type: Sprite
+      layers:
+        - state: rock_wall
+        - map: [ "enum.EdgeLayer.South" ]
+          state: rock_wall_south
+        - map: [ "enum.EdgeLayer.East" ]
+          state: rock_wall_east
+        - map: [ "enum.EdgeLayer.North" ]
+          state: rock_wall_north
+        - map: [ "enum.EdgeLayer.West" ]
+          state: rock_wall_west
+        - state: rock_gem
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+
+- type: ore
+  id: RandomOreGem
+  oreEntity: SpawnOreGemRandom
+  minOreYield: 1
+  maxOreYield: 3
+
+- type: entity
+  id: SpawnOreGemRandom
+  parent: MarkerBase
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - OreEmerald1
+      - OreRuby1
+      - OreSapphire1
+      - OreTopaz1
