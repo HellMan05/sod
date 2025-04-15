@@ -5,7 +5,7 @@
   - AdventureAspid      #min 20 max 55
 # - AdventureAvrite     #min 40 max N/A
   - AdventureBagel      #min 30 max 120
-  - AdventureBoxNew     #min 25 max 120 #rework (too big, original min 50) 
+  - AdventureBoxNew     #min 25 max 120 #rework (too big, original min 50)
   - AdventureCluster    #min 0  max 35
   - AdventureDelta      #min 30 max N/A
   - AdventureLoop       #min 25 max 70
@@ -15,6 +15,7 @@
   - AdventurePacked     #min 0  max 25
 # - AdventureRelict     #min 0  max 25
 # - Starquest           #min 0  max 20 # До лучших времён
+  - AdventureTrain      #min 20 max 120
 
 # original list
 #  - Amber              #min 15 max 50
