@@ -49,8 +49,12 @@
     spawned:
     - id: Coal1
       amount: 10
+    - id: DragonRuby1
+      amount: 2
+    - id: Ruby1
+      amount: 5
     - id: MaterialMagmatite1
-      amount: 10
+      amount: 5
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepThud

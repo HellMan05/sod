@@ -124,21 +124,6 @@
     - id: MaterialMagmatite1
       amount: 1
 
-# повелитель роя
-- type: entity
-  id: MobHivelordLavaLand
-  parent: [ BaseMobLavaLand, MobHivelord ]
-  name: повелитель роя
-  suffix: LavaLand
-  description: Воистину инопланетное существо, представляющее собой массу неизвестного органического, постоянно колышущегося материала. Во время атаки его части отделяются и атакуют совместно с оригиналом.
-  components:
-  - type: Sprite
-    sprite: Adventure/Roles/LavaLand/mobs/hivelord.rsi
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      50: Dead   
-
 # наблюдатель
 - type: entity
   id: MobWatcherLavaLandFire
