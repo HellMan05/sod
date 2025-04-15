@@ -864,34 +864,6 @@
     accent-german-words-61-3: accent-german-words-replace-61
     accent-german-words-61-4: accent-german-words-replace-61
     accent-german-words-62: accent-german-words-replace-62
-#Adventure-edit-start
-    adventure-accent-german-words-1: adventure-accent-german-words-replace-1
-    adventure-accent-german-words-1-2: adventure-accent-german-words-replace-1
-    adventure-accent-german-words-1-3: adventure-accent-german-words-replace-1
-    adventure-accent-german-words-2: adventure-accent-german-words-replace-2
-    adventure-accent-german-words-3: adventure-accent-german-words-replace-3
-    adventure-accent-german-words-4: adventure-accent-german-words-replace-4
-    adventure-accent-german-words-5: adventure-accent-german-words-replace-5
-    adventure-accent-german-words-6: adventure-accent-german-words-replace-6
-    adventure-accent-german-words-6-2: adventure-accent-german-words-replace-6
-    adventure-accent-german-words-7: adventure-accent-german-words-replace-7
-    adventure-accent-german-words-7-2: adventure-accent-german-words-replace-7
-    adventure-accent-german-words-7-3: adventure-accent-german-words-replace-7
-    adventure-accent-german-words-7-4: adventure-accent-german-words-replace-7
-    adventure-accent-german-words-8: adventure-accent-german-words-replace-8
-    adventure-accent-german-words-9: adventure-accent-german-words-replace-9
-    adventure-accent-german-words-9-2: adventure-accent-german-words-replace-9
-    adventure-accent-german-words-10: adventure-accent-german-words-replace-10
-    adventure-accent-german-words-11: adventure-accent-german-words-replace-11
-    adventure-accent-german-words-12: adventure-accent-german-words-replace-12
-    adventure-accent-german-words-13: adventure-accent-german-words-replace-13
-    adventure-accent-german-words-14: adventure-accent-german-words-replace-14
-    adventure-accent-german-words-14-2: adventure-accent-german-words-replace-14
-    adventure-accent-german-words-15: adventure-accent-german-words-replace-15
-    adventure-accent-german-words-16: adventure-accent-german-words-replace-16
-    adventure-accent-german-words-16-2: adventure-accent-german-words-replace-16
-    adventure-accent-german-words-16-3: adventure-accent-german-words-replace-16
-#Adventure-edit-end
 
 - type: accent
   id: russian
