@@ -13,6 +13,7 @@
   - AdventureMaus       #min 0  max 40
   - AdventureOmega      #min 0  max 25
   - AdventurePacked     #min 0  max 25
+  - AdventurePlasma     #min 15 max 80
 # - AdventureRelict     #min 0  max 25
 # - Starquest           #min 0  max 20 # До лучших времён
   - AdventureTrain      #min 20 max 120
