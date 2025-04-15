@@ -11,6 +11,13 @@
   - IngotSilver1
   - MaterialBananium1
   - MaterialDiamond
+# Adventure-LavaLand-start
+  - ProcessedMagmatite
+  - Emerald
+  - Ruby
+  - Sapphire
+  - Topaz
+# Adventure-LavaLand-end
 
 - type: latheRecipePack
   id: RGlassSmelting

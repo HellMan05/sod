@@ -56,3 +56,9 @@
   - type: Tag
     tags:
       - HideContextMenu
+# Adventure-LavaLand-start
+  - type: AmbientSound
+    range: 5
+    sound:
+      path: /Audio/Adventure/LavaLand/Magma.ogg
+# Adventure-LavaLand-end

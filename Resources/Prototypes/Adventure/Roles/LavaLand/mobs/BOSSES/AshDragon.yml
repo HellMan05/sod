@@ -3,6 +3,7 @@
   id: MobLavaLandAshDragonBOSS
   parent: [ BaseMobLavaLand, FlyingMobBase ]
   suffix: LavaLand
+  categories: [ HideSpawnMenu ]
   name: пепельный дракон
   description: Горит и пылает.
   components:
@@ -78,12 +79,14 @@
     startingCharge: 1000
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: SimpleRangedHostileCompoundAudioTrigger
     blackboard:
       VisionRadius: !type:Single
         9
       AggroVisionRadius: !type:Single
         9
+      SoundTargetInLOS: !type:SoundPathSpecifier
+        path: /Audio/Animals/space_dragon_roar.ogg
   - type: Destructible
     thresholds:
     - trigger:
@@ -139,3 +142,76 @@
     proto: FireBallAshDragon
     count: 3
     spread: 50
+
+- type: htnCompound
+  id: SimpleRangedHostileCompoundAudioTrigger
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: InnateRangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UtilityOperator
+            proto: NearbyGunTargets
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: Target
+            - !type:TargetInRangePrecondition
+              targetKey: Target
+              rangeKey: RangedRange
+            - !type:TargetInLOSPrecondition
+              targetKey: Target
+              rangeKey: RangedRange
+          operator: !type:GunOperator
+            targetKey: Target
+            requireLOS: true
+          services:
+            - !type:UtilityService
+              id: RangedService
+              proto: NearbyGunTargets
+              key: Target
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+#спавнер
+- type: entity
+  id: MobSpawnAshDragon
+  suffix: LavaLand
+  name: спавн дракона
+  components:
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/mobs/BOSSES/dragon_spawn.rsi
+    layers:
+    - state: spawn
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.90,-0.90,0.90,0.90"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+  - type: TimedDespawn
+    lifetime: 3.0
+  - type: SpawnOnDespawn
+    prototype: MobLavaLandAshDragonBOSS
+  - type: PointLight
+    radius: 10
+    energy: 1.5
+    color: "#f2511e"
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Adventure/LavaLand/DragonSpawn.ogg

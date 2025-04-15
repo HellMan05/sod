@@ -217,6 +217,9 @@
         },  
         {
             "name": "rock_magma"
+        },
+        {
+            "name": "rock_gem"
         }
     ]
 }

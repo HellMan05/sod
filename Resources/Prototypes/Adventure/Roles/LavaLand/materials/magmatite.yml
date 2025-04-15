@@ -12,10 +12,6 @@
     - state: magmatite
     - state: magmatite_light
       shader: unshaded
-  - type: StaticPrice
-    price: 2000
-  - type: StackPrice
-    price: 1500
   - type: Appearance
   - type: Stack
     stackType: Magmatite
@@ -25,6 +21,15 @@
     radius: 2
     energy: 1.5
     color: "#f2511e"
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Magmatite: 100
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 5
+    popupText: "Магматит обжигает ваши руки."
 
 - type: entity
   parent: MaterialMagmatite
@@ -44,6 +49,14 @@
   spawn: MaterialMagmatite1
   maxCount: 30
 
+- type: material
+  id: Magmatite
+  name: магматит
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/Magma.rsi, state: magmatite }
+  color: "#e64e04"
+  price: 10
+
 #осколок магматита
 - type: entity
   parent: MaterialBase
@@ -58,10 +71,6 @@
     - state: fragment
     - state: fragment_light
       shader: unshaded
-  - type: StaticPrice
-    price: 200
-  - type: StackPrice
-    price: 500
   - type: Appearance
   - type: Stack
     stackType: MagmatiteFragment
@@ -69,11 +78,20 @@
     size: Normal
   - type: Tag
     tags:
-    - ArtifactFragment
+    - Ore
   - type: PointLight
     radius: 2
     energy: 1.5
     color: "#f2511e"
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      MagmatiteFragment: 100
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 1
+    popupText: "Магматит обжигает ваши руки."
 
 - type: entity
   parent: MaterialMagmatiteFragment
@@ -89,6 +107,14 @@
   icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/Magma.rsi, state: fragment }
   spawn: MaterialMagmatiteFragment1
   maxCount: 30
+
+- type: material
+  id: MagmatiteFragment
+  name: магматит
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/Magma.rsi, state: fragment }
+  color: "#e64e04"
+  price: 5
 
 #крафт магматита
 - type: constructionGraph
@@ -165,3 +191,58 @@
 - type: ore
   id: OreLavaCrab
   oreEntity: MobLavaCrabLavaLand
+
+#обработанный магматит
+- type: entity
+  parent: MaterialBase
+  id: ProcessedMagmatite
+  name: обработанный магматит
+  description: Неверится, что это всего застывшая лава.
+  suffix: LavaLand
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    layers:
+    - state: processed_magmatite
+      shader: unshaded
+  - type: Appearance
+  - type: Stack
+    stackType: ProcessedMagmatite
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      ProcessedMagmatite: 100
+
+- type: latheRecipe
+  id: ProcessedMagmatite
+  result: ProcessedMagmatite1
+  completetime: 0
+  materials:
+    MagmatiteFragment: 100
+
+- type: entity
+  parent: ProcessedMagmatite
+  id: ProcessedMagmatite1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  id: ProcessedMagmatite
+  name: осколок магматита
+  icon: { sprite: /Textures/Adventure/Roles/LavaLand/materials/gems.rsi, state: processed_magmatite }
+  spawn: ProcessedMagmatite1
+  maxCount: 30
+
+- type: material
+  id: ProcessedMagmatite
+  name: магматит
+  unit: materials-unit-piece
+  icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: processed_magmatite }
+  color: "#e64e04"
+  price: 25

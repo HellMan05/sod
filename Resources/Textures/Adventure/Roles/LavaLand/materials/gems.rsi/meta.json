@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made by borkroman",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "Dragon_pearl"
+    },
+    {
+      "name": "Dragon_stone"
+    },
+    {
+      "name": "Emerald"
+    },
+    {
+      "name": "processed_magmatite"
+    },
+    {
+      "name": "Ruby"
+    },
+    {
+      "name": "Sapphire"
+    },
+    {
+      "name": "Topaz"
+    },
+    {
+      "name": "Dragon_stone_ore"
+    },
+    {
+      "name": "Emerald_ore"
+    },
+    {
+      "name": "Ruby_ore"
+    },
+    {
+      "name": "Sapphire_ore"
+    },
+    {
+      "name": "Topaz_ore"
+    }
+  ]
+}
