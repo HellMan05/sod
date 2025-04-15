@@ -273,6 +273,7 @@
     currentOre: OreDragon
   - type: InteractionOutline
   - type: Sprite
+    noRot: true
     sprite: Adventure/Roles/LavaLand/materials/dragon_stone.rsi
     state: d1
     layers:

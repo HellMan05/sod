@@ -1,4 +1,33 @@
 - type: entity
+  parent: CrateGeneric
+  id: OldChest
+  suffix: Пустой LavaLand
+  name: старый сундук
+  description: Потрёпанный сундук, прямиком из Некрополиса.. Он явно видел многое.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/necro_spike/oldChest.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: closed
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,-0.09375"
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: Icon
+    sprite: Adventure/Roles/LavaLand/crates/base.rsi
+    state: icon
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateDoorOpen: open
+    stateDoorClosed: closed
+
+- type: entity
   id: OldChestRandomLoot
   suffix: Рандомный лут LavaLand
   parent: OldChest

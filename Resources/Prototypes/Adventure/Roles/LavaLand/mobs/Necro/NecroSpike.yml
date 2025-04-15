@@ -7,6 +7,7 @@
   components:
   - type: InteractionOutline
   - type: Sprite
+    noRot: true
     sprite: Adventure/Roles/LavaLand/necro_spike/necro_spike.rsi
     state: Spike1
     layers:
@@ -52,7 +53,47 @@
         mask:
         - MachineMask
         layer:
-        - Impassable   
+        - Impassable 
+  - type: CombatMode
+    toggleMouseRotator: false
+  - type: NoRotateOnInteract
+  - type: NoRotateOnMove
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    showExamineText: false
+    availableModes:
+    - SemiAuto
+    soundGunshot: null
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 15
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: NecroSpikeSpawnRandomMob
+    capacity: 1
+    count: 1
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        4
+      AggroVisionRadius: !type:Single
+        4
+
+- type: entity
+  id: NecroSpikeSpawnRandomMob
+  parent: MarkerBase
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - MobLavaLandLegion
+      - MobWatcherLavaLandFire
+      - MobLavaLandGoliath  
 
 # обвал
 - type: entity
