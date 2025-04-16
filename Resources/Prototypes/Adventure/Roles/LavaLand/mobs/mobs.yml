@@ -310,6 +310,10 @@
         9
       AggroVisionRadius: !type:Single
         9
+  - type: AmbientSound
+    range: 5
+    sound:
+      path: /Audio/Adventure/LavaLand/legion_whispers.ogg 
 
 - type: entity
   id: MobLavaLandLegionSkull
@@ -349,3 +353,7 @@
     damage:
       types:
         Slash: 5
+  - type: AmbientSound
+    range: 5
+    sound:
+      path: /Audio/Adventure/LavaLand/legion_whispers.ogg 
