@@ -24,7 +24,7 @@
       maxGroupSize: 8
     - !type:OreDunGen
       replacement: WallRockBasalt
-      entity: allRockBasaltTin
+      entity: WallRockBasaltTin
       count: 50
       minGroupSize: 8
       maxGroupSize: 12
