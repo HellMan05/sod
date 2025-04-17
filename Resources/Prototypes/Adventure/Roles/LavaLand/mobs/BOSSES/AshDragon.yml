@@ -10,7 +10,8 @@
   - type: Tag
     tags:
     - CannotSuicide
-    - FootstepSound
+    - FootstepSound  
+    - LavaMob
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/BOSSES/dragon.rsi
   - type: MovementSpeedModifier

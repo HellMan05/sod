@@ -32,6 +32,7 @@
   - type: Tag
     tags:
     - CannotSuicide
+    - LavaMob
   - type: NoSlip
   - type: Temperature
     heatDamageThreshold: 100273,15 
@@ -47,6 +48,9 @@
     - RadiationProtection
     - Drowsiness
     - Adrenaline
+
+- type: Tag
+  id: LavaMob
 
 #Голиаф
 - type: entity
@@ -96,7 +100,8 @@
   - type: Tag
     tags:
     - CannotSuicide
-    - FootstepSound
+    - FootstepSound  
+    - LavaMob
   - type: PointLight
     radius: 2
     energy: 1.5
@@ -251,6 +256,11 @@
     maxIntensity: 3
     canCreateVacuum: false
     deleteAfterExplosion: false
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound  
+    - LavaMob
 
 #легион
 - type: entity
@@ -263,7 +273,8 @@
   - type: Tag
     tags:
     - CannotSuicide
-    - FootstepSound
+    - FootstepSound 
+    - LavaMob
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/legions/legion.rsi
   - type: MovementSpeedModifier

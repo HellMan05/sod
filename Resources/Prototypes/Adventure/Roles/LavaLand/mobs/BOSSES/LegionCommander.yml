@@ -211,6 +211,10 @@
   name: командир легиона
   description: Лучший из лучших.
   components:
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - LavaMob
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/BOSSES/legion.rsi
     layers:

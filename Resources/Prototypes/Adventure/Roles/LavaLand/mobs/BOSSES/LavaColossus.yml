@@ -11,6 +11,7 @@
     tags:
     - CannotSuicide
     - FootstepSound
+    - LavaMob
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/BOSSES/colossus.rsi
   - type: MovementSpeedModifier
