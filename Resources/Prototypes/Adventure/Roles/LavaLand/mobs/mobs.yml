@@ -89,6 +89,8 @@
     spawned:
     - id: FoodMeatGoliath
       amount: 3
+    - id: MaterialGoliathHide1
+      amount: 3
     - id: MaterialMagmatiteFragment1
       amount: 3
   - type: Tag
@@ -129,6 +131,8 @@
   - type: Butcherable
     spawned:
     - id: FoodMeatGoliath
+      amount: 6
+    - id: MaterialGoliathHide1
       amount: 6
     - id: MaterialMagmatite1
       amount: 1
