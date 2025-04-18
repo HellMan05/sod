@@ -109,9 +109,21 @@
       - id: ShardCrystalGreen
         amount: 1
         prob: 0.3
-      - id: WeaponCrusherGlaive
+      - id: WeaponCrusherGlaive  
         amount: 1
-        prob: 0.05
+        prob: 0.02
+      - id: WeaponCrusher  
+        amount: 1
+        prob: 0.02
+      - id: WeaponCrusherDagger  
+        amount: 1
+        prob: 0.02
+      - id: WeaponProtoKineticCutter  
+        amount: 1
+        prob: 0.02
+      - id: MiningDrill
+        amount: 1
+        prob: 0.02
       - id: MiningDrillDiamond
         amount: 1
-        prob: 0.05
+        prob: 0.02

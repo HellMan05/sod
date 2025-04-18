@@ -300,9 +300,15 @@
       - id: MobLavaLandGoliathAncient
         weight: 15
       - id: MobWatcherLavaLandFire
-        weight: 25
+        weight: 20
       - id: MobLavaLandLegion
-        weight: 35
+        weight: 30
+      - id: MobSkeletonBloodMinerCutter
+        weight: 2
+      - id: MobSkeletonBloodMinerAccelerator
+        weight: 4
+      - id: MobSkeletonBloodMinerMiningDrill
+        weight: 4
 
 #боссы
 - type: entity
