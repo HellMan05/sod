@@ -294,9 +294,11 @@
       types:
         Slash: 5
   - type: Butcherable
-    butcherDelay: 10
+    butcherDelay: 5
     spawned:
     - id: SalvageHumanCorpse
+      amount: 1
+    - id: FoodLegionHeart
       amount: 1
     - id: Coal1
       amount: 2
@@ -372,3 +374,52 @@
     range: 5
     sound:
       path: /Audio/Adventure/LavaLand/legion_whispers.ogg 
+
+- type: entity
+  id: FoodLegionHeart
+  parent: FoodBase
+  categories: [ HideSpawnMenu ]
+  suffix: LavaLand
+  name: сердце легиона
+  description: Каменное цердце, обладающее целебными свойствами.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Rororium
+          Quantity: 5
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    state: core1
+  - type: Item
+    size: Normal
+  - type: Perishable
+    rotAfter: 120 
+    molsPerSecondPerUnitMass: 0
+    forceRotProgression: true
+  - type: RotInto
+    entity: FoodLegionHeartDead
+    stage: 1
+  - type: Tag
+    tags:
+    - Meat
+    - ClothMade
+
+- type: entity
+  id: FoodLegionHeartDead
+  parent: BaseItem
+  categories: [ HideSpawnMenu ]
+  suffix: LavaLand
+  name: потухшее сердце легиона
+  description: Оно потухло и утратило свои свойства.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/materials/gems.rsi
+    state: core2
+  - type: SpaceGarbage
+  - type: Item
+    size: Normal
+  - type: StaticPrice
+    price: 500

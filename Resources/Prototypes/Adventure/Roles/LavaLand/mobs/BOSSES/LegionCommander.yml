@@ -327,6 +327,7 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
+    noRot: true
     sprite: Adventure/Roles/LavaLand/mobs/BOSSES/legion.rsi
     layers:
     - state: Spawn
