@@ -25,37 +25,37 @@
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: WallRockBasaltTin
-      count: 50
+      count: 35
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: WallRockBasaltCoal
-      count: 50
+      count: 35
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: WallRockBasaltQuartz
-      count: 50
+      count: 35
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: WallRockBasaltSalt
-      count: 50
+      count: 35
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: WallRockBasaltGold
-      count: 40
+      count: 35
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: WallRockBasaltSilver
-      count: 40
+      count: 35
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
@@ -103,13 +103,13 @@
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: FloorLavaEntity
-      count: 500
+      count: 350
       minGroupSize: 3
       maxGroupSize: 15
     - !type:OreDunGen
       replacement: WallRockBasalt
       entity: BasaltRandom
-      count: 500
+      count: 350
       minGroupSize: 3
       maxGroupSize: 10
     - !type:OreDunGen
