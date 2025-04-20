@@ -26,6 +26,18 @@
     {
       "name": "rust",
       "directions": 4
+    },
+    {
+      "name": "line",
+      "directions": 4
+    },
+    {
+      "name": "left_arm",
+      "directions": 4
+    },
+    {
+      "name": "right_arm",
+      "directions": 4
     }
   ]
 }

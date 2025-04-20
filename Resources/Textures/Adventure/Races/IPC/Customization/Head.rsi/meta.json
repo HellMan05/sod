@@ -46,6 +46,18 @@
     {
       "name": "coils",
       "directions": 4
+    },
+    {
+      "name": "antennBent",
+      "directions": 4
+    },
+    {
+      "name": "cable1",
+      "directions": 4
+    },
+    {
+      "name": "cable2",
+      "directions": 4
     }
   ]
 }
