@@ -85,7 +85,7 @@
     shoes: ClothingShoesBootsSalvage
     belt: OreBag
   inhand:
-    - MiningDrill
+    - MiningJackhammer
   storage:
     belt:
     - OreEmerald1 

@@ -127,3 +127,6 @@
       - id: MiningDrillDiamond
         amount: 1
         prob: 0.02
+      - id: MiningJackhammer
+        amount: 1
+        prob: 0.02
