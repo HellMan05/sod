@@ -104,3 +104,11 @@
   - ClothingPantsPink4
   - ClothingPantsHearts
   - ClothingPantsZasranes
+
+- type: loadoutGroup
+  id: SalvageSpecialistJumpsuit
+  name: Утилизатор, комбинезон
+  loadouts:
+  - SalvageSpecialistJumpsuit
+  - SalvageSpecialistWorkJumpsuit
+  - SalvageSpecialistUndershirt
