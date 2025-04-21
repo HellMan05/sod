@@ -120,19 +120,21 @@
   name: trait-socialanxiety-name
   description: trait-socialanxiety-desc
   category: SpeechTraits
-  cost: 2
+  cost: 1 # Adventure social anxiety
   components:
   - type: StutteringAccent
-    matchRandomProb: 0.1
-    fourRandomProb: 0
-    threeRandomProb: 0
-    cutRandomProb: 0
+    # Adventure social anxiety begin
+    matchRandomProb: 0.5
+    fourRandomProb: 0.01
+    threeRandomProb: 0.01
+    cutRandomProb: 0.05
+    # Adventure social anxiety end
 
 - type: trait
   id: FrontalLisp
   name: trait-frontal-lisp-name
   description: trait-frontal-lisp-desc
   category: SpeechTraits
-  cost: 2
+  cost: 1 # Adventure social anxiety
   components:
   - type: FrontalLisp
