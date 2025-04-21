@@ -8,6 +8,9 @@
   - !type:OverallPlaytimeRequirement
     time: 36000 #10 hrs # Adventure
   guides: [ Revolutionaries ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 3600 # 1h
 
 - type: antag
   id: Rev
