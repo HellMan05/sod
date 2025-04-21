@@ -159,7 +159,6 @@ public sealed class ReflectSystem : EntitySystem
         EntityUid reflector,
         EntityUid? shooter,
         EntityUid shotSource,
-        ReflectType reflective,
         Vector2 direction,
         ReflectType hitscanReflectType,
         [NotNullWhen(true)] out Vector2? newDirection)
@@ -167,7 +166,6 @@ public sealed class ReflectSystem : EntitySystem
         if (!TryComp<ReflectComponent>(reflector, out var reflect) ||
             (reflect.Reflects & hitscanReflectType) == 0x0 ||
             !_toggle.IsActivated(reflector) ||
-            (reflect.Reflects & reflective) == 0x0 ||
             !_random.Prob(reflect.ReflectProb))
         {
             newDirection = null;

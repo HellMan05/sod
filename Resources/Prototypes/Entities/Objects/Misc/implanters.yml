@@ -181,9 +181,8 @@
 #Security implanters
 
 - type: entity
-  name: имплантер-трекер # Adventure
   id: TrackingImplanter
-  name: tracking implanter
+  name: имплантер-трекер # Adventure
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
@@ -292,9 +291,8 @@
 # Security and Command implanters
 
 - type: entity
-  name: имплантер-щит разума # Adventure
   id: MindShieldImplanter
-  name: mindshield implanter
+  name: имплантер-щит разума # Adventure
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
