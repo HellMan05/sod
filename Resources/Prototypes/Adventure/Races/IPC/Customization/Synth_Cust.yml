@@ -217,6 +217,15 @@
   - sprite: Adventure/Races/IPC/Customization/Face.rsi
     state: crash
 
+- type: marking
+  id: SynthCamera
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Face.rsi
+    state: camera
+
 #Head
 - type: marking
   id: SynthAntennaCurves
@@ -305,6 +314,30 @@
   - sprite: Adventure/Races/IPC/Customization/Head.rsi
     state: coils
 
+- type: marking
+  id: SynthAntennaBent
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Head.rsi
+    state: antennBent
+  - sprite: Adventure/Races/IPC/Customization/Head.rsi
+    state: antennaRight-unshaded
+  - sprite: Adventure/Races/IPC/Customization/Head.rsi
+    state: antennaLetf-unshaded
+
+- type: marking
+  id: SynthHeadCable
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Head.rsi
+    state: cable1
+  - sprite: Adventure/Races/IPC/Customization/Head.rsi
+    state: cable2
+
 #Body
 - type: marking
   id: SynthChestHeart
@@ -360,6 +393,29 @@
   - sprite: Adventure/Races/IPC/Customization/Body.rsi
     state: rust
 
+- type: marking
+  id: SynthChestLine
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: line
 
+- type: marking
+  id: SynthChestLArm
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: left_arm
 
-
+- type: marking
+  id: SynthChestRArm
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: right_arm
