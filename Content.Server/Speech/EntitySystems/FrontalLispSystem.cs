@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
-using Robust.Shared.Random; // Corvax-Localization
+using Robust.Shared.Random; // Adventure social anxiety
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -13,7 +13,7 @@ public sealed class FrontalLispSystem : EntitySystem
     private static readonly Regex RegexLowerEcks = new(@"[e]+[x]+[c]*|[x]+");
     // @formatter:on
 
-    [Dependency] private readonly IRobustRandom _random = default!; // Corvax-Localization
+    [Dependency] private readonly IRobustRandom _random = default!; // Adventure social anxiety
 
     public override void Initialize()
     {
@@ -32,7 +32,7 @@ public sealed class FrontalLispSystem : EntitySystem
         message = RegexUpperEcks.Replace(message, "EKTH");
         message = RegexLowerEcks.Replace(message, "ekth");
 
-        // Corvax-Localization Start
+        // Adventure social anxiety begin
         // с - ш
         message = Regex.Replace(message, @"с", _random.Prob(0.90f) ? "ш" : "с");
         message = Regex.Replace(message, @"С", _random.Prob(0.90f) ? "Ш" : "С");
@@ -48,7 +48,7 @@ public sealed class FrontalLispSystem : EntitySystem
         // з - ж
         message = Regex.Replace(message, @"з", _random.Prob(0.90f) ? "ж" : "з");
         message = Regex.Replace(message, @"З", _random.Prob(0.90f) ? "Ж" : "З");
-        // Corvax-Localization End
+        // Adventure social anxiety end
 
         args.Message = message;
     }
