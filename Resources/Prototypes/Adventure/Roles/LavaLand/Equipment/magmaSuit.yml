@@ -106,7 +106,7 @@
   - type: PointLight
     color: "#fda144" 
     radius: 7
-    energy: 3
+    energy: 5
 
 # крафт
 - type: constructionGraph

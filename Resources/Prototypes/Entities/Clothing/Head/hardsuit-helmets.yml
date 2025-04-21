@@ -97,7 +97,7 @@
   - type: PointLight
     color: "#7dfcff" # Adventure-Resprite
     radius: 7
-    energy: 3
+    energy: 6
 
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
@@ -112,6 +112,7 @@
   - type: PointLight
     color: "#7dfcff" # Adventure-Resprite
     radius: 6
+    energy: 3
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
@@ -324,7 +325,7 @@
   - type: PointLight
     color: "#7dfcff" # Adventure-Resprite
     radius: 7
-    energy: 3
+    energy: 6
 
 #ANTAG HARDSUITS
 #Blood-red Hardsuit

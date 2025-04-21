@@ -26,6 +26,10 @@
   - type: EntityStorageVisuals
     stateDoorOpen: open
     stateDoorClosed: closed
+  - type: PointLight
+    radius: 2
+    energy: 1.5
+    color: "#f2511e"
 
 - type: entity
   id: OldChestRandomLoot
