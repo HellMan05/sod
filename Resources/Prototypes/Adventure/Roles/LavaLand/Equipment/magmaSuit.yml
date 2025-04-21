@@ -7,13 +7,13 @@
   description: Скафандр утилизатора, укреплённый магматитовой рудой.
   components:
   - type: Sprite
-    sprite: Adventure/Roles/LavaLand/MagmaSuit/suit.rsi
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/suit.rsi
     layers:
     - state: icon
     - state: icon-lava
       shader: unshaded
   - type: Clothing
-    sprite: Adventure/Roles/LavaLand/MagmaSuit/suit.rsi  
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/suit.rsi  
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING
@@ -39,12 +39,12 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
-        Heat: 0.5 
+        Heat: 0.2
         Radiation: 0.3
         Caustic: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.7
-    sprintModifier: 0.7
+    walkModifier: 0.8
+    sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitMagma
@@ -63,7 +63,7 @@
   description: Шлем утилизатора в магматитовой обёртке.
   components:
   - type: Sprite
-    sprite: Adventure/Roles/LavaLand/MagmaSuit/helmet.rsi
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/helmet.rsi
     layers:
     - state: icon
     - state: icon-lava
@@ -85,7 +85,7 @@
       - state: equipped-HELMET-lava
         shader: unshaded
   - type: Clothing
-    sprite: Adventure/Roles/LavaLand/MagmaSuit/helmet.rsi
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/helmet.rsi
     clothingVisuals:
       head:
       - state: off-equipped-HELMET
@@ -106,7 +106,7 @@
   - type: PointLight
     color: "#fda144" 
     radius: 7
-    energy: 3
+    energy: 5
 
 # крафт
 - type: constructionGraph
@@ -142,5 +142,5 @@
   objectType: Item
   description: Скафандр утилизатора, укреплённый магматитовой рудой.
   icon:
-    sprite: Adventure/Roles/LavaLand/MagmaSuit/suit.rsi
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/suit.rsi
     state: icon
