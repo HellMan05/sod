@@ -36,6 +36,9 @@ public sealed class SponsorsManager : ISponsorsManager
     [ViewVariables(VVAccess.ReadWrite)]
     public readonly Dictionary<NetUserId, SponsorTierPrototype?> Sponsors = new();
 
+    [ViewVariables(VVAccess.ReadWrite)]
+    public readonly Dictionary<NetUserId, List<SubSponsorTierPrototype>> SubSponsors = new();
+
     public Action<INetChannel, ProtoId<SponsorTierPrototype>>? OnSponsorConnected = null;
 
     public void Initialize()
@@ -50,16 +53,10 @@ public sealed class SponsorsManager : ISponsorsManager
     private async Task OnConnecting(NetConnectingArgs e)
     {
         var userId = e.UserId;
+        // I not quiet sure if we shouldn't repopulate player's sponsor everytime he rejoins server.
         if (Sponsors.ContainsKey(userId))
             return;
-        ProtoId<SponsorTierPrototype>? tier = null;
-        tier = await GetSponsorTier(userId);
-        if (tier is null)
-            return;
-        _sawmill.Debug($"Found sponsor {userId}");
-        if (!_proto.TryIndex<SponsorTierPrototype>(tier, out var proto))
-            return;
-        Sponsors[userId] = proto;
+        await PopulateSponsors(userId); // Awaiting to not cause a race condition with other connecting methods
     }
 
     private void OnConnected(object? sender, NetChannelArgs e)
@@ -70,11 +67,9 @@ public sealed class SponsorsManager : ISponsorsManager
         OnSponsorConnected?.Invoke(e.Channel, sponsor.ID);
     }
 
-    private async Task<ProtoId<SponsorTierPrototype>?> GetSponsorTier(NetUserId userId)
+    private async Task<SponsorTierPrototype?> PopulateSponsors(NetUserId userId)
     {
         var player = await _db.GetPlayerRecordByUserId(userId);
-        if (player != null && !string.IsNullOrEmpty(player.SponsorTier))
-            return player.SponsorTier;
         if (string.IsNullOrEmpty(player?.DiscordId)) // ds auth probably disabled
             return null;
         if (string.IsNullOrEmpty(_guildId) || string.IsNullOrEmpty(_botToken))
@@ -85,12 +80,35 @@ public sealed class SponsorsManager : ISponsorsManager
         using HttpResponseMessage memberResp = await DiscordAuthBotManager.discordClient.SendAsync(getMemberMsg);
         var memberRespStr = await memberResp.Content.ReadAsStringAsync();
         var res = JsonSerializer.Deserialize<MemberResponse>(memberRespStr);
+        foreach (var subSponsorTier in _proto.EnumeratePrototypes<SubSponsorTierPrototype>())
+        {
+            if ((subSponsorTier.DiscordRoleId is not null) &&
+                (res?.roles?.Contains(subSponsorTier.DiscordRoleId) ?? false))
+            {
+                _sawmill.Debug($"Player {userId} got sub sponsor protoid \"{subSponsorTier.ID}\"");
+                // I don't like C# not initialized dynamic arrays, but whatever.
+                SubSponsors.GetOrNew(userId).Add(subSponsorTier);
+            }
+        }
+        // If you're wondering, why we cache sponsor tier, but not subsponsor tiers, it's because I hate to touch
+        // database schema and I would prefer to do it as little as possible. We need a way to override sponsors tiers,
+        // but we don't need to override subsponsors usually.
+        if (!string.IsNullOrEmpty(player.SponsorTier))
+        {
+            if (_proto.TryIndex<SponsorTierPrototype>(player.SponsorTier, out var tier))
+            {
+                Sponsors[userId] = tier;
+                return tier;
+            }
+            _sawmill.Error($"Player {userId} has invalid sponsor tier: {player.SponsorTier}");
+        }
         foreach (var sponsorTier in _proto.EnumeratePrototypes<SponsorTierPrototype>())
         {
             if ((sponsorTier.DiscordRoleId is not null) && (res?.roles?.Contains(sponsorTier.DiscordRoleId) ?? false))
             {
-                _sawmill.Info($"Player {userId} got sponsor protoid \"{sponsorTier.ID}\"");
-                return sponsorTier.ID;
+                _sawmill.Debug($"Player {userId} got sponsor protoid \"{sponsorTier.ID}\"");
+                Sponsors[userId] = sponsorTier;
+                return sponsorTier; // Exit on first tier, there's can be only one on a player.
             }
         }
         return null;
