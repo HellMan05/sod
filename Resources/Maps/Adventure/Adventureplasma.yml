@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/15/2025 16:09:44
-  entityCount: 26250
+  time: 04/22/2025 03:46:22
+  entityCount: 26253
 maps:
 - 1
 grids:
@@ -13948,7 +13948,7 @@ entities:
       pos: -135.5,24.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1594.5494
+      secondsUntilStateChange: -1789.088
       state: Opening
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -65026,12 +65026,6 @@ entities:
     - type: Transform
       pos: -62.5,8.5
       parent: 2
-  - uid: 5890
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -113.5,-18.5
-      parent: 2
   - uid: 6283
     components:
     - type: Transform
@@ -65183,6 +65177,46 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -98.5,13.5
       parent: 2
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 2932
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -113.5,-18.5
+      parent: 2
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 5890
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -25.5,-46.5
+      parent: 2
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 26252
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -130.5,-48.5
+      parent: 2
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 26253
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -96.5,-29.5
+      parent: 2
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 4116
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -52.5,-33.5
+      parent: 2
 - proto: ComputerComms
   entities:
   - uid: 2690
@@ -65207,12 +65241,6 @@ entities:
     components:
     - type: Transform
       pos: -58.5,7.5
-      parent: 2
-  - uid: 2932
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -48.5,-6.5
       parent: 2
   - uid: 3978
     components:
@@ -65309,6 +65337,14 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -20.5,-25.5
+      parent: 2
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 3454
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -48.5,-6.5
       parent: 2
 - proto: ComputerId
   entities:
@@ -78334,7 +78370,7 @@ entities:
       pos: -57.5,-2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -178.85083
+      secondsUntilStateChange: -373.38947
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -139203,7 +139239,7 @@ entities:
   - uid: 24320
     components:
     - type: MetaData
-      name: signal switch (Emergency Lockdown)
+      name: переключатель сигнала (Аварийная блокировка)
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -131.5,-48.8
@@ -139224,9 +139260,9 @@ entities:
       lastSignals:
         Status: True
     - type: Label
-      currentLabel: Emergency Lockdown
+      currentLabel: Аварийная блокировка
     - type: NameModifier
-      baseName: signal switch
+      baseName: переключатель сигнала
   - uid: 24811
     components:
     - type: Transform
@@ -143915,6 +143951,7 @@ entities:
     - type: Transform
       pos: -112.5,18.5
       parent: 2
+    - type: Conveyed
   - uid: 5807
     components:
     - type: Transform
@@ -143925,6 +143962,7 @@ entities:
     - type: Transform
       pos: -109.5,18.5
       parent: 2
+    - type: Conveyed
   - uid: 8610
     components:
     - type: Transform
@@ -146270,11 +146308,6 @@ entities:
     components:
     - type: Transform
       pos: -53.5,-33.5
-      parent: 2
-  - uid: 3454
-    components:
-    - type: Transform
-      pos: -52.5,-33.5
       parent: 2
   - uid: 3457
     components:
@@ -149967,10 +150000,10 @@ entities:
       parent: 2
 - proto: VendingMachineMediDrobe
   entities:
-  - uid: 4116
+  - uid: 26251
     components:
     - type: Transform
-      pos: -25.5,-46.5
+      pos: -26.5,-43.5
       parent: 2
 - proto: VendingMachineNutri
   entities:
@@ -166688,7 +166721,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -204139.77
+      secondsUntilStateChange: -204334.3
       state: Opening
     - type: Airlock
       autoClose: False

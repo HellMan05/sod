@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/13/2025 04:27:03
-  entityCount: 25289
+  time: 04/22/2025 03:14:34
+  entityCount: 25285
 maps:
 - 1
 grids:
@@ -16907,13 +16907,6 @@ entities:
     components:
     - type: Transform
       pos: -58.50381,1.496242
-      parent: 2
-- proto: BoxHandcuff
-  entities:
-  - uid: 1038
-    components:
-    - type: Transform
-      pos: -26.426329,-14.112597
       parent: 2
 - proto: BoxLatexGloves
   entities:
@@ -58107,13 +58100,6 @@ entities:
     - type: Transform
       pos: -51.5,11.5
       parent: 2
-- proto: ClosetChefFilled
-  entities:
-  - uid: 9044
-    components:
-    - type: Transform
-      pos: 27.5,-37.5
-      parent: 2
 - proto: ClosetEmergencyFilledRandom
   entities:
   - uid: 9045
@@ -62004,6 +61990,45 @@ entities:
     - type: Transform
       pos: 43.5,10.5
       parent: 2
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 9421
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -4.5,24.5
+      parent: 2
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 11285
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 49.5,-13.5
+      parent: 2
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 10630
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -41.5,-7.5
+      parent: 2
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 10628
+    components:
+    - type: Transform
+      pos: -27.5,-13.5
+      parent: 2
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 9044
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 27.5,-37.5
+      parent: 2
 - proto: ComputerCargoShuttle
   entities:
   - uid: 9398
@@ -62050,12 +62075,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -26.5,-11.5
-      parent: 2
-  - uid: 9405
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 3.5,-32.5
       parent: 2
   - uid: 9406
     components:
@@ -62118,6 +62137,14 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -64.5,46.5
       parent: 2
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 9405
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-32.5
+      parent: 2
 - proto: ComputerId
   entities:
   - uid: 9416
@@ -62154,12 +62181,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 12.5,-48.5
       parent: 2
-  - uid: 9421
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.5,24.5
-      parent: 2
   - uid: 9422
     components:
     - type: Transform
@@ -62187,6 +62208,11 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -118.5,15.5
+      parent: 2
+  - uid: 10629
+    components:
+    - type: Transform
+      pos: -1.5,25.5
       parent: 2
 - proto: ComputerRadar
   entities:
@@ -69690,21 +69716,6 @@ entities:
     - type: Transform
       pos: -7.5137773,-11.361463
       parent: 2
-  - uid: 10628
-    components:
-    - type: Transform
-      pos: -27.223204,-13.440722
-      parent: 2
-  - uid: 10629
-    components:
-    - type: Transform
-      pos: -27.098204,-13.175097
-      parent: 2
-  - uid: 10630
-    components:
-    - type: Transform
-      pos: -27.035704,-13.425097
-      parent: 2
   - uid: 10631
     components:
     - type: Transform
@@ -74030,6 +74041,9 @@ entities:
     - type: Transform
       pos: -14.52124,-43.447884
       parent: 2
+    - type: CollisionWake
+      enabled: False
+    - type: Conveyed
 - proto: FoodBoxDonkpocketPizza
   entities:
   - uid: 11283
@@ -74044,11 +74058,6 @@ entities:
       parent: 2
 - proto: FoodBoxDonut
   entities:
-  - uid: 11285
-    components:
-    - type: Transform
-      pos: -26.46309,-14.295396
-      parent: 2
   - uid: 11286
     components:
     - type: Transform
@@ -112362,11 +112371,6 @@ entities:
       parent: 2
 - proto: MachineFrame
   entities:
-  - uid: 16741
-    components:
-    - type: Transform
-      pos: -41.5,-7.5
-      parent: 2
   - uid: 16742
     components:
     - type: Transform
@@ -136673,11 +136677,6 @@ entities:
     - type: Transform
       pos: 17.5,-45.5
       parent: 2
-  - uid: 20588
-    components:
-    - type: Transform
-      pos: -27.5,-13.5
-      parent: 2
   - uid: 20589
     components:
     - type: Transform
@@ -136728,11 +136727,6 @@ entities:
     components:
     - type: Transform
       pos: -45.5,-4.5
-      parent: 2
-  - uid: 20599
-    components:
-    - type: Transform
-      pos: 49.5,-13.5
       parent: 2
   - uid: 20600
     components:
@@ -155626,18 +155620,17 @@ entities:
       parent: 2
 - proto: WeaponCapacitorRecharger
   entities:
+  - uid: 1038
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-14.5
+      parent: 2
   - uid: 24005
     components:
     - type: Transform
       pos: -34.5,3.5
       parent: 2
-  - uid: 24006
-    components:
-    - type: Transform
-      pos: -27.5,-13.5
-      parent: 2
-    - type: Physics
-      canCollide: False
   - uid: 24007
     components:
     - type: Transform

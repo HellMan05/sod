@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/15/2025 08:08:44
-  entityCount: 17487
+  time: 04/22/2025 03:51:21
+  entityCount: 17491
 maps:
 - 1
 grids:
@@ -35636,13 +35636,6 @@ entities:
     - type: Transform
       pos: -8.5,-317.5
       parent: 2
-- proto: ClosetChefFilled
-  entities:
-  - uid: 5295
-    components:
-    - type: Transform
-      pos: -1.5,-88.5
-      parent: 2
 - proto: ClosetEmergencyFilledRandom
   entities:
   - uid: 5296
@@ -37305,11 +37298,6 @@ entities:
       parent: 2
 - proto: ComputerAlert
   entities:
-  - uid: 5528
-    components:
-    - type: Transform
-      pos: -5.5,-334.5
-      parent: 2
   - uid: 8643
     components:
     - type: Transform
@@ -37346,6 +37334,44 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 3.5,-273.5
+      parent: 2
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 17488
+    components:
+    - type: Transform
+      pos: 2.5,-249.5
+      parent: 2
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 11358
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-176.5
+      parent: 2
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 17491
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -6.5,-301.5
+      parent: 2
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 5528
+    components:
+    - type: Transform
+      pos: -5.5,-334.5
+      parent: 2
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 5295
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -1.5,-88.5
       parent: 2
 - proto: ComputerCargoShuttle
   entities:
@@ -37398,6 +37424,13 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,-332.5
+      parent: 2
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 17489
+    components:
+    - type: Transform
+      pos: -0.5,-119.5
       parent: 2
 - proto: ComputerId
   entities:
@@ -76556,7 +76589,7 @@ entities:
       pos: 8.5,-176.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -151331.88
+      secondsUntilStateChange: -151440.34
       state: Closing
   - uid: 11227
     components:
@@ -77547,15 +77580,15 @@ entities:
     - type: Transform
       pos: 7.5,-171.5
       parent: 2
-  - uid: 11358
-    components:
-    - type: Transform
-      pos: 3.5,-176.5
-      parent: 2
   - uid: 11359
     components:
     - type: Transform
       pos: 5.5,-180.5
+      parent: 2
+  - uid: 17490
+    components:
+    - type: Transform
+      pos: 3.5,-175.5
       parent: 2
 - proto: LockerMime
   entities:

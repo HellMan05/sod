@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/13/2025 05:02:48
-  entityCount: 15488
+  time: 04/22/2025 03:42:45
+  entityCount: 15491
 maps:
 - 126
 grids:
@@ -2208,7 +2208,6 @@ entities:
             4847: 11,-26
             4992: 19,-35
             4993: 20,-35
-            4994: 20,-24
             4995: 23,-27
             4996: 23,-28
             4997: 13,-29
@@ -2222,6 +2221,7 @@ entities:
             5258: 42,26
             5259: 42,27
             5266: 41,28
+            5268: 14,-29
         - node:
             angle: 1.5707963267948966 rad
             color: '#FFFFFFFF'
@@ -2267,13 +2267,13 @@ entities:
             4842: 9,-30
             4843: 9,-31
             4844: 9,-32
-            4998: 14,-29
             5061: 25,-41
             5062: 26,-42
             5063: 25,-43
             5180: 5,-21
             5181: 7,-19
             5260: 42,28
+            5269: 15,-29
         - node:
             color: '#FFFFFFFF'
             id: BotLeftGreyscale
@@ -3373,7 +3373,6 @@ entities:
             627: 21,-26
             628: 21,-27
             629: 20,-26
-            630: 14,-27
             631: 15,-26
             637: 16,-25
             638: 26,-29
@@ -3870,6 +3869,11 @@ entities:
             3210: 14,25
             3214: 10,28
         - node:
+            color: '#C99D5BFF'
+            id: HalfTileOverlayGreyscale
+          decals:
+            5270: 20,-24
+        - node:
             color: '#D381C996'
             id: HalfTileOverlayGreyscale
           decals:
@@ -3948,7 +3952,6 @@ entities:
             4939: 17,-24
             4940: 18,-24
             4941: 19,-24
-            4942: 20,-24
             4943: 21,-24
         - node:
             color: '#EFCC4193'
@@ -4025,6 +4028,11 @@ entities:
             3202: 12,20
             3203: 13,20
         - node:
+            color: '#C99D5BFF'
+            id: HalfTileOverlayGreyscale180
+          decals:
+            5267: 14,-29
+        - node:
             color: '#D381C996'
             id: HalfTileOverlayGreyscale180
           decals:
@@ -4083,7 +4091,6 @@ entities:
             4952: 19,-29
             4953: 16,-29
             4954: 15,-29
-            4955: 14,-29
             5199: 19,-37
             5200: 20,-37
             5201: 21,-37
@@ -9672,7 +9679,7 @@ entities:
       pos: 44.5,30.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -2916.7007
+      secondsUntilStateChange: -3201.0002
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -39782,6 +39789,44 @@ entities:
     - type: Transform
       pos: 7.5,19.5
       parent: 2
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 4248
+    components:
+    - type: Transform
+      pos: 20.5,-23.5
+      parent: 2
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 15490
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 74.5,6.5
+      parent: 2
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 8519
+    components:
+    - type: Transform
+      pos: 52.5,21.5
+      parent: 2
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 5731
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 36.5,24.5
+      parent: 2
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 10282
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 34.5,-12.5
+      parent: 2
 - proto: ComputerCargoShuttle
   entities:
   - uid: 14770
@@ -39827,12 +39872,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 44.5,2.5
       parent: 2
-  - uid: 10282
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 20.5,-3.5
-      parent: 2
   - uid: 11922
     components:
     - type: Transform
@@ -39867,6 +39906,14 @@ entities:
     components:
     - type: Transform
       pos: 45.5,25.5
+      parent: 2
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 782
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 20.5,-3.5
       parent: 2
 - proto: ComputerId
   entities:
@@ -40357,29 +40404,6 @@ entities:
       prevFixedRotation: True
 - proto: CrateEngineeringCableBulk
   entities:
-  - uid: 782
-    components:
-    - type: Transform
-      pos: 20.5,-23.5
-      parent: 2
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        labelSlot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-    - type: Construction
-      containers:
-      - EntityStorageComponent
-      - entity_storage
   - uid: 5526
     components:
     - type: Transform
@@ -40403,6 +40427,11 @@ entities:
       containers:
       - EntityStorageComponent
       - entity_storage
+  - uid: 15489
+    components:
+    - type: Transform
+      pos: 15.5,-28.5
+      parent: 2
 - proto: CrateEngineeringCableLV
   entities:
   - uid: 2223
@@ -41264,11 +41293,6 @@ entities:
       parent: 2
 - proto: DeployableBarrier
   entities:
-  - uid: 8519
-    components:
-    - type: Transform
-      pos: 36.5,24.5
-      parent: 2
   - uid: 9602
     components:
     - type: Transform
@@ -47619,6 +47643,9 @@ entities:
     - type: Transform
       pos: -0.0010213852,-26.399889
       parent: 2
+    - type: CollisionWake
+      enabled: False
+    - type: Conveyed
 - proto: FoodMeat
   entities:
   - uid: 566
@@ -47685,6 +47712,9 @@ entities:
     - type: Transform
       pos: -0.9697714,-25.884264
       parent: 2
+    - type: CollisionWake
+      enabled: False
+    - type: Conveyed
 - proto: FoodPoppy
   entities:
   - uid: 12099
@@ -47720,6 +47750,9 @@ entities:
     - type: Transform
       pos: -1.0166464,-26.540514
       parent: 2
+    - type: CollisionWake
+      enabled: False
+    - type: Conveyed
   - uid: 5887
     components:
     - type: Transform
@@ -69478,13 +69511,6 @@ entities:
     - type: Transform
       pos: 52.5,-7.5
       parent: 2
-- proto: MachineFrame
-  entities:
-  - uid: 5731
-    components:
-    - type: Transform
-      pos: 52.5,21.5
-      parent: 2
 - proto: MachineParticleAcceleratorEmitterForeCircuitboard
   entities:
   - uid: 5610
@@ -84609,6 +84635,7 @@ entities:
     - type: Transform
       pos: 0.13960361,-25.931139
       parent: 2
+    - type: Conveyed
   - uid: 9603
     components:
     - type: Transform
@@ -84855,10 +84882,10 @@ entities:
       parent: 2
 - proto: VendingMachineChefvend
   entities:
-  - uid: 4248
+  - uid: 15491
     components:
     - type: Transform
-      pos: 34.5,-12.5
+      pos: 30.5,-12.5
       parent: 2
 - proto: VendingMachineChemDrobe
   entities:

@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/13/2025 04:32:13
-  entityCount: 12680
+  time: 04/22/2025 03:21:26
+  entityCount: 12674
 maps:
 - 12679
 grids:
@@ -28093,48 +28093,6 @@ entities:
     - type: Transform
       pos: -39.356712,-24.532705
       parent: 1
-- proto: ClothingOuterSanta
-  entities:
-  - uid: 8934
-    components:
-    - type: Transform
-      pos: 19.401697,12.696105
-      parent: 1
-  - uid: 9050
-    components:
-    - type: Transform
-      pos: 19.401697,12.696105
-      parent: 1
-  - uid: 9051
-    components:
-    - type: Transform
-      pos: 19.401697,12.696105
-      parent: 1
-  - uid: 9201
-    components:
-    - type: Transform
-      pos: 19.401697,12.696105
-      parent: 1
-  - uid: 9254
-    components:
-    - type: Transform
-      pos: 19.604822,12.571105
-      parent: 1
-  - uid: 9255
-    components:
-    - type: Transform
-      pos: 19.604822,12.571105
-      parent: 1
-  - uid: 9308
-    components:
-    - type: Transform
-      pos: 19.604822,12.571105
-      parent: 1
-  - uid: 9309
-    components:
-    - type: Transform
-      pos: 19.604822,12.571105
-      parent: 1
 - proto: ClothingOuterWinterCap
   entities:
   - uid: 5926
@@ -28360,6 +28318,44 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-17.5
       parent: 1
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 8933
+    components:
+    - type: Transform
+      pos: 22.5,-3.5
+      parent: 1
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 8934
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -21.5,7.5
+      parent: 1
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 4959
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -14.5,-4.5
+      parent: 1
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 8235
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 19.5,12.5
+      parent: 1
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 8257
+    components:
+    - type: Transform
+      pos: 1.5,3.5
+      parent: 1
 - proto: ComputerComms
   entities:
   - uid: 4076
@@ -28434,6 +28430,14 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -10.5,53.5
+      parent: 1
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 3822
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,19.5
       parent: 1
 - proto: ComputerId
   entities:
@@ -28551,12 +28555,6 @@ entities:
     - type: Transform
       pos: 0.5,31.5
       parent: 1
-  - uid: 4959
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,19.5
-      parent: 1
   - uid: 5360
     components:
     - type: Transform
@@ -28601,10 +28599,11 @@ entities:
       parent: 1
 - proto: ComputerTechnologyDiskTerminal
   entities:
-  - uid: 3822
+  - uid: 9050
     components:
     - type: Transform
-      pos: -14.5,-4.5
+      rot: 1.5707963267948966 rad
+      pos: -12.5,-2.5
       parent: 1
 - proto: ConveyorBelt
   entities:
@@ -32955,7 +32954,7 @@ entities:
   - uid: 10875
     components:
     - type: Transform
-      pos: 1.6770757,3.695939
+      pos: 2.5752177,3.6638534
       parent: 1
 - proto: DrinkMugBlack
   entities:
@@ -55276,16 +55275,6 @@ entities:
     - type: Transform
       pos: 2.5185199,2.5625
       parent: 1
-- proto: HeadSkeleton
-  entities:
-  - uid: 8257
-    components:
-    - type: MetaData
-      desc: jim :)
-      name: jim :)
-    - type: Transform
-      pos: 25.50356,16.52645
-      parent: 1
 - proto: Hemostat
   entities:
   - uid: 8243
@@ -61365,11 +61354,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -40.5,-9.5
       parent: 1
-  - uid: 8933
-    components:
-    - type: Transform
-      pos: 19.5,12.5
-      parent: 1
   - uid: 9130
     components:
     - type: Transform
@@ -63129,7 +63113,7 @@ entities:
   - uid: 10876
     components:
     - type: Transform
-      pos: 2.110363,3.652628
+      pos: 2.6724403,3.4555202
       parent: 1
 - proto: Recycler
   entities:
@@ -69605,11 +69589,6 @@ entities:
     components:
     - type: Transform
       pos: 2.5,3.5
-      parent: 1
-  - uid: 8235
-    components:
-    - type: Transform
-      pos: 1.5,3.5
       parent: 1
   - uid: 8236
     components:
