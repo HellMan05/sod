@@ -14,6 +14,7 @@ namespace Content.Server.Maps;
 
 public sealed class GameMapManager : IGameMapManager
 {
+    private string lastSelectedMap = string.Empty; // Adventure map vote
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
@@ -114,6 +115,12 @@ public sealed class GameMapManager : IGameMapManager
                     continue;
                 }
 
+                // Adventure map vote begin
+                // Don't let select one map two times
+                if (lastSelectedMap == mapProto.ID)
+                    continue;
+                // Adventure map vote end
+
                 yield return mapProto;
             }
         }
@@ -142,6 +149,7 @@ public sealed class GameMapManager : IGameMapManager
     {
         if (!TryLookupMap(gameMap, out var map) || !IsMapEligible(map))
             return false;
+        lastSelectedMap = map.ID; // Adventure map vote
         _selectedMap = map;
         return true;
     }
