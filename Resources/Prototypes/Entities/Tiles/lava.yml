@@ -64,7 +64,7 @@
   - type: DamageContacts
     damage:
       types:
-        Heat: 2
+        Heat: 1
     ignoreWhitelist:
       tags:
       - LavaMob
