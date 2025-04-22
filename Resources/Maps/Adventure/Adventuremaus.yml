@@ -50397,7 +50397,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,4.5
       parent: 20327
-- proto: CentcomComputerComms
+- proto: CentcommComputerComms
   entities:
   - uid: 18302
     components:
