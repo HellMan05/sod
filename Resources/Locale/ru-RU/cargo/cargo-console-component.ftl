@@ -49,7 +49,7 @@ cargo-console-unfulfilled = Нет места для выполнения зак
 cargo-console-trade-station = Отправлено на { $destination }
 cargo-console-unlock-approved-order-broadcast = [bold]Заказ на { $productName } x{ $orderAmount }[/bold], стоимостью [bold]{ $cost }[/bold], был одобрен [bold]{ $approver }[/bold]
 cargo-console-fund-withdraw-broadcast = [bold]{$name} обналичил {$amount} кредитов из {$name1} \[{$code1}\]
-cargo-console-fund-transfer-broadcast = [bold]{$name} перевёл {$amount} кредитов с {$name1} \[{$code1}\] в {$name2} \[{$code2}\][/bold]
+cargo-console-fund-transfer-broadcast = [bold]{$name} перевёл {$amount} кредитов из {$name1} \[{$code1}\] в {$name2} \[{$code2}\][/bold]
 cargo-console-fund-transfer-user-unknown = Неизвестно
 cargo-console-paper-print-name = Заказ #{ $orderNumber }
 cargo-console-paper-print-text =
@@ -65,3 +65,17 @@ cargo-shuttle-console-station-unknown = Неизвестно
 cargo-shuttle-console-shuttle-not-found = Не найден
 cargo-no-shuttle = Грузовой шаттл не найден!
 cargo-shuttle-console-organics = На шаттле обнаружены органические формы жизни
+
+# Funding allocation console
+cargo-funding-alloc-console-menu-title = Консоль Распределения Финансирования
+cargo-funding-alloc-console-label-account = [bold]Аккаунт[/bold]
+cargo-funding-alloc-console-label-code = [bold] Код [/bold]
+cargo-funding-alloc-console-label-balance = [bold] Баланс [/bold]
+cargo-funding-alloc-console-label-cut = [bold] Доля доходов (%) [/bold]
+
+cargo-funding-alloc-console-label-help = Снабжение получает {$percent}% всего общего дохода. Остальное распределяется следующим образом:
+cargo-funding-alloc-console-button-save = Сохранить изменения
+cargo-funding-alloc-console-label-save-fail = [bold]Недопустимое деление доходов![/bold] [color=red]({$pos ->
+    [1] +
+    *[-1] -
+}{$val}%)[/color]
