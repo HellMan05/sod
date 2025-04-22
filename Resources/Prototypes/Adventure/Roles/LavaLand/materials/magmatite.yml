@@ -115,6 +115,18 @@
       types:
         Heat: 1
     popupText: "Магматит обжигает ваши руки."
+  - type: Extractable
+    grindableSolutionName: magma
+  - type: SolutionContainerManager
+    solutions:
+      magma:
+        reagents:
+        - ReagentId: Charcoal
+          Quantity: 3
+        - ReagentId: Gold
+          Quantity: 1
+        - ReagentId: Iron
+          Quantity: 1
 
 - type: entity
   parent: MaterialMagmatiteFragment
@@ -133,6 +145,7 @@
 
 - type: material
   id: MagmatiteFragment
+  stackEntity: MaterialMagmatiteFragment1
   name: магматит
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/Magma.rsi, state: fragment }

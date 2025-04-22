@@ -63,8 +63,8 @@
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/goliath.rsi
   - type: MovementSpeedModifier
-    baseWalkSpeed : 3.00
-    baseSprintSpeed : 3.00
+    baseWalkSpeed : 2.50
+    baseSprintSpeed : 2.50
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -78,7 +78,7 @@
     damage:
       types:
         Slash: 10
-        Piercing: 10
+        Piercing: 5
   - type: HTN
     rootTask:
       task: GoliathCompound
@@ -117,12 +117,12 @@
   - type: Sprite
     sprite: Adventure/Roles/LavaLand/mobs/old_goliath.rsi
   - type: MovementSpeedModifier
-    baseWalkSpeed : 2.5
-    baseSprintSpeed : 2.5
+    baseWalkSpeed : 2.0
+    baseSprintSpeed : 2.0
   - type: MobThresholds
     thresholds:
       0: Alive
-      600: Dead
+      400: Dead
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
@@ -131,8 +131,8 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Slash: 20
-        Piercing: 10
+        Slash: 15
+        Piercing: 5
   - type: Butcherable
     spawned:
     - id: FoodMeatGoliath
@@ -141,6 +141,12 @@
       amount: 6
     - id: MaterialMagmatite1
       amount: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageGroupTrigger
+        damageGroup: Brute
+        damage: 6000
 
 # наблюдатель
 - type: entity

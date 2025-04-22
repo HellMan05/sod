@@ -17,6 +17,16 @@
   - type: PhysicalComposition
     materialComposition:
       RawEmerald: 100
+  - type: Extractable
+    grindableSolutionName: emerald
+  - type: SolutionContainerManager
+    solutions:
+      emerald:
+        reagents:
+        - ReagentId: Silicon
+          Quantity: 3
+        - ReagentId: Sulfur
+          Quantity: 2
 
 - type: entity
   parent: OreEmerald
@@ -35,6 +45,7 @@
 
 - type: material
   id: RawEmerald
+  stackEntity: OreEmerald1
   name: изумрудная руда
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Emerald_ore }
@@ -60,6 +71,16 @@
   - type: PhysicalComposition
     materialComposition:
       RawRuby: 100
+  - type: Extractable
+    grindableSolutionName: ruby
+  - type: SolutionContainerManager
+    solutions:
+      ruby:
+        reagents:
+        - ReagentId: Silicon
+          Quantity: 3
+        - ReagentId: Sulfur
+          Quantity: 2
 
 - type: entity
   parent: OreRuby
@@ -78,6 +99,7 @@
 
 - type: material
   id: RawRuby
+  stackEntity: OreRuby1
   name: рубиновая руда
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Ruby_ore }
@@ -103,6 +125,16 @@
   - type: PhysicalComposition
     materialComposition:
       RawSapphire: 100
+  - type: Extractable
+    grindableSolutionName: sapphire
+  - type: SolutionContainerManager
+    solutions:
+      sapphire:
+        reagents:
+        - ReagentId: Silicon
+          Quantity: 3
+        - ReagentId: Sulfur
+          Quantity: 2
 
 - type: entity
   parent: OreSapphire
@@ -121,6 +153,7 @@
 
 - type: material
   id: RawSapphire
+  stackEntity: OreSapphire1
   name: сапфировая руда
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Sapphire_ore }
@@ -146,6 +179,16 @@
   - type: PhysicalComposition
     materialComposition:
       RawTopaz: 100
+  - type: Extractable
+    grindableSolutionName: topaz
+  - type: SolutionContainerManager
+    solutions:
+      topaz:
+        reagents:
+        - ReagentId: Silicon
+          Quantity: 3
+        - ReagentId: Sulfur
+          Quantity: 2
 
 - type: entity
   parent: OreTopaz
@@ -165,6 +208,7 @@
 - type: material
   id: RawTopaz
   name: топазовая руда
+  stackEntity: OreTopaz1
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Topaz_ore }
   color: "#f29d46"
@@ -236,6 +280,16 @@
     radius: 2
     energy: 1.5
     color: "#ee5858"
+  - type: Extractable
+    grindableSolutionName: dragon
+  - type: SolutionContainerManager
+    solutions:
+      dragon:
+        reagents:
+        - ReagentId: Silicon
+          Quantity: 3
+        - ReagentId: Sulfur
+          Quantity: 2
 
 - type: entity
   parent: OreDragon
@@ -254,6 +308,7 @@
 
 - type: material
   id: RawDragon
+  stackEntity: OreDragon1
   name: драконий камень
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: Dragon_stone_ore }
