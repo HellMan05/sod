@@ -67,7 +67,7 @@ public sealed class SponsorsManager : ISponsorsManager
         OnSponsorConnected?.Invoke(e.Channel, sponsor.ID);
     }
 
-    private async Task<SponsorTierPrototype?> PopulateSponsors(NetUserId userId)
+    public async Task<SponsorTierPrototype?> PopulateSponsors(NetUserId userId)
     {
         var player = await _db.GetPlayerRecordByUserId(userId);
         if (string.IsNullOrEmpty(player?.DiscordId)) // ds auth probably disabled

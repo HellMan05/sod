@@ -1,3 +1,4 @@
+using Content.Server._Adventure.Sponsors; // Adventure whitelist
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,6 +51,7 @@ namespace Content.Server.Connection
     /// </summary>
     public sealed partial class ConnectionManager : IConnectionManager
     {
+        [Dependency] private readonly SponsorsManager _sponsors = default!; // Adventure whitelist
         [Dependency] private readonly IPlayerManager _plyMgr = default!;
         [Dependency] private readonly IServerNetManager _netMgr = default!;
         [Dependency] private readonly IServerDbManager _db = default!;

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+using Content.Server._Adventure.Connection.Whitelist.Conditions; // Adventure whitelist
+using Content.Shared._Adventure.Sponsors; // Adventure whitelist
+using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Connection.Whitelist;
 using Content.Server.Connection.Whitelist.Conditions;
@@ -86,6 +88,21 @@ public sealed partial class ConnectionManager
                     matched = CheckConditionNotesPlaytimeRange(conditionNotesPlaytimeRange, cacheRemarks, cachePlaytime);
                     denyMessage = Loc.GetString("whitelist-notes");
                     break;
+                // Adventure whitelist begin
+                case ConditionSubsponsorMatch conditionSubsponsorMatch:
+                    if (!_prototypeManager.TryIndex<SubSponsorTierPrototype>(
+                            conditionSubsponsorMatch.Subsponsor, out var sponsor))
+                    {
+                        matched = false;
+                        denyMessage = $"Ошибка при поиске роли {conditionSubsponsorMatch.Subsponsor}.";
+                        break;
+                    }
+                    await _sponsors.PopulateSponsors(data.UserId);
+                    matched = _sponsors.SubSponsors.ContainsKey(data.UserId) &&
+                        _sponsors.SubSponsors[data.UserId].Contains(sponsor);
+                    denyMessage = $"У вас отсутсвует роль {conditionSubsponsorMatch.Subsponsor}.";
+                    break;
+                // Adventure whitelist end
                 default:
                     throw new NotImplementedException($"Whitelist condition {condition.GetType().Name} not implemented");
             }

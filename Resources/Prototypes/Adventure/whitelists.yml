@@ -1,0 +1,8 @@
+﻿- type: playerConnectionWhitelist
+  id: AdventureStellarianWhitelist
+  conditions:
+    - !type:ConditionSubsponsorMatch
+      subsponsor: Стеллариан
+      action: Allow
+    - !type:ConditionAlwaysMatch
+      action: Deny
