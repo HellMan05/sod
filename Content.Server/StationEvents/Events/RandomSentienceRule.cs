@@ -76,7 +76,7 @@ public sealed class RandomSentienceRule : StationEventSystem<RandomSentienceRule
                 ("strength", _random.Pick(_prototype.Index<LocalizedDatasetPrototype>("RandomSentienceEventStrength")))
             ),
             playDefaultSound: false,
-            colorOverride: Color.Gold
+            colorOverride: Color.FromHex("#1d8bad") // Adventure
         );
     }
 }

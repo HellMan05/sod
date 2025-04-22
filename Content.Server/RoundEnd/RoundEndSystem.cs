@@ -319,7 +319,7 @@ namespace Content.Server.RoundEnd
                     {
                         _chatSystem.DispatchGlobalAnnouncement(Loc.GetString(textAnnounce),
                             Loc.GetString(sender),
-                            colorOverride: Color.Gold);
+                            colorOverride: Color.FromHex("#1d8bad")); // Adventure
                     }
                     else
                     {

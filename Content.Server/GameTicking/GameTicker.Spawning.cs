@@ -254,7 +254,7 @@ namespace Content.Server.GameTicking
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
                         Loc.GetString("latejoin-arrival-sender"),
                         playDefaultSound: false,
-                        colorOverride: Color.Gold);
+                        colorOverride: Color.FromHex("#1d8bad")); // Adventure
                 }
                 else
                 {
