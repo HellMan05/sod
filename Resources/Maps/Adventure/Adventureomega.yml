@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/13/2025 05:00:42
-  entityCount: 13944
+  time: 04/22/2025 03:37:31
+  entityCount: 13946
 maps:
 - 473
 grids:
@@ -31960,39 +31960,6 @@ entities:
         - 0
         - 0
         - 0
-- proto: ClosetChefFilled
-  entities:
-  - uid: 1568
-    components:
-    - type: Transform
-      pos: 4.5,0.5
-      parent: 4812
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14957
-        moles:
-        - 1.6033952
-        - 6.031821
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
 - proto: ClosetEmergencyFilledRandom
   entities:
   - uid: 1676
@@ -34628,6 +34595,44 @@ entities:
       rot: 3.141592653589793 rad
       pos: 16.5,29.5
       parent: 4812
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 12323
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -46.5,-9.5
+      parent: 4812
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 10740
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -14.5,-18.5
+      parent: 4812
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 2514
+    components:
+    - type: Transform
+      pos: 5.5,-14.5
+      parent: 4812
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 1568
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -35.5,10.5
+      parent: 4812
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 1077
+    components:
+    - type: Transform
+      pos: 4.5,0.5
+      parent: 4812
 - proto: ComputerCargoShuttle
   entities:
   - uid: 2760
@@ -34740,6 +34745,13 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,-44.5
+      parent: 4812
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 9498
+    components:
+    - type: Transform
+      pos: 7.5,26.5
       parent: 4812
 - proto: ComputerId
   entities:
@@ -34900,12 +34912,6 @@ entities:
       parent: 4812
 - proto: ComputerStationRecords
   entities:
-  - uid: 1077
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -35.5,10.5
-      parent: 4812
   - uid: 4799
     components:
     - type: Transform
@@ -34939,10 +34945,10 @@ entities:
       parent: 4812
 - proto: ComputerTechnologyDiskTerminal
   entities:
-  - uid: 12323
+  - uid: 13946
     components:
     - type: Transform
-      pos: 5.5,-14.5
+      pos: 6.5,-14.5
       parent: 4812
 - proto: ComputerTelevision
   entities:
@@ -39848,13 +39854,6 @@ entities:
     components:
     - type: Transform
       pos: -16.5,14.5
-      parent: 4812
-- proto: filingCabinetDrawer
-  entities:
-  - uid: 2514
-    components:
-    - type: Transform
-      pos: 7.5,26.5
       parent: 4812
 - proto: filingCabinetTall
   entities:
@@ -63645,15 +63644,15 @@ entities:
         - 0
 - proto: LockerMedicalFilled
   entities:
-  - uid: 9498
-    components:
-    - type: Transform
-      pos: -14.5,-18.5
-      parent: 4812
   - uid: 12666
     components:
     - type: Transform
       pos: -14.5,-16.5
+      parent: 4812
+  - uid: 13945
+    components:
+    - type: Transform
+      pos: -16.5,-16.5
       parent: 4812
 - proto: LockerMedicineFilled
   entities:
@@ -64650,11 +64649,6 @@ entities:
     components:
     - type: Transform
       pos: -32.5,4.5
-      parent: 4812
-  - uid: 10740
-    components:
-    - type: Transform
-      pos: -46.5,-9.5
       parent: 4812
   - uid: 11787
     components:

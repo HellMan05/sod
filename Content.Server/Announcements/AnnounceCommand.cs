@@ -33,7 +33,7 @@ public sealed class AnnounceCommand : LocalizedEntityCommands
 
         var message = args[0];
         var sender = Loc.GetString("cmd-announce-sender");
-        var color = Color.Gold;
+        var color = Color.FromHex("#1d8bad"); // Adventure
         var sound = new SoundPathSpecifier("/Audio/Announcements/announce.ogg");
 
         // Optional sender argument

@@ -25,10 +25,10 @@ public sealed partial class StationEventComponent : Component
     public string? EndAnnouncement;
 
     [DataField]
-    public Color StartAnnouncementColor = Color.Gold;
+    public Color StartAnnouncementColor = Color.FromHex("#1d8bad"); // Adventure
 
     [DataField]
-    public Color EndAnnouncementColor = Color.Gold;
+    public Color EndAnnouncementColor = Color.FromHex("#1d8bad"); // Adventure
 
     [DataField]
     public SoundSpecifier? StartAudio;

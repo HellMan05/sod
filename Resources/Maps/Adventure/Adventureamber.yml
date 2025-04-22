@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 250.0.0
+  engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/15/2025 14:07:13
-  entityCount: 20366
+  time: 04/22/2025 03:08:30
+  entityCount: 20367
 maps:
 - 1
 grids:
@@ -23681,6 +23681,8 @@ entities:
     - type: Transform
       pos: -13.459316,-32.28296
       parent: 2
+    - type: CollisionWake
+      enabled: False
     - type: Conveyed
   - uid: 3726
     components:
@@ -52200,7 +52202,7 @@ entities:
   - uid: 14051
     components:
     - type: Transform
-      pos: -24.5,12.5
+      pos: -22.5,17.5
       parent: 2
 - proto: ClosetChefFilled
   entities:
@@ -53971,6 +53973,45 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 3.5,16.5
       parent: 2
+- proto: ComputerCargoOrdersEngineering
+  entities:
+  - uid: 12844
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.5,-11.5
+      parent: 2
+- proto: ComputerCargoOrdersMedical
+  entities:
+  - uid: 5518
+    components:
+    - type: Transform
+      pos: -44.5,-20.5
+      parent: 2
+- proto: ComputerCargoOrdersScience
+  entities:
+  - uid: 4244
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 21.5,-29.5
+      parent: 2
+- proto: ComputerCargoOrdersSecurity
+  entities:
+  - uid: 504
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -24.5,12.5
+      parent: 2
+- proto: ComputerCargoOrdersService
+  entities:
+  - uid: 7501
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -12.5,-37.5
+      parent: 2
 - proto: ComputerComms
   entities:
   - uid: 39
@@ -53997,12 +54038,6 @@ entities:
     components:
     - type: Transform
       pos: 38.5,3.5
-      parent: 2
-  - uid: 7501
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -12.5,-46.5
       parent: 2
   - uid: 8179
     components:
@@ -54054,6 +54089,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 74.5,-46.5
+      parent: 2
+- proto: ComputerFundingAllocation
+  entities:
+  - uid: 1301
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -12.5,-46.5
       parent: 2
 - proto: ComputerId
   entities:
@@ -54745,11 +54788,6 @@ entities:
     components:
     - type: Transform
       pos: 37.5,-28.5
-      parent: 2
-  - uid: 5518
-    components:
-    - type: Transform
-      pos: -46.5,-31.5
       parent: 2
 - proto: CrateNPCHamlet
   entities:
@@ -65053,7 +65091,7 @@ entities:
       pos: -16.5,-17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -33929.285
+      secondsUntilStateChange: -34394.156
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -94836,11 +94874,6 @@ entities:
     - type: Transform
       pos: 39.5,-38.5
       parent: 2
-  - uid: 4244
-    components:
-    - type: Transform
-      pos: 21.5,-29.5
-      parent: 2
   - uid: 6168
     components:
     - type: Transform
@@ -94850,6 +94883,11 @@ entities:
     components:
     - type: Transform
       pos: 43.5,11.5
+      parent: 2
+  - uid: 20186
+    components:
+    - type: Transform
+      pos: 21.5,-30.5
       parent: 2
 - proto: MachineFrameDestroyed
   entities:
@@ -95370,7 +95408,7 @@ entities:
   - uid: 11829
     components:
     - type: Transform
-      pos: -44.5,-20.5
+      pos: -42.5,-21.5
       parent: 2
 - proto: MedkitAdvancedFilled
   entities:
@@ -111915,16 +111953,6 @@ entities:
     - type: Transform
       pos: 5.5,-18.5
       parent: 2
-- proto: SurveillanceWirelessCameraAnchoredEntertainment
-  entities:
-  - uid: 1301
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -12.5,-37.5
-      parent: 2
-    - type: SurveillanceCamera
-      id: Channel 443
 - proto: SurveillanceWirelessCameraMovableCircuitboard
   entities:
   - uid: 3471
@@ -115168,15 +115196,15 @@ entities:
       parent: 2
 - proto: VendingMachineMedical
   entities:
+  - uid: 2412
+    components:
+    - type: Transform
+      pos: -46.5,-31.5
+      parent: 2
   - uid: 4952
     components:
     - type: Transform
       pos: -34.5,-24.5
-      parent: 2
-  - uid: 12844
-    components:
-    - type: Transform
-      pos: -42.5,-21.5
       parent: 2
 - proto: VendingMachineMedicalBrig
   entities:
@@ -115320,11 +115348,6 @@ entities:
       parent: 2
 - proto: VendingMachineVendomat
   entities:
-  - uid: 2412
-    components:
-    - type: Transform
-      pos: -7.5,-11.5
-      parent: 2
   - uid: 3384
     components:
     - type: Transform
@@ -129104,13 +129127,6 @@ entities:
     components:
     - type: Transform
       pos: 32.5,-29.5
-      parent: 2
-- proto: WardrobeSecurityFilled
-  entities:
-  - uid: 504
-    components:
-    - type: Transform
-      pos: -22.5,17.5
       parent: 2
 - proto: WardrobeYellowFilled
   entities:

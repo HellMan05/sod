@@ -1,6 +1,8 @@
 ## UI
 
 cargo-console-menu-title = Консоль заказа грузов
+cargo-console-menu-flavor-left = Закажите ещё больше пиццы!
+cargo-console-menu-flavor-right = v2.1
 cargo-console-menu-account-name-label = Имя аккаунта:{ " " }
 cargo-console-menu-account-name-none-text = Нет
 cargo-console-menu-shuttle-name-label = Название шаттла:{ " " }
@@ -24,6 +26,18 @@ cargo-console-menu-order-row-button-approve = Принять
 cargo-console-menu-order-row-button-cancel = Отменить
 cargo-console-menu-order-row-alerts-reason-absent = Причина не указана
 cargo-console-menu-order-row-alerts-requester-unknown = Неизвестно
+cargo-console-menu-tab-title-orders = Заказы
+cargo-console-menu-tab-title-funds = Переводы
+cargo-console-menu-account-action-transfer-limit = [bold]Лимит перевода:[/bold] ${$limit}
+cargo-console-menu-account-action-transfer-limit-unlimited-notifier = [color=gold](Безлимитно)[/color]
+cargo-console-menu-account-action-select = [bold]Желаемое действие:[/bold]
+cargo-console-menu-account-action-amount = [bold]Сумма:[/bold] $
+cargo-console-menu-account-action-button = Перевести
+cargo-console-menu-toggle-account-lock-button = Переключить лимит перевода
+cargo-console-menu-account-action-option-withdraw = Снять наличные
+cargo-console-menu-account-action-option-transfer = Перевод средств в {$code}
+
+
 # Orders
 cargo-console-order-not-allowed = Доступ запрещён
 cargo-console-station-not-found = Нет доступной станции
@@ -34,6 +48,9 @@ cargo-console-insufficient-funds = Недостаточно средств (тр
 cargo-console-unfulfilled = Нет места для выполнения заказа
 cargo-console-trade-station = Отправлено на { $destination }
 cargo-console-unlock-approved-order-broadcast = [bold]Заказ на { $productName } x{ $orderAmount }[/bold], стоимостью [bold]{ $cost }[/bold], был одобрен [bold]{ $approver }[/bold]
+cargo-console-fund-withdraw-broadcast = [bold]{$name} обналичил {$amount} кредитов из {$name1} \[{$code1}\]
+cargo-console-fund-transfer-broadcast = [bold]{$name} перевёл {$amount} кредитов с {$name1} \[{$code1}\] в {$name2} \[{$code2}\][/bold]
+cargo-console-fund-transfer-user-unknown = Неизвестно
 cargo-console-paper-print-name = Заказ #{ $orderNumber }
 cargo-console-paper-print-text =
     Заказ #{ $orderNumber }
