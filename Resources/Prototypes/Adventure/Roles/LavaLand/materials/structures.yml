@@ -73,3 +73,15 @@
       path: /Audio/Effects/stonedoor_openclose.ogg
     closeSound:
       path: /Audio/Effects/stonedoor_openclose.ogg
+
+#голопад
+- type: entity
+  parent: HolopadLongRange
+  id: HolopadMiningOutpost
+  name: голопад-маяк
+  description: Напольное устройство для проецирования голографических изображений на аналогичные устройства, которые находятся далеко.
+  suffix: Шахтёрский аванпост LavaLand
+  components:
+  - type: Label
+    currentLabel: holopad-cargo-miningpost
+  - type: MiningOutpost
