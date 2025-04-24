@@ -39,7 +39,6 @@
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: DerelictCyborgSpawn
-    - id: HoboSpawn # Adventure
     - id: WizardSpawn
     - id: HungerSwarmInvasion # Adventure
 
