@@ -4,8 +4,8 @@ meta:
   engineVersion: 253.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/24/2025 07:50:17
-  entityCount: 1853
+  time: 04/25/2025 13:52:18
+  entityCount: 1869
 maps:
 - 1653
 grids:
@@ -2669,6 +2669,66 @@ entities:
     - type: Transform
       pos: 11.5,36.5
       parent: 1653
+  - uid: 1749
+    components:
+    - type: Transform
+      pos: 19.5,47.5
+      parent: 1653
+  - uid: 1750
+    components:
+    - type: Transform
+      pos: 18.5,47.5
+      parent: 1653
+  - uid: 1751
+    components:
+    - type: Transform
+      pos: 17.5,47.5
+      parent: 1653
+  - uid: 1752
+    components:
+    - type: Transform
+      pos: 3.5,47.5
+      parent: 1653
+  - uid: 1753
+    components:
+    - type: Transform
+      pos: 4.5,47.5
+      parent: 1653
+  - uid: 1754
+    components:
+    - type: Transform
+      pos: 5.5,47.5
+      parent: 1653
+  - uid: 1755
+    components:
+    - type: Transform
+      pos: 11.5,55.5
+      parent: 1653
+  - uid: 1756
+    components:
+    - type: Transform
+      pos: 11.5,54.5
+      parent: 1653
+  - uid: 1757
+    components:
+    - type: Transform
+      pos: 11.5,53.5
+      parent: 1653
+  - uid: 1758
+    components:
+    - type: Transform
+      pos: 11.5,39.5
+      parent: 1653
+  - uid: 1759
+    components:
+    - type: Transform
+      pos: 11.5,40.5
+      parent: 1653
+  - uid: 1760
+    components:
+    - type: Transform
+      pos: 11.5,41.5
+      parent: 1653
 - proto: ChairWood
   entities:
   - uid: 829
@@ -2723,13 +2783,6 @@ entities:
     - type: Transform
       pos: 44.45386,16.50409
       parent: 1653
-- proto: ClothingNeckCloakMiner
-  entities:
-  - uid: 1339
-    components:
-    - type: Transform
-      pos: 13.290717,45.241135
-      parent: 1653
 - proto: ClothingNeckGoldmedal
   entities:
   - uid: 1090
@@ -2743,6 +2796,23 @@ entities:
     components:
     - type: Transform
       pos: 11.524253,23.643673
+      parent: 1653
+- proto: ClothingOuterHardsuitSalvage
+  entities:
+  - uid: 1457
+    components:
+    - type: Transform
+      pos: 13.185947,45.693806
+      parent: 1653
+  - uid: 1745
+    components:
+    - type: Transform
+      pos: 13.498447,45.527138
+      parent: 1653
+  - uid: 1746
+    components:
+    - type: Transform
+      pos: 13.727614,45.391724
       parent: 1653
 - proto: Cobweb1
   entities:
@@ -2982,7 +3052,7 @@ entities:
       pos: 40.5,20.5
       parent: 1653
     - type: Door
-      secondsUntilStateChange: -9435.729
+      secondsUntilStateChange: -9706.428
       state: Opening
 - proto: FenceWoodHighStraight
   entities:
@@ -5350,7 +5420,7 @@ entities:
   - uid: 1400
     components:
     - type: Transform
-      pos: 13.501114,42.492256
+      pos: 13.329409,42.579464
       parent: 1653
 - proto: FultonBeacon
   entities:
@@ -6178,13 +6248,6 @@ entities:
     - type: Transform
       pos: 16.631525,49.876396
       parent: 1653
-- proto: MiningJackhammer
-  entities:
-  - uid: 1430
-    components:
-    - type: Transform
-      pos: 14.708903,42.52148
-      parent: 1653
 - proto: MiningWindow
   entities:
   - uid: 1186
@@ -6689,6 +6752,13 @@ entities:
     - type: Transform
       pos: 6.5,50.5
       parent: 1653
+- proto: PortableRecharger
+  entities:
+  - uid: 1748
+    components:
+    - type: Transform
+      pos: 17.806183,54.415764
+      parent: 1653
 - proto: PoweredLightPostSmallEmpty
   entities:
   - uid: 130
@@ -6807,6 +6877,13 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 11.5,55.5
+      parent: 1653
+- proto: ProtoKineticBattery
+  entities:
+  - uid: 1339
+    components:
+    - type: Transform
+      pos: 14.727614,42.384007
       parent: 1653
 - proto: Rack
   entities:
@@ -10574,12 +10651,19 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,52.5
       parent: 1653
-- proto: WeaponProtoKineticCutter
+- proto: WeaponCapacitorRecharger
   entities:
-  - uid: 1457
+  - uid: 1747
     components:
     - type: Transform
-      pos: 13.994073,42.292313
+      pos: 13.5,42.5
+      parent: 1653
+- proto: WeaponProtoKineticCutterIndustrial
+  entities:
+  - uid: 1430
+    components:
+    - type: Transform
+      pos: 14.227614,42.338253
       parent: 1653
 - proto: WelderIndustrial
   entities:

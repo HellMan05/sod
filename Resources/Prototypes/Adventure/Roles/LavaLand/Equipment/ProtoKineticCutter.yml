@@ -76,10 +76,11 @@
 
 - type: entity
   id: BulletKineticCutterSpread
+  name: тройной кинетический заряд
   categories: [ HideSpawnMenu ]
   parent: BulletKineticCutter
   components:
   - type: ProjectileSpread
     proto: BulletKineticCutter
     count: 3
-    spread: 20
+    spread: 10

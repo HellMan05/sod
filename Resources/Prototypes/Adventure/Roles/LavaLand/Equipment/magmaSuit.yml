@@ -144,3 +144,113 @@
   icon:
     sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/suit.rsi
     state: icon
+
+#магматитовый скафандр шахтёра
+- type: Tag
+  id: HardsuitSalvage
+
+- type: entity
+  parent: ClothingOuterHardsuitMagma
+  id: ClothingOuterHardsuitMagmaSalvage
+  suffix: LavaLand
+  name: магматитовый скафандр шахтёра
+  description: Скафандр шахтёра, укреплённый магматитовой рудой.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMagmaSalvage
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.15
+        Radiation: 0.3
+        Caustic: 0.8
+  - type: Construction
+    graph: HardsuitMagmaSalvage
+    node: hardsuitmagmasalvage
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitMagma
+  id: ClothingHeadHelmetHardsuitMagmaSalvage
+  name: шлем магматитовый скафандр шахтёра
+  description: Шлем шахтёра в магматитовой обёртке.
+  components:
+  - type: Sprite
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/salvage.rsi
+    layers:
+    - state: icon
+    - state: icon-lava
+      shader: unshaded
+    - state: icon-flash
+    - state: icon-lava
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: ToggleableLightVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+      - state: equipped-HELMET-lava
+        shader: unshaded
+      head-reptilian:
+      - state: on-equipped-HELMET-reptilian
+      - state: equipped-HELMET-lava
+        shader: unshaded
+  - type: Clothing
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/salvage.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+      - state: equipped-HELMET-lava
+        shader: unshaded
+      head-reptilian:
+      - state: off-equipped-HELMET-reptilian
+      - state: equipped-HELMET-lava
+        shader: unshaded
+  - type: PointLight
+    color: "#fda144" 
+    radius: 9
+    energy: 5
+
+# крафт
+- type: constructionGraph
+  id: HardsuitMagmaSalvage
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: hardsuitmagmasalvage
+      steps:
+      - tag: HardsuitSalvage
+        icon:
+          sprite: Clothing/OuterClothing/Hardsuits/salvage.rsi
+          state: icon
+        name: mining hardsuit
+        doAfter: 10
+      - material: Durathread
+        amount: 10
+        doAfter: 10
+      - material: Magmatite
+        amount: 5
+        doAfter: 10
+  - node: hardsuitmagmasalvage
+    entity: ClothingOuterHardsuitMagmaSalvage
+
+- type: construction
+  name: магматитовый скафандр шахтёра
+  id: HardsuitMagmaSalvage
+  graph: HardsuitMagmaSalvage
+  startNode: start
+  targetNode: hardsuitmagmasalvage
+  category: construction-category-clothing
+  objectType: Item
+  description: Скафандр шахтёра, укреплённый магматитовой рудой.
+  icon:
+    sprite: Adventure/Roles/LavaLand/Equipment/MagmaSuit/suit.rsi
+    state: icon

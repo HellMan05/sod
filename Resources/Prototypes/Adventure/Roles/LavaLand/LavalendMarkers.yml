@@ -13,6 +13,7 @@
 
 - type: entity
   id: LavalendRoomMarker1
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -38,6 +39,7 @@
 
 - type: entity
   id: LavalendRoomMarker2
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -63,6 +65,7 @@
 
 - type: entity
   id: LavalendRoomMarker3
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -88,6 +91,7 @@
 
 - type: entity
   id: LavalendRoomMarker4
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -113,6 +117,7 @@
 
 - type: entity
   id: LavalendRoomMarker5
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -138,6 +143,7 @@
 
 - type: entity
   id: LavalendRoomMarker6
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -163,6 +169,7 @@
 
 - type: entity
   id: LavalendRoomMarker7
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -188,6 +195,7 @@
 
 - type: entity
   id: LavalendRoomMarker8
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -213,6 +221,7 @@
 
 - type: entity
   id: LavalendRoomMarker9
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -238,6 +247,7 @@
 
 - type: entity
   id: LavalendRoomMarker10
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -263,6 +273,7 @@
 
 - type: entity
   id: LavalendRoomMarker11
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -288,6 +299,7 @@
 
 - type: entity
   id: LavalendRoomMarker12
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -313,6 +325,7 @@
 
 - type: entity
   id: LavalendRoomMarker13
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -338,6 +351,7 @@
 
 - type: entity
   id: LavalendRoomMarker14
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -363,6 +377,7 @@
 
 - type: entity
   id: LavalendRoomMarker15
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -388,6 +403,7 @@
 
 - type: entity
   id: LavalendRoomMarker16
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -413,6 +429,7 @@
 
 - type: entity
   id: LavalendRoomMarker17
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -438,6 +455,7 @@
 
 - type: entity
   id: LavalendRoomMarker18
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -463,6 +481,7 @@
 
 - type: entity
   id: LavalendRoomMarker19
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -488,6 +507,7 @@
 
 - type: entity
   id: LavalendRoomMarker20
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -513,6 +533,7 @@
 
 - type: entity
   id: LavalendRoomMarker21
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -538,6 +559,7 @@
 
 - type: entity
   id: LavalendRoomMarker22
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -563,6 +585,7 @@
 
 - type: entity
   id: LavalendRoomMarker23
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -588,6 +611,7 @@
 
 - type: entity
   id: LavalendRoomMarker24
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -613,6 +637,7 @@
 
 - type: entity
   id: LavalendRoomMarker25
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -638,6 +663,7 @@
 
 - type: entity
   id: LavalendRoomMarker26
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
@@ -663,6 +689,7 @@
 
 - type: entity
   id: LavalendRoomMarker27
+  categories: [ HideSpawnMenu ]
   parent: BaseRoomMarker
   name: Рандом комната Лаваленда
   components:
