@@ -28,7 +28,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
     mask: ClothingMaskGasExplorerBroken
-    outerClothing: ClothingOuterVestTank
+    outerClothing: ClothingOuterHardsuitSalvage
     back: OxygenTank
     shoes: ClothingShoesBootsSalvage
     belt: OreBag
@@ -54,7 +54,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
     mask: ClothingMaskGasExplorerBroken
-    outerClothing: ClothingOuterVestTank
+    outerClothing: ClothingOuterHardsuitSalvage
     back: OxygenTank
     shoes: ClothingShoesBootsSalvage
     belt: OreBag
@@ -80,7 +80,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
     mask: ClothingMaskGasExplorerBroken
-    outerClothing: ClothingOuterVestTank
+    outerClothing: ClothingOuterHardsuitSalvage
     back: OxygenTank
     shoes: ClothingShoesBootsSalvage
     belt: OreBag

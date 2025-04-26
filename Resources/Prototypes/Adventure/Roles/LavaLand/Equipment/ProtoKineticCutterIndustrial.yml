@@ -16,7 +16,7 @@
     - suitStorage
     sprite: Adventure/Roles/LavaLand/Equipment/industrial_kinetic_cutter/industrial_kinetic_cutter.rsi
   - type: Item
-    size: Ginormous
+    size: Large
     sprite: Adventure/Roles/LavaLand/Equipment/industrial_kinetic_cutter/industrial_kinetic_cutter.rsi
   - type: Gun
     selectedMode: SemiAuto

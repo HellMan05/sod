@@ -6,7 +6,7 @@
   description: Мощный инструмент, используемый для быстрого бурения горных пород.
   components:
   - type: Item
-    size: Ginormous
+    size: Large
     storedRotation: -90
   - type: Tag
     tags:
@@ -24,6 +24,6 @@
     attackRate: 5
     damage:
       groups:
-        Brute: 10
+        Brute: 5
       types:
         Structural: 35
