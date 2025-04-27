@@ -38,6 +38,38 @@
     {
       "name": "right_arm",
       "directions": 4
+    },
+    {
+      "name": "right_leg",
+      "directions": 4
+    },
+    {
+      "name": "left_leg",
+      "directions": 4
+    },
+    {
+      "name": "right_foot",
+      "directions": 4
+    },
+    {
+      "name": "left_foot",
+      "directions": 4
+    },
+    {
+      "name": "right_hand",
+      "directions": 4
+    },
+    {
+      "name": "left_hand",
+      "directions": 4
+    },
+    {
+      "name": "body",
+      "directions": 4
+    },
+    {
+      "name": "head",
+      "directions": 4
     }
   ]
 }

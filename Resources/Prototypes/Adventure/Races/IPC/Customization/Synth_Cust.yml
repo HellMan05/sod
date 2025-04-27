@@ -419,3 +419,75 @@
   sprites:
   - sprite: Adventure/Races/IPC/Customization/Body.rsi
     state: right_arm
+
+- type: marking
+  id: SynthChestLLeg
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: left_leg
+
+- type: marking
+  id: SynthChestRLeg
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: right_leg
+
+- type: marking
+  id: SynthChestLFoot
+  bodyPart: RFoot
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: left_foot
+
+- type: marking
+  id: SynthChestRFoot
+  bodyPart: RFoot
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: right_foot
+
+- type: marking
+  id: SynthChestLHand
+  bodyPart: LHand
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: left_hand
+
+- type: marking
+  id: SynthChestRHand
+  bodyPart: RHand
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: right_hand
+
+- type: marking
+  id: SynthChestBody
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: body
+
+- type: marking
+  id: SynthChestHead
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Synth]
+  sprites:
+  - sprite: Adventure/Races/IPC/Customization/Body.rsi
+    state: head
