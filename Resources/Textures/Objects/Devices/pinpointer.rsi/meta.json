@@ -157,6 +157,9 @@
             "name": "pinpointer-station"
         },
         {
+            "name": "pinpointer-miner"
+        },
+        {
             "name": "inhand-left",
             "directions": 4
         },

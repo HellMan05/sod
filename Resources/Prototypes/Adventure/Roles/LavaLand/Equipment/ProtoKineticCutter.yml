@@ -68,18 +68,19 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 10
-        Structural: 20
+        Blunt: 15
+        Structural: 25
   - type: TimedDespawn
     lifetime: 0.4
   - type: GatheringProjectile
 
 - type: entity
   id: BulletKineticCutterSpread
+  name: тройной кинетический заряд
   categories: [ HideSpawnMenu ]
   parent: BulletKineticCutter
   components:
   - type: ProjectileSpread
     proto: BulletKineticCutter
     count: 3
-    spread: 20
+    spread: 10

@@ -429,3 +429,37 @@
     size: Normal
   - type: StaticPrice
     price: 500
+
+#Антиабуз
+- type: entity
+  id: MobLavaLandGoliathEmpty
+  parent: MobLavaLandGoliath
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatGoliath
+      amount: 3
+    - id: Coal1
+      amount: 3
+
+- type: entity
+  id: MobLavaLandLegionEmpty
+  parent: MobLavaLandLegion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Butcherable
+    butcherDelay: 5
+    spawned:
+    - id: Coal1
+      amount: 3
+
+- type: entity
+  id: MobWatcherLavaLandFireEmpty
+  parent: MobWatcherLavaLandFire
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Butcherable
+    spawned:
+    - id: Coal1
+      amount: 3

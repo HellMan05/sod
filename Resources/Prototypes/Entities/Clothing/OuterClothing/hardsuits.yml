@@ -160,6 +160,13 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSalvage
+# Adventure-LavaLand
+  - type: Tag
+    tags:
+    - Hardsuit
+    - WhitelistChameleon
+    - HardsuitSalvage
+# Adventure-LavaLand
 
 #Goliath Hardsuit
 - type: entity

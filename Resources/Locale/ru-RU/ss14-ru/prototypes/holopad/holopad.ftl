@@ -398,6 +398,7 @@ holopad-cargo-breakroom  = Отдел снабжения - Комната отд
 holopad-cargo-ats = Отдел снабжения - АТС
 holopad-cargo-shuttle = Отдел снабжения - Шаттл
 holopad-cargo-mailroom = Отдел снабжения - Почта
+holopad-cargo-miningpost = Отдел снабжения - Шахтёрский аванпост
 
 # Engineering
 holopad-engineering-atmos-front = Атмос - Стойка

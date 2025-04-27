@@ -140,7 +140,7 @@
     rechargeCooldown: 10
     rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: MobLavaLandLegion
+    proto: MobLavaLandLegionEmpty
     capacity: 1
     count: 1
   - type: Destructible
