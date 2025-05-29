@@ -48,8 +48,6 @@
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
 # Adventure Borg start
-  - BorgModuleAdvanchedMining
-  - BorgModuleRescue
   - BorgModuleCombat
 # Adventure Borg end
 

@@ -346,7 +346,12 @@
   - !type:MobsDunGen
     minCount: 30
     maxCount: 40
-    groups:
+    contents: LavaLandSmallPathsMobs
+
+- type: entityTable
+  id: LavaLandSmallPathsMobs
+  table: !type:GroupSelector
+    children:
     - id: SalvageSpawnerMobLavaLand
       amount: 1
 

@@ -128,7 +128,6 @@
   cost: 5000
   recipeUnlocks:
   - BorgModuleAdvancedChemical
-  - BorgModuleRescue # Adventure
 
 - type: technology
   id: AdvancedCleaning
