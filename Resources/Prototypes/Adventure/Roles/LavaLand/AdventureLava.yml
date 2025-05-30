@@ -357,11 +357,9 @@
 
 - type: dungeonConfig
   id: LavaFill
-  data:
-    entities:
-      Fill: WallRockBasalt
   layers:
   - !type:FillGridDunGen
+    entity: WallRockBasalt
     allowedTiles:
     - FloorBasaltLavaLand
 
