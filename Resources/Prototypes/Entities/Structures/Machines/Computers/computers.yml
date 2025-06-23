@@ -241,6 +241,7 @@
   - type: StealTarget
     stealGroup: CargoShuttleConsoleCircuitboard
 
+# Adventure salvage shuttle return start
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleSalvage
@@ -270,6 +271,7 @@
       board: SalvageShuttleConsoleCircuitboard
     - type: StealTarget
       stealGroup: SalvageShuttleConsoleCircuitboard
+# Adventure salvage shuttle return end
 
 - type: entity
   parent: BaseComputerAiAccess

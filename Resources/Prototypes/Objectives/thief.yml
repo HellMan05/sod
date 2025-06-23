@@ -272,6 +272,7 @@
   - type: Objective
     difficulty: 0.7
 
+# Adventure salvage shuttle return start
 - type: entity
   parent: BaseThiefStealObjective
   id: SalvageShuttleCircuitboardStealObjective
@@ -282,6 +283,7 @@
     stealGroup: SalvageShuttleConsoleCircuitboard
   - type: Objective
     difficulty: 0.7
+# Adventure salvage shuttle return start
 
 - type: entity                                      #Service subgroup
   parent: BaseThiefStealObjective
