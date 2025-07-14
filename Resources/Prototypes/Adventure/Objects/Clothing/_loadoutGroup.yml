@@ -112,3 +112,10 @@
   - SalvageSpecialistJumpsuit
   - SalvageSpecialistWorkJumpsuit
   - SalvageSpecialistUndershirt
+
+- type: loadoutGroup
+  id: SalvageSpecialistNeck
+  name: Утилизатор, шея
+  minLimit: 0
+  loadouts:
+  - NeckMining

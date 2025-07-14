@@ -150,7 +150,7 @@
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/Magma.rsi, state: fragment }
   color: "#e64e04"
-  price: 5
+  price: 2
 
 #крафт магматита
 - type: constructionGraph
@@ -281,4 +281,4 @@
   unit: materials-unit-piece
   icon: { sprite: Adventure/Roles/LavaLand/materials/gems.rsi, state: processed_magmatite }
   color: "#e64e04"
-  price: 25
+  price: 30
