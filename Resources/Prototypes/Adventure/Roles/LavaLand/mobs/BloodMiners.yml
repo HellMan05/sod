@@ -23,7 +23,7 @@
       - DoorBumpOpener
       - LavaMob
     - type: Temperature
-      heatDamageThreshold: 100273,15 
+      heatDamageThreshold: 100273,15
       specificHeat: 10000
     - type: Flammable
       fireSpread: false
@@ -46,8 +46,8 @@
     - WeaponProtoKineticCutter
   storage:
     belt:
-    - OreDragon1 
-    - OreDragon1 
+    - OreDragon1
+    - OreDragon1
     - OreRuby1
     - OreRuby1
     - OreRuby1
@@ -79,10 +79,10 @@
     - WeaponProtoKineticAccelerator
   storage:
     belt:
-    - OreSapphire1 
-    - OreSapphire1 
-    - OreSapphire1 
-    - OreSapphire1 
+    - OreSapphire1
+    - OreSapphire1
+    - OreSapphire1
+    - OreSapphire1
     - MaterialMagmatiteFragment1
     - MaterialMagmatiteFragment1
     - MaterialMagmatiteFragment1
@@ -113,10 +113,10 @@
     - MiningJackhammer
   storage:
     belt:
-    - OreEmerald1 
-    - OreEmerald1 
-    - OreEmerald1 
-    - OreEmerald1 
+    - OreEmerald1
+    - OreEmerald1
+    - OreEmerald1
+    - OreEmerald1
     - OreSapphire1
     - OreSapphire1
     - OreSapphire1

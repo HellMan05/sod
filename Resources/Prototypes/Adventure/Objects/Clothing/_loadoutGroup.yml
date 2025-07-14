@@ -29,7 +29,7 @@
 
 - type: loadoutGroup
   id: BrassGroup
-  name: Бюстгальтеры 
+  name: Бюстгальтеры
   minLimit: 0
   loadouts:
   - BaseClothingBrass
@@ -67,7 +67,7 @@
 
 - type: loadoutGroup
   id: PantsGroup
-  name: Трусы 
+  name: Трусы
   minLimit: 0
   loadouts:
   - BaseClothingPants
