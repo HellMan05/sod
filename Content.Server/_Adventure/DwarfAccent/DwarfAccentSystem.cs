@@ -54,18 +54,6 @@ public sealed class DwarfAccentSystem : EntitySystem
             "И+",
             _random.Pick(new List<string> { "ЫЕ" })
         );
-        // я => йа
-        message = Regex.Replace(
-            message,
-            "я+",
-            _random.Pick(new List<string> { "йа" })
-        );
-        // Я => ЙА
-        message = Regex.Replace(
-            message,
-            "Я+",
-            _random.Pick(new List<string> { "ЙА" })
-        );
 
         args.Message = message;
     }
