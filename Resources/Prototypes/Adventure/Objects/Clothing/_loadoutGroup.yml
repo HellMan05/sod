@@ -64,6 +64,16 @@
   - ClothingBrassBlue4
   - ClothingBrassRed4
   - ClothingBrassPink4
+  - ClothingMaikaWhite
+  - ClothingMaikaBlack
+  - ClothingMaikaOrange
+  - ClothingMaikaGreen
+  - ClothingMaikaCyan
+  - ClothingMaikaBlue
+  - ClothingMaikaRed
+  - ClothingMaikaPink
+  - ClothingMaikaVDV
+  - ClothingMaikaAlkash
 
 - type: loadoutGroup
   id: PantsGroup
@@ -104,6 +114,14 @@
   - ClothingPantsPink4
   - ClothingPantsHearts
   - ClothingPantsZasranes
+  - ClothingSuperStringWhite
+  - ClothingSuperStringBlack
+  - ClothingSuperStringOrange
+  - ClothingSuperStringGreen
+  - ClothingSuperStringCyan
+  - ClothingSuperStringBlue
+  - ClothingSuperStringRed
+  - ClothingSuperStringPink
 
 - type: loadoutGroup
   id: SalvageSpecialistJumpsuit
