@@ -247,15 +247,24 @@
   id: UnisexVox
   sounds:
     Scream:
-      path: /Audio/Voice/Vox/shriek1.ogg
+      collection: VoxScreamCollection # Adventure
     Laugh:
-      path: /Audio/Voice/Vox/vox_laugh.ogg
+      collection: VoxLaughCollection # Adventure
     Honk:
       collection: BikeHorn
     Weh:
       collection: Weh
     Hew:
       collection: Hew
+# Adventure-start
+    Whistle:
+      collection: Whistles
+    Snore:
+      collection: Snores
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
   params:
     variation: 0.125
     # We need vox sounds for the other emotes
