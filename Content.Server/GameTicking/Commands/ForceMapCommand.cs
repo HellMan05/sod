@@ -84,11 +84,11 @@ namespace Content.Server.GameTicking.Commands
             shell.WriteLine($"Следующая карта будет \"{name}\"");
         }
 
-        public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+        public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
         {
             if (args.Length == 1)
             {
-                var options = IoCManager.Resolve<IPrototypeManager>()
+                var options = _prototypeManager
                     .EnumeratePrototypes<GameMapPrototype>()
                     .Select(p => new CompletionOption(p.ID, p.MapName))
                     .OrderBy(p => p.Value);
