@@ -12,7 +12,6 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Throwing;
 using Content.Shared.Trigger;
 using Content.Shared.Trigger.Systems;
 using Content.Shared.Trigger.Components;
