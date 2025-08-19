@@ -1,5 +1,5 @@
 # General
-ai-wire-snipped = Был перерезан провод, координаты { $coords }.
+ai-wire-snipped = Один из ваших системных кабелей был перерезан в {$source}.
 wire-name-ai-vision-light = ИИВ
 wire-name-ai-act-light = ИИС
 station-ai-takeover = ИИ захват

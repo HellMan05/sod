@@ -25,7 +25,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesCyan
@@ -69,7 +69,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesRed
@@ -114,7 +114,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesLime
@@ -159,7 +159,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesYellow
@@ -204,7 +204,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesPurple
@@ -249,7 +249,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesWhite
@@ -294,7 +294,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesOrange
@@ -339,7 +339,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot {}
-    - type: TriggerImplantAction
+    - type: TriggerOnActivateImplant
 
 - type: entity
   id: ActionToggleLinsesBlack

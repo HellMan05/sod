@@ -46,7 +46,7 @@
   components:
   - type: Sprite
     sprite: Adventure/Objects/Weapons/Botany/cherrybomb.rsi
-  - type: OnUseTimerTrigger
+  - type: TimerTrigger
     delay: 5
     examinable: false
     initialBeepDelay: 0
