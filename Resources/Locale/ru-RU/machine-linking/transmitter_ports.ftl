@@ -31,9 +31,6 @@ signal-port-description-timer-trigger = Этот порт задействует
 signal-port-name-trigger-sender = Триггер
 signal-port-description-trigger-sender = Этот порт задействуется всякий раз, когда срабатывает триггер.
 
-signal-port-name-timer-trigger = Таймер
-signal-port-description-timer-trigger = Этот порт задействуется всякий раз, когда таймер заканчивается.
-
 signal-port-name-timer-start = Таймер-старт
 signal-port-description-timer-start = Этот порт задействуется всякий раз, когда запускается таймер.
 

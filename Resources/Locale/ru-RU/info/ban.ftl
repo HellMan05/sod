@@ -9,7 +9,6 @@ cmd-ban-hint = <name/user ID>
 cmd-ban-hint-reason = [#Раунд | Нарушенное правило | Причина бана | Срок бана]
 cmd-ban-hint-severity = [severity(для бана всегда high)]
 cmd-ban-hint-duration = [продолжительность]
-cmd-ban-hint-severity = [тяжесть]
 cmd-ban-hint-duration-1 = Навсегда
 cmd-ban-hint-duration-2 = 1 день
 cmd-ban-hint-duration-3 = 3 дня

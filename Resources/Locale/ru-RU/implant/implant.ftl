@@ -25,8 +25,3 @@ implanter-contained-implant-text = [color=green]{ $desc }[/color]
 ## Implant Popups
 
 scramble-implant-activated-popup = Ваша внешность преображается и меняется!
-
-## Implant Messages
-
-rattle-on-trigger-dead-message = Зафиксирована смерть { $user } { $position }.
-rattle-on-trigger-critical-message = Жизненные показатели { $user } критические, требуется немедленная помощь { $position }.
