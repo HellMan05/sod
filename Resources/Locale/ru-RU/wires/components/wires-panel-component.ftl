@@ -11,10 +11,10 @@ wire-name-color-brown = Коричневый
 wire-name-color-gold = Золотой
 wire-name-color-gray = Серый
 wire-name-color-cyan = Голубой
-wire-name-color-navy = Темно-синий
+wire-name-color-navy = Тёмно-синий
 wire-name-color-purple = Фиолетовый
 wire-name-color-pink = Розовый
-wire-name-color-fuchsia = Фуксия
+wire-name-color-fuchsia = Пурпурный
 
 # letter names
 wire-letter-name-alpha = Альфа

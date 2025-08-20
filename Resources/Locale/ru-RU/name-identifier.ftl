@@ -1,7 +1,7 @@
 name-identifier-format-monkey = ОБ-{$number}
 name-identifier-format-kobold = КБ-{$number}
 name-identifier-format-holoparasite = ГОЛО-{$number}
-name-identifier-format-mmi = ЧМИ-{$number}
+name-identifier-format-mmi = ММИ-{$number}
 name-identifier-format-positronic-brain = ПМ-{$number}
 name-identifier-format-silicon = Си-{$number}
 name-identifier-format-xenoborg = Кси-{$number}

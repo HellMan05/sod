@@ -55,9 +55,9 @@ air-alarm-ui-pump-direction-releasing = Закачивание
 air-alarm-ui-pressure-bound-nobound = Нет границы
 air-alarm-ui-pressure-bound-internalbound = Внутренняя граница
 air-alarm-ui-pressure-bound-externalbound = Внешняя граница
-air-alarm-ui-pressure-bound-both = Обе
+air-alarm-ui-pressure-bound-both = Оба
 
-air-alarm-ui-widget-gas-filters = Газовые фильтры
+air-alarm-ui-widget-gas-filters = Фильтр газов
 ## Widgets
 
 
@@ -81,8 +81,8 @@ air-alarm-ui-vent-internal-bound-label = Внутренняя граница
 air-alarm-ui-scrubber-pump-direction-label = Направление
 air-alarm-ui-scrubber-volume-rate-label = Объём (Л)
 air-alarm-ui-scrubber-wide-net-label = ШирокаяСеть
-air-alarm-ui-scrubber-select-all-gases-label = Выбрать все
-air-alarm-ui-scrubber-deselect-all-gases-label = Убрать выбор
+air-alarm-ui-scrubber-select-all-gases-label = Включить все
+air-alarm-ui-scrubber-deselect-all-gases-label = Отключить все
 
 ### Thresholds
 
