@@ -25,10 +25,10 @@
     - state: SecModul
     - state: SecModul-icon
   - type: ItemBorgModule
-    items:
-    - FlashSecBorg
-    - StunbatonSecBorg
-    - WeaponLaserSecBorg
+    hands:
+    - item: FlashSecBorg
+    - item: StunbatonSecBorg
+    - item: WeaponLaserSecBorg
 
 #Усмиритель
 - type: entity
