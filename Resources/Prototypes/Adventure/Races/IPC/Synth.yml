@@ -232,6 +232,7 @@
         volume: -1
   - type: TypingIndicator
     proto: robot
+  - type: Crawler
   - type: Repairable
     doAfterDelay: 5
     damage:
