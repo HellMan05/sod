@@ -12,7 +12,6 @@
   - type: Sprite
     sprite: Adventure/Objects/Food/shawarma.rsi
     state: shawarma
-    scale: 0.6, 0.6
   - type: Tag
     tags:
     - Meat
