@@ -449,43 +449,44 @@
   parent: [ BaseRockGibtonite, AsteroidRock ]
   suffix: Гибтонит LavaLand
   components:
-    - type: Sprite
-      layers:
-        - state: rock_wall
-        - map: [ "enum.EdgeLayer.South" ]
-          state: rock_wall_south
-        - map: [ "enum.EdgeLayer.East" ]
-          state: rock_wall_east
-        - map: [ "enum.EdgeLayer.North" ]
-          state: rock_wall_north
-        - map: [ "enum.EdgeLayer.West" ]
-          state: rock_wall_west
-        - state: gibtonite_inactive
-          visible: false
-          map: [ "enum.MiningScannerVisualLayers.Overlay", "gib" ]
-    - type: RandomTimerTrigger
-      min: 2
-      max: 5
-    - type: Explosive
-      explosionType: DemolitionCharge
-      totalIntensity: 200
-      intensitySlope: 3
-      maxIntensity: 10
-      canCreateVacuum: false
-    - type: Destructible
-      thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 3
-        behaviors:
-        - !type:TimerStartBehavior
-        - !type:PlaySoundBehavior
-          sound:
-            collection: GlassBreak
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:TriggerBehavior
+  - type: Sprite
+    layers:
+      - state: rock_wall
+      - map: [ "enum.EdgeLayer.South" ]
+        state: rock_wall_south
+      - map: [ "enum.EdgeLayer.East" ]
+        state: rock_wall_east
+      - map: [ "enum.EdgeLayer.North" ]
+        state: rock_wall_north
+      - map: [ "enum.EdgeLayer.West" ]
+        state: rock_wall_west
+      - state: gibtonite_inactive
+        visible: false
+        map: [ "enum.MiningScannerVisualLayers.Overlay", "gib" ]
+  - type: RandomTimerTrigger
+    min: 2
+    max: 5
+  - type: Explosive
+    explosionType: DemolitionCharge
+    totalIntensity: 200
+    intensitySlope: 3
+    maxIntensity: 10
+    canCreateVacuum: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 3
+      behaviors:
+      - !type:TimerStartBehavior
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:TriggerBehavior
+        keyOut: timer
