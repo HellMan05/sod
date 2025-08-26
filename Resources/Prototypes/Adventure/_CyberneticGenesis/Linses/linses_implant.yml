@@ -2,14 +2,14 @@
   id: CyanLinsesImplanter
   name: имплантер голубых линз
   description: Имплантер даёт пользователю специальные линзы голубого цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: CyanLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: CyanLinsesImplant
   name: имплантер
@@ -33,27 +33,28 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/cyan_linses.rsi
       state: icon
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: RedLinsesImplanter
   name: имплантер красных линз
   description: Имплантер даёт пользователю специальные линзы красного цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: RedLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: RedLinsesImplant
   name: имплантер
@@ -77,28 +78,28 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/red_linses.rsi
       state: icon
-
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: LimeLinsesImplanter
   name: имплантер лаймовых линз
   description: Имплантер даёт пользователю специальные линзы лаймового цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: LimeLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: LimeLinsesImplant
   name: имплантер
@@ -122,28 +123,28 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/lime_linses.rsi
       state: icon
-
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: YellowLinsesImplanter
   name: имплантер жёлтых линз
   description: Имплантер даёт пользователю специальные линзы жёлтого цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: YellowLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: YellowLinsesImplant
   name: имплантер
@@ -167,28 +168,28 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/yellow_linses.rsi
       state: icon
-
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: PurpleLinsesImplanter
   name: имплантер фиолетовых глаз
   description: Имплантер даёт пользователю специальные линзы жёлтого цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: PurpleLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: PurpleLinsesImplant
   name: имплантер
@@ -212,28 +213,28 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/violet_linses.rsi
       state: icon
-
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: WhiteLinsesImplanter
   name: имплантер белых линз
   description: Имплантер даёт пользователю специальные линзы белого цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: WhiteLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: WhiteLinsesImplant
   name: имплантер
@@ -257,28 +258,28 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/white_linses.rsi
       state: icon
-
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: OrangeLinsesImplanter
   name: имплантер оранжевых линз
   description: Имплантер даёт пользователю специальные линзы оранжевого цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: OrangeLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: OrangeLinsesImplant
   name: имплантер
@@ -302,32 +303,32 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/orange_linses.rsi
       state: icon
-
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
 
 - type: entity
   id: BlackLinsesImplanter
   name: имплантер чёрных линз
   description: Имплантер даёт пользователю специальные линзы чёрного цвета.
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
       implant: BlackLinsesImplant
 
 - type: entity
-  suffix: Genesis_Dynamics
+  suffix: Adv
   parent: BaseSubdermalImplant
   id: BlackLinsesImplant
   name: имплантер
-  description: Имплантер даёт пользователю специальные линзы ораньжевого цвета.
+  description: Имплантер даёт пользователю специальные линзы оранжевого цвета.
   categories: [ HideSpawnMenu ]
   components:
     - type: SubdermalImplant
@@ -347,11 +348,12 @@
   description: Активирует линзы.
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1 # equip noise spam.
-    event: !type:ToggleClothingEvent
     itemIconStyle: BigAction
     priority: -20
     icon:
       sprite: Adventure/_CyberneticGenesis/linses/black_linses.rsi
       state: icon
+  - type: InstantAction
+    event: !type:ToggleClothingEvent
