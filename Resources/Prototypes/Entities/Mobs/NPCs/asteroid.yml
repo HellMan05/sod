@@ -132,9 +132,11 @@
     layers:
     - state: goliath_tentacle_wiggle
   - type: StunOnContact
+    duration: 3 # Adventure
     blacklist:
       tags:
       - Goliath
+      - LavaMob # Adventure
   - type: Fixtures
     fixtures:
       fix:
