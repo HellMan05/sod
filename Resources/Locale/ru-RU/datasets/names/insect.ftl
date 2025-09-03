@@ -7,6 +7,7 @@ names-insect-dataset-6 = Мигунд
 names-insect-dataset-7 = Тазаер
 names-insect-dataset-8 = Тров
 names-insect-dataset-9 = Флаттер
+names-insect-dataset-10 = Реттер
 names-insect-dataset-11 = Редд
 names-insect-dataset-12 = Перипатус
 names-insect-dataset-13 = Арахнаут
