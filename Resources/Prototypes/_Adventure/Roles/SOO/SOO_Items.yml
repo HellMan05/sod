@@ -1,0 +1,52 @@
+#Комбинезон ОСО
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSOO
+  name: комбинезон ОСО
+  description: Тактический комбинезон с армированными вставками.
+  components:
+  - type: Sprite
+    sprite: _Adventure/Roles/SOD/SOO/SOO_uniform.rsi
+  - type: Clothing
+    sprite: _Adventure/Roles/SOD/SOO/SOO_uniform.rsi
+
+#Фуражка ОСО
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadBaseCapSOO
+  name: Фуражка ОСО
+  description: Фуражка офицера спецопераций. Символ власти и прицел для врагов.
+  components:
+  - type: Sprite
+    sprite: _Adventure/Roles/SOD/SOO/SOO_cap.rsi
+  - type: Clothing
+    sprite: _Adventure/Roles/SOD/SOO/SOO_cap.rsi
+
+#Гарнитура-наушники ОСО
+- type: entity
+  name: гарнитура-наушники ОСО
+  parent: ClothingHeadsetAltCentCom
+  id: SOOHeadsetAlt
+  description: Тактическая гарнитура. Говори тихо — тебя и так слышат.
+  components:
+  - type: Sprite
+    sprite: _Adventure/Roles/SOD/SOO/SOO_headset.rsi
+  - type: Clothing
+    sprite: _Adventure/Roles/SOD/SOO/SOO_headset.rsi
+
+#Рюкзак ОСО
+- type: entity
+  parent: ClothingBackpackERTSecurity
+  id: ClothingMilitaryBackpackSOO
+  name: рюкзак ОСО
+  description: Тактический ранец. Всё необходимое — под рукой. Даже то, о чём ты не должен знать.
+  components:
+  - type: Sprite
+    sprite: _Adventure/Roles/SOD/SOO/SOO_backPack.rsi
+  - type: Clothing
+    sprite: _Adventure/Roles/SOD/SOO/SOO_backPack.rsi
+  - type: StorageFill
+    contents:
+    - id: BoxZiptie
+    - id: CrowbarRed
+    - id: DoubleEmergencyOxygenTankFilled
